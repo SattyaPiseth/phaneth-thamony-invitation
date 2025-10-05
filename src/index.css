@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/* Tokens (single source of truth) */
+/* Optional: a fluid vertical rhythm for sections (used above on CoverPage) */
+:root {
+  /* existing */
+  --gold: #d2ab59;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --pad-top-dynamic: clamp(9svh, 13dvh, 15lvh);
+  --pad-top-extra: -30px;
+
+  /* optional new tokens */
+  --section-gap: clamp(16px, 3.5vmin, 32px);
+}
+
+/* iOS Safari phones: small extra top pad */
+@supports (-webkit-touch-callout: none) {
+  @media (hover: none) and (pointer: coarse) and (max-width: 480px) {
+    :root {
+      --pad-top-extra: calc(clamp(4px, 1.2vmin, 16px) + 2px);
+    }
+  }
+}
+
+/* Orientation override AFTER base */
+@media (orientation: landscape) {
+  :root {
+    --pad-top-dynamic: clamp(7svh, 11dvh, 13lvh);
+  }
+}
+
+/* Minimal base */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+/* A11y: motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Khmer fonts */
+.moul-regular {
+  font-family: "Moul", serif;
+  font-weight: 400;
+}
+.bayon-regular {
+  font-family: "Bayon", sans-serif;
+  font-weight: 400;
+}
+.siemreap-regular {
+  font-family: "Siemreap", sans-serif;
+  font-weight: 400;
+}
+.great-vibes-regular {
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+/* Keyframes (used via animate-[...]) */
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
