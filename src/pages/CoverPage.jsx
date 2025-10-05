@@ -28,10 +28,10 @@ export default function CoverPage() {
       <div
         className="
           relative z-10 mx-auto flex flex-col
-          w-full min-h-[100dvh]
+          w-full min-h-dvh
           max-w-[clamp(440px,92vw,56rem)]
-          mt-[clamp(0rem,4vw,5rem)]
           px-4 sm:px-6
+          overflow-hidden
         "
         data-aos="zoom-in"
       >
@@ -42,6 +42,23 @@ export default function CoverPage() {
           customer={customer}
         />
       </div>
+
+      {/* <div
+        className="
+          w-full h-screen
+          bg-red-300           
+          sm:bg-orange-300     
+          md:bg-yellow-300     
+          lg:bg-green-300      
+          xl:bg-blue-300      
+          2xl:bg-purple-300    
+        "
+      >
+        <p className="text-center text-xl font-semibold pt-10 text-white">
+          Resize the window to see the background change
+        </p>
+      </div> */}
+
     </>
   );
 }

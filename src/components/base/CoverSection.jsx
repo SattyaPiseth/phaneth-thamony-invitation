@@ -8,6 +8,7 @@ export default function CoverSection({
   isStoryPlaying = false,
   onStart = () => {},
   customer,
+  src = "/images/cover-page/name-cover.png",
 }) {
   const customerFromHook = useCustomerByUuid();
   const person = customer ?? customerFromHook;
@@ -30,28 +31,48 @@ export default function CoverSection({
       </h2>
 
       <div className="flex flex-col items-center">
-        <img
-          src="/images/cover-page/name-cover.png"
-          alt=""
-          className={cn(
-            "block mx-auto h-auto aspect-[2/1]",
-            "w-[min(80vw,340px)] sm:w-[min(72vw,380px)] md:w-[min(64vw,420px)] lg:w-[min(56vw,440px)] xl:w-[460px] 2xl:w-[480px]",
-            "-translate-y-[clamp(6rem,12vw,12rem)]"
-          )}
-          loading="lazy"
-          aria-hidden="true"
-        />
+        <figure
+          className="flex flex-col items-center"
+          aria-labelledby="invite-caption"
+          style={{ ['--lift']: 'clamp(4.5rem,10vw,18rem)' }}
+        >
+          <img
+            src={src}
+            alt=""
+            width={218}
+            height={218}
+            className={cn(
+              "block mx-auto h-auto select-none aspect-square",
+              "w-[min(70vw,220px)] sm:w-[min(64vw,260px)] md:w-[min(56vw,300px)] lg:w-[min(48vw,340px)] xl:w-[260px]",
+              "-translate-y-[var(--lift)] xl:mt-[6vh] 2xl:mt-[12vh]",
+              "max-[340px]:-translate-y-[clamp(7rem,12vw,14rem)]",
+              "motion-safe:transform-gpu"
+            )}
+            sizes="(min-width:1280px) 360px,
+                  (min-width:1024px) 48vw,
+                  (min-width:768px) 56vw,
+                  (min-width:640px) 64vw,
+                  70vw"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            draggable={false}
+            aria-hidden="true"
+          />
+          <figcaption className="sr-only" id="invite-caption">
+            ការអញ្ជើញពិសេសសម្រាប់ភ្ញៀវកិត្តិយស
+          </figcaption>
+        </figure>
 
-        <div className="flex flex-col items-center gap-y-[clamp(1.5rem,2vw,2rem)]">
+        <div className="flex flex-col items-center gap-y-8 sm:gap-y-10 md:gap-y-14 lg:gap-y-16 xl:gap-y-8 2xl:gap-y-12">
           {showPersonalized && (
             <p
               className={cn(
-                "koulen-regular text-center tracking-[0.01em]",
-                "leading-normal lg:leading-snug",
-                "text-xl sm:text-2xl lg:text-3xl xl:text-[2rem] 2xl:text-[2.125rem]",
+                "koulen-regular text-center tracking-[0.01em] leading-normal lg:leading-snug",
+                "text-2xl sm:text-3xl lg:text-4xl xl:text-2xl 2xl:text-3xl",
                 "animate-[fade-up_700ms_ease-out_both] [animation-delay:160ms] motion-reduce:animate-none",
-                "-mt-[clamp(5vh,10vh,15vh)]"  
-                
+                "-mt-[12vh] sm:-mt-[14vh] md:-mt-[8vh] lg:-mt-[18vh] xl:-mt-[22vh] 2xl:-mt-[20vh]",
+                "max-[340px]:-mt-[10rem] max-[340px]:text-xl"
               )}
             >
               សូមគោរពអញ្ជើញ
@@ -61,9 +82,10 @@ export default function CoverSection({
           {showPersonalized ? (
             <p
               className={cn(
-                "koulen-regular text-center",
-                "text-xl sm:text-2xl lg:text-3xl",
-                "animate-[fade-up_700ms_ease-out_both] [animation-delay:360ms] motion-reduce:animate-none"
+                "koulen-regular text-center tracking-[0.01em]",
+                "text-2xl sm:text-3xl lg:text-4xl xl:text-2xl",
+                "animate-[fade-up_700ms_ease-out_both] [animation-delay:360ms] motion-reduce:animate-none",
+                "max-[340px]:text-xl"
               )}
             >
               {person.guestName}
@@ -81,18 +103,21 @@ export default function CoverSection({
               "text-[var(--gold)]",
               "bg-white/5 hover:bg-white/10",
               "backdrop-blur-sm",
-              "border border-[var(--gold)]/60",
+              "border [border-color:color-mix(in_srgb,var(--gold)_60%,transparent)]",
               "shadow-md shadow-black/20",
               "transition duration-300",
-              "focus:outline-none focus:ring-2 focus:ring-[var(--gold)]/40",
-              "text-sm sm:text-base lg:text-lg 2xl:text-xl",
-              "animate-[fade-up_700ms_ease-out_both] [animation-delay:560ms] motion-reduce:animate-none"
+              "focus:outline-none focus:ring-2 focus:ring-[color-mix(in_srgb,var(--gold)_40%,transparent)]",
+              "text-base sm:text-lg lg:text-xl 2xl:text-2xl",
+              "animate-[fade-up_700ms_ease-out_both] [animation-delay:560ms] motion-reduce:animate-none",
+              "max-[340px]:-mt-[clamp(0.5rem,2vw,2rem)]"
             )}
+            aria-label="ចូលទៅកាន់ពិសេសកម្ម"
           >
-            សូមចុចបើកធៀប
+            សូមចុចដើម្បីចូល
           </button>
         </div>
       </div>
+
     </section>
   );
 }
