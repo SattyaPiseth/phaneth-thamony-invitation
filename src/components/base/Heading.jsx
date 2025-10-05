@@ -1,33 +1,36 @@
-export default function Heading({ isStoryPlaying = false }) {
+import React from "react";
+
+const cn = (...parts) => parts.filter(Boolean).join(" ");
+
+export default function Heading({ isStoryPlaying = false, className = "" }) {
   return (
     <header
-      className="
-        p-4 flex items-center justify-center tracking-wide text-[var(--gold)]
-        pt-[calc(var(--safe-top)+var(--pad-top-dynamic)+var(--pad-top-extra))]
-      "
-      aria-label="សិរីមង្គលអាពាហ៍ពិពាហ៍"
+      className={cn(
+        "flex items-center justify-center tracking-wide text-[var(--gold)]",
+        "p-4",
+        "pt-[calc(var(--safe-top)+var(--pad-top-dynamic)+var(--pad-top-extra))]",
+        "[media_(max-width:340px)]:pt-[calc(var(--safe-top)+var(--pad-top-dynamic)+0.25rem)]",
+        className
+      )}
       data-aos="fade-down"
       data-aos-easing="linear"
       data-aos-duration="400"
     >
-      {/* Primary semantic h1 (screen reader only) */}
       <h1 className="sr-only">សិរីមង្គលអាពាហ៍ពិពាហ៍</h1>
 
       {!isStoryPlaying && (
         <img
           src="/images/cover-page/heading-cover-page.png"
           alt=""
-          width={1982}
-          height={520}
-          className="
-            block mx-auto h-auto select-none aspect-[1982/520]
-            w-[clamp(420px,52vw,600px)] -mt-[clamp(0px,1.8vw,12px)]
-            sm:w-[460px] sm:-mt-12
-            md:w-[clamp(520px,45vw,640px)] md:-mt-[clamp(6px,1.2vw,16px)]
-            lg:w-[min(52vw,680px)] lg:-mt-[clamp(8px,1vw,20px)]
-            xl:w-[min(38vw,720px)] 2xl:w-[550px]
-          "
-          sizes="(max-width: 768px) 48vw, (max-width: 1024px) 45vw, (max-width: 1280px) 42vw, 720px"
+          width={218}
+          height={218}
+          className={cn(
+            "block mx-auto h-auto select-none aspect-square",
+            "w-[min(60vw,260px)] sm:w-[min(64vw,300px)] md:w-[min(56vw,340px)] lg:w-[min(48vw,380px)] xl:w-[400px]",
+            "-translate-y-[clamp(1rem,5vw,4rem)]",
+            "[media_(max-width:340px)]:-translate-y-[clamp(0.25rem,2vw,1rem)]",
+            "translate-z-0 will-change-transform"
+          )}
           loading="eager"
           fetchPriority="high"
           decoding="async"

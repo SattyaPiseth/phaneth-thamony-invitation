@@ -4,7 +4,7 @@
 /* Optional: a fluid vertical rhythm for sections (used above on CoverPage) */
 :root {
   /* existing */
-  --gold: #d2ab59;
+  --gold: #996966;
   --safe-top: env(safe-area-inset-top, 0px);
   --pad-top-dynamic: clamp(9svh, 13dvh, 15lvh);
   --pad-top-extra: -30px;
@@ -45,10 +45,13 @@ body,
 }
 
 /* Khmer fonts */
-.moul-regular {
-  font-family: "Moul", serif;
+
+.koulen-regular {
+  font-family: "Koulen", sans-serif;
   font-weight: 400;
+  font-style: normal;
 }
+
 .bayon-regular {
   font-family: "Bayon", sans-serif;
   font-weight: 400;
