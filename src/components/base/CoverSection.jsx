@@ -96,7 +96,7 @@ export default function CoverSection({
 
           <button
             type="button"
-            onClick={onStart}
+            // onClick={onStart}
             className={cn(
               "px-6 py-2 sm:px-7 sm:py-2.5 2xl:px-8 2xl:py-3",
               "rounded-xl font-semibold moul-regular",
