@@ -68,7 +68,7 @@ export default function CoverSection({
           {showPersonalized && (
             <p
               className={cn(
-                "koulen-regular text-center tracking-[0.01em] leading-normal lg:leading-snug",
+                "moulpali-semibold text-center tracking-[0.01em] leading-normal lg:leading-snug",
                 "text-2xl sm:text-3xl lg:text-4xl xl:text-2xl 2xl:text-3xl",
                 "animate-[fade-up_700ms_ease-out_both] [animation-delay:160ms] motion-reduce:animate-none",
                 "-mt-[12vh] sm:-mt-[14vh] md:-mt-[8vh] lg:-mt-[18vh] xl:-mt-[22vh] 2xl:-mt-[20vh]",
@@ -82,8 +82,8 @@ export default function CoverSection({
           {showPersonalized ? (
             <p
               className={cn(
-                "koulen-regular text-center tracking-[0.01em]",
-                "text-2xl sm:text-3xl lg:text-4xl xl:text-2xl",
+                "moul-regular text-center tracking-[0.01em]",
+                "text-xl sm:text-3xl lg:text-4xl xl:text-2xl",
                 "animate-[fade-up_700ms_ease-out_both] [animation-delay:360ms] motion-reduce:animate-none",
                 "max-[340px]:text-xl"
               )}
@@ -99,7 +99,7 @@ export default function CoverSection({
             onClick={onStart}
             className={cn(
               "px-6 py-2 sm:px-7 sm:py-2.5 2xl:px-8 2xl:py-3",
-              "rounded-xl font-semibold koulen-regular",
+              "rounded-xl font-semibold moulpali-regular",
               "text-[var(--gold)]",
               "bg-white/5 hover:bg-white/10",
               "backdrop-blur-sm",
@@ -113,7 +113,7 @@ export default function CoverSection({
             )}
             aria-label="ចូលទៅកាន់ពិសេសកម្ម"
           >
-            សូមចុចដើម្បីចូល
+            សូមចុចបើកធៀប
           </button>
         </div>
       </div>
