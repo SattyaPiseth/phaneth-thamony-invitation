@@ -20,8 +20,9 @@ export default function CoverSection({
     <section
       className={cn(
         "flex flex-col items-center justify-center",
-        "text-[var(--gold)] tracking-wide",
-        "px-4 sm:px-6 lg:px-8"
+        "tracking-wide",
+        "px-4 sm:px-6 lg:px-8",
+        "text-[var(--text)]"
       )}
       aria-labelledby="cover-section-title"
       data-aos="zoom-in"
@@ -34,7 +35,7 @@ export default function CoverSection({
         <figure
           className="flex flex-col items-center"
           aria-labelledby="invite-caption"
-          style={{ ['--lift']: 'clamp(4.5rem,10vw,18rem)' }}
+          style={{ ["--lift"]: "clamp(4.5rem,10vw,18rem)" }}
         >
           <img
             src={src}
@@ -70,6 +71,8 @@ export default function CoverSection({
               className={cn(
                 "moul-regular text-center tracking-[0.01em] leading-normal lg:leading-snug",
                 "text-xl sm:text-3xl lg:text-4xl xl:text-2xl 2xl:text-3xl",
+                // soft secondary headline
+                "text-[var(--secondary)]",
                 "animate-[fade-up_700ms_ease-out_both] [animation-delay:160ms] motion-reduce:animate-none",
                 "-mt-[12vh] sm:-mt-[14vh] md:-mt-[8vh] lg:-mt-[18vh] xl:-mt-[22vh] 2xl:-mt-[20vh]",
                 "max-[340px]:-mt-[10rem] max-[340px]:text-xl"
@@ -84,6 +87,8 @@ export default function CoverSection({
               className={cn(
                 "moul-regular text-center tracking-[0.01em]",
                 "text-lg sm:text-3xl lg:text-4xl xl:text-2xl",
+                // highlight guest name with primary
+                "text-[var(--primary)]",
                 "animate-[fade-up_700ms_ease-out_both] [animation-delay:360ms] motion-reduce:animate-none",
                 "max-[340px]:text-xl"
               )}
@@ -100,13 +105,12 @@ export default function CoverSection({
             className={cn(
               "px-6 py-2 sm:px-7 sm:py-2.5 2xl:px-8 2xl:py-3",
               "rounded-xl font-semibold moul-regular",
-              "text-[var(--gold)]",
-              "bg-white/5 hover:bg-white/10",
+              "text-[color-mix(in_srgb,var(--primary)_92%,white)]",
               "backdrop-blur-sm",
-              "border [border-color:color-mix(in_srgb,var(--gold)_60%,transparent)]",
-              "shadow-md shadow-black/20",
+              "border [border-color:color-mix(in_srgb,var(--primary)_55%,transparent)]",
+              "shadow-md shadow-black/10",
               "transition duration-300",
-              "focus:outline-none focus:ring-2 focus:ring-[color-mix(in_srgb,var(--gold)_40%,transparent)]",
+              "focus:outline-none focus:ring-2 focus:ring-[color-mix(in_srgb,var(--primary)_35%,transparent)]",
               "text-base sm:text-lg lg:text-xl 2xl:text-2xl",
               "animate-[fade-up_700ms_ease-out_both] [animation-delay:560ms] motion-reduce:animate-none",
               "max-[340px]:-mt-[clamp(0.5rem,2vw,2rem)]"
@@ -117,7 +121,6 @@ export default function CoverSection({
           </button>
         </div>
       </div>
-
     </section>
   );
 }

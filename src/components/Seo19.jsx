@@ -2,11 +2,11 @@ import { useLocation } from "react-router-dom";
 import { useMemo } from "react";
 
 const DEFAULTS = {
-  siteName: "kim & nary wedding",
-  title: "Kim & Nary Wedding — Save the Date",
+  siteName: "Phaneth & Thamony Wedding",
+  title: "Phaneth & Thamony Wedding — Save the Date",
   description: "Join us in celebrating love. Ceremony details, schedule, map, and RSVP.",
-  image: "/images/landscape-04.jpg",
-  imageAlt: "Kim & Nary wedding cover",
+  image: "/images/seo/phaneth-thamony-logo.png",
+  imageAlt: "Phaneth & Thamony Wedding Cover",
   themeColor: "#ffffff",
   ogType: "website",
   twitterCard: "summary_large_image",

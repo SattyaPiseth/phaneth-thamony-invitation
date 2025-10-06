@@ -17,7 +17,7 @@ const DEFAULT_BG = {
 
 const BG_BY_ROUTE = {
   "/": { src: "/videos/background.mp4", poster: "/images/background.png", loop: true },
-  "/home": { src: "/videos/bg-homepage.mp4", poster: "/images/home-bg.png", loop: false },
+  "/home": { src: "/videos/", poster: "/images/background.png", loop: false },
 };
 
 export default function App() {

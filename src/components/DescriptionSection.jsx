@@ -48,17 +48,14 @@ export default function DescriptionSection({
         {/* Invite Heading */}
         <h2
           id="invite-title"
-          className="bayon-regular text-balance text-lg sm:text-xl md:text-2xl tracking-wide"
+          className="moulpali-regular text-balance text-base sm:text-xl md:text-2xl tracking-wide text-[var(--primary)]"
         >
           មានកិត្តិយសសូមគោរពអញ្ជើញ
         </h2>
 
         {/* Intro copy */}
-        <p className="siemreap-regular text-sm sm:text-base md:text-lg tracking-wide leading-relaxed">
-          សម្ដេច ទ្រង់ ឯកឧត្ដម លោកឧកញ៉ា លោកជំទាវ លោក​ លោកស្រី អ្នកនាង កញ្ញា និង
-          ប្រិយមិត្ត អញ្ជើញចូលរួមជាអធិបតី និង​ ជាភ្ញៀវកិត្តិយស
-          ដើម្បីប្រសិទ្ធពរជ័យ សិរិសួស្ដី ជ័យមង្គល ក្នុងពិធីរៀបអាពាហ៍ពិពាហ៍
-          កូនប្រុស‍‍‌-ស្រី របស់យើងខ្ញុំ។
+        <p className="moulpali-regular text-xs sm:text-base md:text-lg tracking-wide leading-[3.5vh] text-[var(--text)]/90 text-pretty">
+          សម្ដេច ទ្រង់ ឯកឧត្ដម លោកឧកញ៉ា លោកជំទាវ លោក​ លោកស្រី អ្នកនាង កញ្ញា និង ប្រិយមិត្ត អញ្ជើញចូលរួមជាអធិបតី និង​ ជាភ្ញៀវកិត្តិយស ដើម្បីប្រសិទ្ធពរជ័យ សិរិសួស្ដី ជ័យមង្គល ក្នុងពិធីរៀបអាពាហ៍ពិពាហ៍ កូនប្រុស‍‍‌-ស្រី របស់យើងខ្ញុំ។
         </p>
 
         {/* Couple names */}
@@ -68,19 +65,19 @@ export default function DescriptionSection({
           </h3>
           <dl className="mx-auto max-w-screen-md grid grid-cols-2 gap-4 sm:gap-6">
             <div className="flex flex-col items-center gap-3">
-              <dt className="bayon-regular tracking-wide text-base sm:text-lg">
+              <dt className="moulpali-regular tracking-wide text-sm sm:text-lg text-[var(--secondary)]">
                 កូនប្រុសនាម
               </dt>
-              <dd className="moul-regular text-[#7a6200] text-lg sm:text-xl">
-                ស៊ឹម ហុងគីម
+              <dd className="moulpali-regular text-lg sm:text-xl text-[var(--primary)]">
+                សាវី ផានិត
               </dd>
             </div>
             <div className="flex flex-col items-center gap-3">
-              <dt className="bayon-regular tracking-wide text-base sm:text-lg">
+              <dt className="moulpali-regular tracking-wide text-sm sm:text-lg text-[var(--secondary)]">
                 កូនស្រីនាម
               </dt>
-              <dd className="moul-regular text-[#7a6200] text-lg sm:text-xl">
-                តាំង ណារី
+              <dd className="moulpali-regular text-lg sm:text-xl text-[var(--primary)]">
+                ឆាយ ថាមនី
               </dd>
             </div>
           </dl>
@@ -88,13 +85,13 @@ export default function DescriptionSection({
 
         {/* Event meta */}
         <section className="mt-4 flex flex-col gap-3 sm:gap-4 md:gap-5 leading-loose">
-          <p className="siemreap-regular text-sm sm:text-base md:text-lg leading-normal sm:leading-relaxed md:leading-loose">
+          <p className="siemreap-regular text-sm sm:text-base md:text-lg leading-normal sm:leading-relaxed md:leading-loose text-[var(--text)]/90">
             {startTimeText}
           </p>
-          <p className="moul-regular text-[#7a6200] text-sm sm:text-base md:text-lg leading-relaxed md:leading-[1.7]">
+          <p className="moul-regular text-sm sm:text-base md:text-lg leading-relaxed md:leading-[1.7] text-[var(--secondary)]">
             {khmerDateText}
           </p>
-          <p className="siemreap-regular text-sm sm:text-base md:text-lg leading-normal sm:leading-relaxed md:leading-loose">
+          <p className="siemreap-regular text-sm sm:text-base md:text-lg leading-normal sm:leading-relaxed md:leading-loose text-[var(--text)]">
             {venueName}
           </p>
 
@@ -103,7 +100,7 @@ export default function DescriptionSection({
             href={mapHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-1 m-2 p-3 moul-regular text-[#7a6200] tracking-wide hover:scale-105 hover:text-[#a07d00] transition-transform cursor-pointer"
+            className="inline-flex items-center justify-center gap-1 m-2 p-3 moul-regular tracking-wide text-[var(--primary)] hover:opacity-90 transition-opacity cursor-pointer"
             aria-label="បើកទីតាំងក្នុងផែនទី"
           >
             <img
@@ -113,7 +110,9 @@ export default function DescriptionSection({
               alt=""
               aria-hidden="true"
             />
-            <span className="text-sm hover:underline pt-2">បើកមើលទីតាំង</span>
+            <span className="text-sm underline-offset-4 hover:underline pt-2">
+              បើកមើលទីតាំង
+            </span>
           </a>
 
           {/* Responsive map embed */}
@@ -138,15 +137,11 @@ export default function DescriptionSection({
         </figure>
 
         <figure className="mt-4">
-          <img
-            src={afternoon_event_image}
-            alt="Afternoon event"
-            loading="lazy"
-          />
+          <img src={afternoon_event_image} alt="Afternoon event" loading="lazy" />
         </figure>
 
         {/* Countdown */}
-        <section className="mt-6 flex flex-col items-center justify-center gap-3 text-3xl">
+        <section className="mt-6 flex flex-col items-center justify-center gap-3 text-3xl text-[var(--primary)]">
           <h3 className="great-vibes-regular tracking-wide">Save The Date</h3>
           <p className="great-vibes-regular text-xl tracking-wider">
             K&amp;R The Wedding
@@ -155,7 +150,7 @@ export default function DescriptionSection({
         </section>
 
         {/* Gallery */}
-        <h3 className="moul-regular text-lg mt-6">កម្រងរូបភាព</h3>
+        <h3 className="moul-regular text-lg mt-6 text-[var(--secondary)]">កម្រងរូបភាព</h3>
         <MasonryGallery images={galleryImages} onOpen={open} />
 
         {isOpen && (
@@ -167,14 +162,15 @@ export default function DescriptionSection({
             onNext={next}
           />
         )}
-          <GratitudeSection />
-          <Discussion/>
-          <PromoteSection
-            src="/images/memora-shine/memora-shine-end-page.png"
-            alt="Clean image"
-            shadow="" // no shadow
-            showGlow={false} // no glow
-          />
+
+        <GratitudeSection />
+        <Discussion />
+        <PromoteSection
+          src="/images/memora-shine/memora-shine-end-page.png"
+          alt="Clean image"
+          shadow=""      // no shadow
+          showGlow={false} // no glow
+        />
       </SoftCard>
     </section>
   );
