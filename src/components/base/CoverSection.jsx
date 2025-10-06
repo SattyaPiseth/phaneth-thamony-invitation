@@ -69,7 +69,7 @@ export default function CoverSection({
             <p
               className={cn(
                 "moul-regular text-center tracking-[0.01em] leading-normal lg:leading-snug",
-                "text-2xl sm:text-3xl lg:text-4xl xl:text-2xl 2xl:text-3xl",
+                "text-xl sm:text-3xl lg:text-4xl xl:text-2xl 2xl:text-3xl",
                 "animate-[fade-up_700ms_ease-out_both] [animation-delay:160ms] motion-reduce:animate-none",
                 "-mt-[12vh] sm:-mt-[14vh] md:-mt-[8vh] lg:-mt-[18vh] xl:-mt-[22vh] 2xl:-mt-[20vh]",
                 "max-[340px]:-mt-[10rem] max-[340px]:text-xl"
@@ -83,7 +83,7 @@ export default function CoverSection({
             <p
               className={cn(
                 "moul-regular text-center tracking-[0.01em]",
-                "text-xl sm:text-3xl lg:text-4xl xl:text-2xl",
+                "text-lg sm:text-3xl lg:text-4xl xl:text-2xl",
                 "animate-[fade-up_700ms_ease-out_both] [animation-delay:360ms] motion-reduce:animate-none",
                 "max-[340px]:text-xl"
               )}
