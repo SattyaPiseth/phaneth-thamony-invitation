@@ -38,7 +38,7 @@ export default function HomePage() {
 
       <div
         className="
-          relative z-10 mx-auto flex flex-col
+          relative z-10 mx-auto flex flex-col items-center
           /* Height that adapts to mobile browser UI changes */
           min-h-[100svh]   
 
@@ -52,7 +52,7 @@ export default function HomePage() {
         // data-aos="fade-up"
       >
         <Heading />
-        <div className="-mt-[clamp(1rem,5vw,2rem)]">
+        <div className="-mt-[clamp(1rem,5vw,2rem)] w-full" >
         <ParentsSection />
         </div>
         <DescriptionSection />

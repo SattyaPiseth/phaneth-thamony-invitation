@@ -3,8 +3,8 @@ export default function ParentsSection({
   names = [
     "លោក យាន សាវី",
     "លោក ម៉ៅ ឆាយ",
-    "លោកស្រី ឈុន សេងហ៊ន់",
-    "លោកស្រី សៀង ឡា",
+    "អ្នកស្រី ឈុន សេងហ៊ន់",
+    "អ្នកស្រី សៀង ឡា",
   ],
   className = "animate-[fade-up_0.6s_ease-out]",
 }) {
@@ -13,7 +13,7 @@ export default function ParentsSection({
 
   // Split honorific + person (supports both "លោកស្រី" and "លោក")
   const splitHonorific = (full) => {
-    const HONORIFICS = ["លោកស្រី", "លោក"];
+    const HONORIFICS = ["អ្នកស្រី", "លោក"];
     for (const h of HONORIFICS) {
       if (full.startsWith(h + " ")) {
         return { honorific: h, person: full.slice(h.length).trim() };

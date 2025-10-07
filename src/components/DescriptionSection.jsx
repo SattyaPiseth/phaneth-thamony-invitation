@@ -39,7 +39,7 @@ export default function DescriptionSection({
     <section
       lang="km"
       aria-labelledby="invite-title"
-      className="mx-auto max-w-2xl sm:px-12 sm:py-8 md:px-28 lg:px-32"
+      className="w-full mx-auto max-w-[min(92vw,56rem)] py-1.5 sm:py-8"
       data-aos="fade-up"
     >
       <SoftCard>
@@ -52,8 +52,8 @@ export default function DescriptionSection({
         </h2>
 
         {/* Intro copy */}
-        <p className="moulpali-regular text-[0.6rem] sm:text-xs md:text-sm lg:text-base xl:text-lg tracking-wide leading-[3.5vh] text-[var(--text)]/90 text-pretty">
-          ឯកឧត្តម លោកឧកញ៉ា​ លោកជំទាវ លោក លោកស្រី អ្នកនាង កញ្ញា និងប្រិយមិត្តអញ្ជើញចូល រួមជាអធិបតីនិងជាភ្ញៀវកិត្តិយសដើម្បី ប្រសិទ្ធិពរជ័យសិរីសួស្តីជ័យមង្គលក្នុង ពិធីរៀបអាពាហ៍ពិពាហ៍ កូនប្រុស កូនស្រី របស់យើងខ្ញុំ។
+        <p className="moulpali-regular text-[0.65rem] sm:text-xs md:text-sm lg:text-base xl:text-lg tracking-wide leading-[3.5vh] text-[var(--text)]/90 text-pretty">
+          ឯកឧត្តម លោកឧកញ៉ា​ លោកជំទាវ {<br/>} លោក លោកស្រី អ្នកនាង កញ្ញា និងប្រិយមិត្តអញ្ជើញចូល រួមជាអធិបតីនិងជាភ្ញៀវកិត្តិយសដើម្បី ប្រសិទ្ធិពរជ័យសិរីសួស្តីជ័យមង្គលក្នុង ពិធីរៀបអាពាហ៍ពិពាហ៍ កូនប្រុស កូនស្រី របស់យើងខ្ញុំ។
         </p>
 
         {/* Couple names */}
