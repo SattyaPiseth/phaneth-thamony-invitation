@@ -55,7 +55,7 @@ export default function CoverSection({
                   (min-width:640px) 64vw,
                   70vw"
             loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
             decoding="async"
             draggable={false}
             aria-hidden="true"
