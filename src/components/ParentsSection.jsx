@@ -8,14 +8,53 @@ export default function ParentsSection({
   ],
   className = "animate-[fade-up_0.6s_ease-out]",
 }) {
-  // Trim edges and normalize internal spaces
+  // Normalize spaces
   const cleanNames = names.map((n) => n.trim().replace(/\s+/g, " "));
 
-  // Build rows safely (pad last row if odd-length)
+  // Split honorific + person (supports both "លោកស្រី" and "លោក")
+  const splitHonorific = (full) => {
+    const HONORIFICS = ["លោកស្រី", "លោក"];
+    for (const h of HONORIFICS) {
+      if (full.startsWith(h + " ")) {
+        return { honorific: h, person: full.slice(h.length).trim() };
+      }
+      if (full === h) return { honorific: h, person: "" };
+    }
+    return { honorific: "", person: full };
+  };
+
+  const items = cleanNames.map(splitHonorific);
+
+  // Build rows of 2; pad last if odd
   const rows = [];
-  for (let i = 0; i < cleanNames.length; i += 2) {
-    rows.push([cleanNames[i], cleanNames[i + 1] ?? ""]);
+  for (let i = 0; i < items.length; i += 2) {
+    rows.push([items[i], items[i + 1] ?? { honorific: "", person: "" }]);
   }
+
+  const NameCell = ({ item, align = "left" }) => {
+    const honorific = item?.honorific ?? "";
+    const person = item?.person ?? "";
+    if (!honorific && !person) {
+      return <span className={align === "right" ? "text-right" : ""} />;
+    }
+
+    // Convert all spaces in the person's full name to NBSP to avoid line breaks
+    const personNbsp = person.replace(/\s+/g, "\u00A0");
+
+    return (
+      <span className={`min-w-0 ${align === "right" ? "text-right" : ""}`}>
+        <span className="inline-block whitespace-nowrap break-keep">
+          {honorific && (
+            <span className="moulpali-regular">
+              {honorific}
+              {person ? "\u00A0" : ""}
+            </span>
+          )}
+          {person && <span className="moul-regular">{personNbsp}</span>}
+        </span>
+      </span>
+    );
+  };
 
   return (
     <section
@@ -23,7 +62,7 @@ export default function ParentsSection({
       className={`
         mx-auto w-full
         max-w-[clamp(22rem,92vw,56rem)]
-        px-[clamp(1rem,5vw,1.5rem)]
+        px-[clamp(0.5rem,3vw,0.875rem)]
         py-[clamp(1rem,4vw,2.5rem)]
         xl:px-[clamp(5rem,12vw,15rem)]
         2xl:px-[clamp(5rem,10vw,15rem)]
@@ -34,7 +73,7 @@ export default function ParentsSection({
 
       <div
         className="
-          text-[var(--primary)] moulpali-regular
+          text-[var(--primary)]
           leading-[1.9]
           text-[clamp(0.7rem,3vw,1.25rem)]
           flex flex-col
@@ -49,8 +88,8 @@ export default function ParentsSection({
               gap-x-[clamp(0.75rem,6vw,6rem)]
             "
           >
-            <span className="min-w-0 break-words">{left}</span>
-            <span className="min-w-0 break-words text-right">{right}</span>
+            <NameCell item={left} />
+            <NameCell item={right} align="right" />
           </div>
         ))}
       </div>
