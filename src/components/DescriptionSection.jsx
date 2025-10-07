@@ -15,10 +15,10 @@ import Discussion from "./comment/Discussion";
 export default function DescriptionSection({
   // Customizable props with safe defaults
   eventDateIso = import.meta.env.VITE_EVENT_DATE || "2025-11-06T17:00:00+07:00", // Cambodia +07:00
-  venueName = "ភោជនីយដ្ឋាន ទន្លេបាសាក់ (ក្បាលថ្នល់) ដោយមេត្រីភាព។ សូមអរគុណ!",
+  venueName = "ភោជនីយដ្ឋាន ទន្លេបាសាក់ (ក្បាលថ្នល់) ដោយមេត្រីភាព។ សូមអរគុណ!",
   startTimeText = "និងពិសាភោជនីយអាហារដែលនឹង <br/> ប្រព្រឹត្តទៅនៅ",
-  khmerDateText = "ថ្ងៃ ព្រហស្បត្តិ៍ ទី០៦ ខែវិច្ឆិកា ឆ្នាំ២០២៥",
-  khmerBoranDateText = "ត្រូវនឹងថ្ងៃ ១រោច ខែកត្តិក ឆ្នាំម្សាញ់ <br/> សប្តស័ក ព.ស ២៥៦៩ វេលាម៉ោង ៥:០០ ល្ងាច​ ដែលស្ថិតនៅ",
+  khmerDateText = "ថ្ងៃ ព្រហស្បត្តិ៍ ទី០៦ ខែវិច្ឆិកា ឆ្នាំ ២០២៥",
+  khmerBoranDateText = "ត្រូវនឹងថ្ងៃ ១រោច ខែកត្តិក ឆ្នាំម្សាញ់ <br/> សប្តស័ក ព.ស ២៥៦៩ វេលាម៉ោង ៥:០០ នាទីល្ងាច​ ស្ថិតនៅ",
   mapHref = "https://maps.app.goo.gl/usZXcfNpkuQMZxr27",
   galleryImages = GALLERY_IMAGES,
 }) {
@@ -101,7 +101,7 @@ export default function DescriptionSection({
                         sm:text-lg sm:leading-8
                         text-[var(--secondary)]"
             >
-              <time dateTime={eventDateIso}>{khmerDateText}</time>
+              <time dateTime={eventDateIso} className="whitespace-nowrap">{khmerDateText}</time>
               <br />
               <span dangerouslySetInnerHTML={{ __html: khmerBoranDateText }} />
             </p>
