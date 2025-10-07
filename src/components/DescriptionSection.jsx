@@ -18,7 +18,7 @@ export default function DescriptionSection({
   venueName = "ភោជនីយដ្ឋាន ទន្លេបាសាក់ (ក្បាលថ្នល់) ដោយមេត្រីភាព។ សូមអរគុណ!",
   startTimeText = "និងពិសាភោជនីយអាហារដែលនឹង <br/> ប្រព្រឹត្តទៅនៅ",
   khmerDateText = "ថ្ងៃ ព្រហស្បត្តិ៍ ទី០៦ ខែវិច្ឆិកា ឆ្នាំ២០២៥",
-  khmerBoranDateText = "ត្រូវនឹងថ្ងៃ ១រោច ខែកត្តិក ឆ្នាំម្សាញ់ <br/> សប្តស័ក ព.ស ២៥៦៩ វេលាម៉ោង ៥ៈ០០ ល្ងាច​ ដែលស្ថិតនៅ",
+  khmerBoranDateText = "ត្រូវនឹងថ្ងៃ ១រោច ខែកត្តិក ឆ្នាំម្សាញ់ <br/> សប្តស័ក ព.ស ២៥៦៩ វេលាម៉ោង ៥:០០ ល្ងាច​ ដែលស្ថិតនៅ",
   mapHref = "https://maps.app.goo.gl/usZXcfNpkuQMZxr27",
   galleryImages = GALLERY_IMAGES,
 }) {
@@ -66,7 +66,7 @@ export default function DescriptionSection({
               <dt className="moulpali-regular tracking-wide text-xs sm:text-sm md:text-base lg:text-lg text-[var(--secondary)]">
                 កូនប្រុសនាម
               </dt>
-              <dd className="moulpali-regular text-base sm:text-lg text-[var(--primary)]">
+              <dd className="moul-regular text-base sm:text-lg text-[var(--primary)]">
                 សាវី ផានិត
               </dd>
             </div>
@@ -74,7 +74,7 @@ export default function DescriptionSection({
               <dt className="moulpali-regular tracking-wide text-xs sm:text-sm md:text-base lg:text-lg text-[var(--secondary)]">
                 កូនស្រីនាម
               </dt>
-              <dd className="moulpali-regular text-base sm:text-lg text-[var(--primary)]">
+              <dd className="moul-regular text-base sm:text-lg text-[var(--primary)]">
                 ឆាយ ថាមនី
               </dd>
             </div>
