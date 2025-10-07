@@ -9,16 +9,13 @@ export const GratitudeSection = () => {
         >
           <h3
             id="gratitude-title"
-            className="moul-regular text-base sm:text-lg tracking-wide text-center text-balance"
+            className="moul-regular text-[var(--primary)] text-base sm:text-lg tracking-wide text-center text-balance"
           >
-            សេចក្ដីថ្លែងអំណរគុណ និង សូមអភ័យទោស
+            សេចក្ដីថ្លែងអំណរគុណ
           </h3>
 
-          <p className="siemreap-regular mt-4 text-sm sm:text-base md:text-lg leading-relaxed md:leading-8 tracking-wide">
-            យើងខ្ញុំជាមាតាបិតា របស់កូនទាំងពីរ សូមថ្លែងអំណរគុណយ៉ាងជ្រាលជ្រៅ ចំពោះវត្តមានដ៏ឧត្តុង្គឧត្តមរបស់
-            សម្ដេច ឯកឧត្តម លោកជំទាវ លោកអ្នកឧកញ៉ា ឧកញ៉ា លោក លោកស្រី អ្នកនាង កញ្ញា និងប្រិយមិត្ត
-            ដែលបានអញ្ជើញចូលរួមជាកិត្តិយស ក្នុងពិធីសិរីសួស្តីអាពាហ៍ពិពាហ៍ កូនប្រុស-កូនស្រី របស់យើងខ្ញុំ
-            នាពេលខាងមុខនេះ។
+          <p className="moulpali-regular mt-4 text-[0.65rem] sm:text-xs md:text-sm lg:text-base xl:text-lg tracking-wide leading-[3.5vh] text-[var(--text)]/90 text-pretty">
+            សូមថ្លែងអំណរគុណ យ៉ាងជ្រាលជ្រៅចំពោះការអញ្ជើញចូលរួមជាភ្ញៀវកិត្តិយសក្នុង ពិធីអាពាហ៍ពិពាហ៍ កូនប្រុស-កូនស្រី របស់យើងខ្ញុំ សូមមានសេចក្តីសុខ​ សុភមង្គលគ្រប់ពេលវេលាកុំបីឃ្លៀងឃ្លាតឡើយ។ សូមអរគុណ!
           </p>
 
           <p className="siemreap-regular mt-[3vh] text-sm sm:text-base md:text-lg leading-relaxed md:leading-8 tracking-wide">

@@ -46,15 +46,17 @@ export default function DescriptionSection({
         {/* Invite Heading */}
         <h2
           id="invite-title"
-          className="moulpali-regular text-balance text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl tracking-wide text-[var(--primary)]"
+          className="moul-regular text-[var(--primary)] text-sm sm:text-lg md:text-base lg:text-lg xl:text-xl tracking-wide text-center text-balance"
         >
           មានកិត្តិយសសូមគោរពអញ្ជើញ
         </h2>
 
         {/* Intro copy */}
         <p className="moulpali-regular text-[0.65rem] sm:text-xs md:text-sm lg:text-base xl:text-lg tracking-wide leading-[3.5vh] text-[var(--text)]/90 text-pretty">
-          ឯកឧត្តម លោកឧកញ៉ា​ លោកជំទាវ {<br/>} លោក លោកស្រី អ្នកនាង កញ្ញា និងប្រិយមិត្តអញ្ជើញចូល រួមជាអធិបតីនិងជាភ្ញៀវកិត្តិយសដើម្បី ប្រសិទ្ធិពរជ័យសិរីសួស្តីជ័យមង្គលក្នុង ពិធីរៀបអាពាហ៍ពិពាហ៍ កូនប្រុស កូនស្រី របស់យើងខ្ញុំ។
+          ឯកឧត្តម លោកឧកញ៉ា​ លោកជំទាវ {<br/>} លោក លោកស្រី អ្នកនាង កញ្ញា និងប្រិយមិត្តអញ្ជើញចូល រួមជាអធិបតីនិងជាភ្ញៀវកិត្តិយសដើម្បី ប្រសិទ្ធិពរជ័យសិរីសួស្តីជ័យមង្គលក្នុង ពិធីរៀបអាពាហ៍ពិពាហ៍
         </p>
+        <p className="moulpali-regular text-[0.65rem] sm:text-xs md:text-sm lg:text-base xl:text-lg tracking-wide leading-[3.5vh] text-[var(--text)]/90 text-pretty -mt-[2.5vh]">
+        កូនប្រុស កូនស្រី របស់យើងខ្ញុំ។</p>
 
         {/* Couple names */}
         <section aria-labelledby="couple-title" className="mt-3">
@@ -172,7 +174,7 @@ export default function DescriptionSection({
         {/* Countdown */}
         <section className="mt-6 flex flex-col items-center justify-center gap-3 text-3xl text-[var(--primary)]">
           <h3 className="great-vibes-regular tracking-wide">Save The Date</h3>
-          <p className="great-vibes-regular text-xl tracking-wider">K&amp;R The Wedding</p>
+          <p className="great-vibes-regular text-xl tracking-wider">Phaneth&amp;Thamony Wedding</p>
           <Countdown target={eventDateIso} ariaLabel={countdownLabel} />
         </section>
 
