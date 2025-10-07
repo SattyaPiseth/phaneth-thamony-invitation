@@ -1,44 +1,59 @@
 export default function ParentsSection({
   title = "ឪពុកម្តាយ",
   names = [
-    "លោក ស៊ឹម សារីម",
-    "លោក តាំង វ៉ា",
-    "លោកស្រី លី ខេង",
-    "លោកស្រី ម៉ាច ប៊ុននី",
+    "លោក យាន សាវី",
+    "លោក ម៉ៅ ឆាយ",
+    "លោកស្រី ឈុន សេងហ៊ន់",
+    "លោកស្រី សៀង ឡា",
   ],
   className = "animate-[fade-up_0.6s_ease-out]",
 }) {
+  // Trim edges and normalize internal spaces
+  const cleanNames = names.map((n) => n.trim().replace(/\s+/g, " "));
+
+  // Build rows safely (pad last row if odd-length)
+  const rows = [];
+  for (let i = 0; i < cleanNames.length; i += 2) {
+    rows.push([cleanNames[i], cleanNames[i + 1] ?? ""]);
+  }
+
   return (
     <section
       aria-labelledby="parents-heading"
-      className={`mx-auto max-w-screen-lg px-4 sm:px-6 md:px-8 py-4 md:py-10 ${className}`}
-     
+      className={`
+        mx-auto w-full
+        max-w-[clamp(22rem,92vw,56rem)]
+        px-[clamp(1rem,5vw,1.5rem)]
+        py-[clamp(1rem,4vw,2.5rem)]
+        xl:px-[clamp(5rem,12vw,15rem)]
+        2xl:px-[clamp(5rem,10vw,15rem)]
+        ${className}
+      `}
     >
-      {/* SR heading for screen readers */}
-      <h2 id="parents-heading" className="sr-only">
-        {title}
-      </h2>
+      <h2 id="parents-heading" className="sr-only">{title}</h2>
 
-      <ul
+      <div
         className="
-          grid grid-cols-2 justify-items-start
-          gap-x-8 gap-y-4
-          sm:gap-x-16 sm:gap-y-4
-          md:gap-x-24 md:gap-y-6
-          lg:gap-x-32
-          sm:text-lg
-          bayon-regular text-[#bc9c22]
+          text-[var(--primary)] moulpali-regular
+          leading-[1.9]
+          text-[clamp(0.7rem,3vw,1.25rem)]
+          flex flex-col
+          gap-y-[clamp(0.5rem,1.5vw,1rem)]
         "
       >
-        {names.map((name) => (
-          <li
-            key={name}
-            className="animate-[fade-up_0.6s_ease-out] motion-reduce:animate-none"
+        {rows.map(([left, right], i) => (
+          <div
+            key={i}
+            className="
+              grid grid-cols-2 items-center
+              gap-x-[clamp(0.75rem,6vw,6rem)]
+            "
           >
-            {name}
-          </li>
+            <span className="min-w-0 break-words">{left}</span>
+            <span className="min-w-0 break-words text-right">{right}</span>
+          </div>
         ))}
-      </ul>
+      </div>
     </section>
   );
 }

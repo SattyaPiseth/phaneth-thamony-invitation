@@ -39,15 +39,38 @@ export default function HomePage() {
       <div
         className="
           relative z-10 mx-auto flex flex-col
-          w-full min-h-[100dvh]
-          max-w-[440px] sm:max-w-[42rem] lg:max-w-[56rem]
-          px-4 sm:px-6
+          /* Height that adapts to mobile browser UI changes */
+          min-h-[100svh]   
+
+          /* Fluid max width: never smaller than 22rem, scales with 92vw, caps at 56rem */
+          max-w-[clamp(22rem,92vw,56rem)]
+          w-full
+
+          /* Fluid horizontal padding: 1rem → 1.5rem based on viewport width */
+          px-[clamp(1rem,4vw,1.5rem)]
         "
         // data-aos="fade-up"
       >
         <Heading />
+        <div className="-mt-[clamp(1rem,5vw,2rem)]">
         <ParentsSection />
+        </div>
         <DescriptionSection />
+      {/* <div
+        className="
+          w-full h-screen
+          bg-red-300           
+          sm:bg-orange-300     
+          md:bg-yellow-300     
+          lg:bg-green-300      
+          xl:bg-blue-300      
+          2xl:bg-purple-300    
+        "
+      >
+        <p className="text-center text-xl font-semibold pt-10 text-white">
+          Resize the window to see the background change
+        </p>
+      </div>  */}
       </div>
     </>
   );
