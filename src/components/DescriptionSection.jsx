@@ -179,7 +179,7 @@ export default function DescriptionSection({
         </section>
 
         {/* Gallery */}
-        <h3 className="moul-regular text-lg mt-6 text-[var(--primary)]">កម្រងរូបភាព</h3>
+        <h3 className="moul-regular text-base mt-6 text-[var(--primary)]">កម្រងរូបភាព</h3>
         <MasonryGallery images={galleryImages} onOpen={open} />
 
         {isOpen && (
