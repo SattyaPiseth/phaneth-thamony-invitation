@@ -1,7 +1,7 @@
 export default function VideoLayer({ videoRef, poster, onEnded }) {
 return (
   <div
-  className="fixed inset-0 w-full h-dvh z-0 pointer-events-none bg-black"
+  className="fixed inset-0 z-0 pointer-events-none bg-black"
   aria-hidden="true"
   >
     <video
