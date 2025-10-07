@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import SoftCard from "./SoftCard";
 import Countdown from "./Countdown";
 import { MasonryGallery } from "./gallery/MasonryGallery";
@@ -25,17 +25,14 @@ export default function DescriptionSection({
   const [idx, setIdx] = useState(0);
 
   const totalImages = galleryImages.length;
-  const open = (i) => {
-    setIdx(i);
-    setIsOpen(true);
-  };
+  const open = (i) => { setIdx(i); setIsOpen(true); };
   const close = () => setIsOpen(false);
   const prev = () => setIdx((i) => (i - 1 + totalImages) % totalImages);
   const next = () => setIdx((i) => (i + 1) % totalImages);
 
-  // Derived values
-  const countdownLabel = useMemo(() => "Wedding Countdown", []);
-  const mapTitle = useMemo(() => "Lucky Bright Restaurant Map", []);
+  // Constants (no need for useMemo)
+  const countdownLabel = "Wedding Countdown";
+  const mapTitle = "Lucky Bright Restaurant Map";
 
   return (
     <section
@@ -48,13 +45,13 @@ export default function DescriptionSection({
         {/* Invite Heading */}
         <h2
           id="invite-title"
-          className="moulpali-regular text-balance text-base sm:text-xl md:text-2xl tracking-wide text-[var(--primary)]"
+          className="moulpali-regular text-balance text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl tracking-wide text-[var(--primary)]"
         >
           មានកិត្តិយសសូមគោរពអញ្ជើញ
         </h2>
 
         {/* Intro copy */}
-        <p className="moulpali-regular text-xs sm:text-base md:text-lg tracking-wide leading-[3.5vh] text-[var(--text)]/90 text-pretty">
+        <p className="moulpali-regular text-[0.6rem] sm:text-xs md:text-sm lg:text-base xl:text-lg tracking-wide leading-[3.5vh] text-[var(--text)]/90 text-pretty">
           សម្ដេច ទ្រង់ ឯកឧត្ដម លោកឧកញ៉ា លោកជំទាវ លោក​ លោកស្រី អ្នកនាង កញ្ញា និង ប្រិយមិត្ត អញ្ជើញចូលរួមជាអធិបតី និង​ ជាភ្ញៀវកិត្តិយស ដើម្បីប្រសិទ្ធពរជ័យ សិរិសួស្ដី ជ័យមង្គល ក្នុងពិធីរៀបអាពាហ៍ពិពាហ៍ កូនប្រុស‍‍‌-ស្រី របស់យើងខ្ញុំ។
         </p>
 
@@ -65,19 +62,19 @@ export default function DescriptionSection({
           </h3>
           <dl className="mx-auto max-w-screen-md grid grid-cols-2 gap-4 sm:gap-6">
             <div className="flex flex-col items-center gap-3">
-              <dt className="moulpali-regular tracking-wide text-sm sm:text-lg text-[var(--secondary)]">
+              <dt className="moulpali-regular tracking-wide text-xs sm:text-sm md:text-base lg:text-lg text-[var(--secondary)]">
                 កូនប្រុសនាម
               </dt>
-              <dd className="moulpali-regular text-lg sm:text-xl text-[var(--primary)]">
-                សាវី ផានិត
+              <dd className="moulpali-regular text-base sm:text-lg text-[var(--primary)]">
+                សាវី ផានិត
               </dd>
             </div>
             <div className="flex flex-col items-center gap-3">
-              <dt className="moulpali-regular tracking-wide text-sm sm:text-lg text-[var(--secondary)]">
+              <dt className="moulpali-regular tracking-wide text-xs sm:text-sm md:text-base lg:text-lg text-[var(--secondary)]">
                 កូនស្រីនាម
               </dt>
-              <dd className="moulpali-regular text-lg sm:text-xl text-[var(--primary)]">
-                ឆាយ ថាមនី
+              <dd className="moulpali-regular text-base sm:text-lg text-[var(--primary)]">
+                ឆាយ ថាមនី
               </dd>
             </div>
           </dl>
@@ -85,13 +82,13 @@ export default function DescriptionSection({
 
         {/* Event meta */}
         <section className="mt-4 flex flex-col gap-3 sm:gap-4 md:gap-5 leading-loose">
-          <p className="siemreap-regular text-sm sm:text-base md:text-lg leading-normal sm:leading-relaxed md:leading-loose text-[var(--text)]/90">
+          <p className="moulpali-regular text-xs sm:text-sm md:text-base lg:text-lg leading-normal sm:leading-relaxed md:leading-loose text-[var(--text)]/90">
             {startTimeText}
           </p>
           <p className="moul-regular text-sm sm:text-base md:text-lg leading-relaxed md:leading-[1.7] text-[var(--secondary)]">
             {khmerDateText}
           </p>
-          <p className="siemreap-regular text-sm sm:text-base md:text-lg leading-normal sm:leading-relaxed md:leading-loose text-[var(--text)]">
+          <p className="moulpali-regular text-xs sm:text-sm md:text-base lg:text-lg leading-normal sm:leading-relaxed md:leading-loose text-[var(--text)]">
             {venueName}
           </p>
 
@@ -100,6 +97,7 @@ export default function DescriptionSection({
             href={mapHref}
             target="_blank"
             rel="noopener noreferrer"
+            title="បើកទីតាំងក្នុងផែនទី"
             className="inline-flex items-center justify-center gap-1 m-2 p-3 moul-regular tracking-wide text-[var(--primary)] hover:opacity-90 transition-opacity cursor-pointer"
             aria-label="បើកទីតាំងក្នុងផែនទី"
           >
@@ -107,6 +105,7 @@ export default function DescriptionSection({
               className="w-7 h-auto sm:w-8"
               src={google_map_icon}
               loading="lazy"
+              decoding="async"
               alt=""
               aria-hidden="true"
             />
@@ -116,10 +115,7 @@ export default function DescriptionSection({
           </a>
 
           {/* Responsive map embed */}
-          <div
-            className="w-full aspect-video rounded-b-sm overflow-hidden shadow-md"
-            data-aos="flip-up"
-          >
+          <div className="w-full aspect-video rounded-b-sm overflow-hidden shadow-md" data-aos="flip-up">
             <iframe
               title={mapTitle}
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.962391983032!2d104.88787669999999!3d11.6260304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310953f0257737cd%3A0xac98c76694cbd37c!2sLucky%20Bright%20Restaurant!5e0!3m2!1sen!2suk!4v1759070792826!5m2!1sen!2suk"
@@ -133,19 +129,17 @@ export default function DescriptionSection({
 
         {/* Event posters */}
         <figure className="mt-6">
-          <img src={morning_event_image} alt="Morning event" loading="lazy" />
+          <img src={morning_event_image} alt="Morning event" loading="lazy" decoding="async" />
         </figure>
 
         <figure className="mt-4">
-          <img src={afternoon_event_image} alt="Afternoon event" loading="lazy" />
+          <img src={afternoon_event_image} alt="Afternoon event" loading="lazy" decoding="async" />
         </figure>
 
         {/* Countdown */}
         <section className="mt-6 flex flex-col items-center justify-center gap-3 text-3xl text-[var(--primary)]">
           <h3 className="great-vibes-regular tracking-wide">Save The Date</h3>
-          <p className="great-vibes-regular text-xl tracking-wider">
-            K&amp;R The Wedding
-          </p>
+          <p className="great-vibes-regular text-xl tracking-wider">K&amp;R The Wedding</p>
           <Countdown target={eventDateIso} ariaLabel={countdownLabel} />
         </section>
 
