@@ -53,7 +53,7 @@ export default function DescriptionSection({
 
         {/* Intro copy */}
         <p className="moulpali-regular text-[0.6rem] sm:text-xs md:text-sm lg:text-base xl:text-lg tracking-wide leading-[3.5vh] text-[var(--text)]/90 text-pretty">
-          សម្ដេច ទ្រង់ ឯកឧត្ដម លោកឧកញ៉ា លោកជំទាវ លោក​ លោកស្រី អ្នកនាង កញ្ញា និង ប្រិយមិត្ត អញ្ជើញចូលរួមជាអធិបតី និង​ ជាភ្ញៀវកិត្តិយស ដើម្បីប្រសិទ្ធពរជ័យ សិរិសួស្ដី ជ័យមង្គល ក្នុងពិធីរៀបអាពាហ៍ពិពាហ៍ កូនប្រុស‍‍‌-ស្រី របស់យើងខ្ញុំ។
+          ឯកឧត្តម លោកឧកញ៉ា​ លោកជំទាវ លោក លោកស្រី អ្នកនាង កញ្ញា និងប្រិយមិត្តអញ្ជើញចូល រួមជាអធិបតីនិងជាភ្ញៀវកិត្តិយសដើម្បី ប្រសិទ្ធិពរជ័យសិរីសួស្តីជ័យមង្គលក្នុង ពិធីរៀបអាពាហ៍ពិពាហ៍ កូនប្រុស កូនស្រី របស់យើងខ្ញុំ។
         </p>
 
         {/* Couple names */}
@@ -81,83 +81,83 @@ export default function DescriptionSection({
           </dl>
         </section>
 
-       {/* Event meta */}
-      <section className="mt-4">
-        <div className="mx-auto max-w-[32rem] px-3 sm:px-0 flex flex-col
-                        gap-2 sm:gap-3 md:gap-4">
-          {/* intro line */}
-          <p className="moulpali-regular text-pretty text-center
-                        text-xs leading-7
-                        sm:text-base sm:leading-8
-                        text-[var(--text)]/90">
-            {/* {startTimeText} */}
-          <span dangerouslySetInnerHTML={{__html: startTimeText}}/>
-          </p>
+        {/* Event meta */}
+        <section className="mt-4">
+          <div className="mx-auto max-w-[32rem] px-3 sm:px-0 flex flex-col
+                          gap-3 sm:gap-4 md:gap-5">
+            {/* intro line */}
+            <p className="moulpali-regular text-pretty text-center
+                          text-xs leading-7
+                          sm:text-base sm:leading-8
+                          text-[var(--text)]/90">
+              {/* {startTimeText} */}
+            <span dangerouslySetInnerHTML={{__html: startTimeText}}/>
+            </p>
 
-          {/* date (slightly larger, wrapped in <time>) */}
-          <p
-            className="moul-regular text-pretty text-center
-                      text-sm leading-7
-                      sm:text-lg sm:leading-8
-                      text-[var(--secondary)]"
-          >
-            <time dateTime={eventDateIso}>{khmerDateText}</time>
-            <br />
-            <span dangerouslySetInnerHTML={{ __html: khmerBoranDateText }} />
-          </p>
+            {/* date (slightly larger, wrapped in <time>) */}
+            <p
+              className="moul-regular text-pretty text-center
+                        text-sm leading-7
+                        sm:text-lg sm:leading-8
+                        text-[var(--secondary)]"
+            >
+              <time dateTime={eventDateIso}>{khmerDateText}</time>
+              <br />
+              <span dangerouslySetInnerHTML={{ __html: khmerBoranDateText }} />
+            </p>
 
 
-          {/* venue */}
-          <p className="moulpali-regular text-pretty  text-center
-                        text-xs leading-7
-                        sm:text-base sm:leading-8
-                        text-[var(--text)]">
-            {venueName}
-          </p>
+            {/* venue */}
+            <p className="moulpali-regular text-pretty  text-center
+                          text-xs leading-7
+                          sm:text-base sm:leading-8
+                          text-[var(--text)]">
+              {venueName}
+            </p>
 
-          {/* map button — bigger tap target on mobile */}
-          <a
-            href={mapHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            title="បើកទីតាំងក្នុងផែនទី"
-            className="mt-1 inline-flex items-center justify-center gap-2
-                      rounded-md px-4 py-2 sm:px-3 sm:py-2
-                      text-[var(--primary)] ring-1 ring-[var(--primary)]/20
-                      hover:bg-[var(--primary)]/5 transition-colors
-                      moul-regular tracking-wide"
-            aria-label="បើកទីតាំងក្នុងផែនទី"
-          >
-            <img
-              className="w-6 h-auto sm:w-7"
-              src={google_map_icon}
-              loading="lazy"
-              decoding="async"
-              alt=""
-              aria-hidden="true"
-            />
-            <span className="text-sm underline-offset-4 hover:underline">
-              បើកមើលទីតាំង
-            </span>
-          </a>
+            {/* map button — bigger tap target on mobile */}
+            <a
+              href={mapHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="បើកទីតាំងក្នុងផែនទី"
+              className="mt-1 inline-flex items-center justify-center gap-2
+                        rounded-md px-4 py-2 sm:px-3 sm:py-2
+                        text-[var(--primary)] ring-1 ring-[var(--primary)]/20
+                        hover:bg-[var(--primary)]/5 transition-colors
+                        moul-regular tracking-wide"
+              aria-label="បើកទីតាំងក្នុងផែនទី"
+            >
+              <img
+                className="w-6 h-auto sm:w-7"
+                src={google_map_icon}
+                loading="lazy"
+                decoding="async"
+                alt=""
+                aria-hidden="true"
+              />
+              <span className="text-sm underline-offset-4 hover:underline">
+                បើកមើលទីតាំង
+              </span>
+            </a>
 
-          {/* map embed */}
-          <div
-            className="w-full aspect-video rounded-md overflow-hidden shadow-sm
-                      mt-2 sm:mt-3"
-            data-aos="flip-up"
-          >
-            <iframe
-              title={mapTitle}
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.962391983032!2d104.88787669999999!3d11.6260304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310953f0257737cd%3A0xac98c76694cbd37c!2sLucky%20Bright%20Restaurant!5e0!3m2!1sen!2suk!4v1759070792826!5m2!1sen!2suk"
-              className="w-full h-full border-0"
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+            {/* map embed */}
+            <div
+              className="w-full aspect-video rounded-md overflow-hidden shadow-sm
+                        mt-2 sm:mt-3"
+              data-aos="flip-up"
+            >
+              <iframe
+                title={mapTitle}
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.962391983032!2d104.88787669999999!3d11.6260304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310953f0257737cd%3A0xac98c76694cbd37c!2sLucky%20Bright%20Restaurant!5e0!3m2!1sen!2suk!4v1759070792826!5m2!1sen!2suk"
+                className="w-full h-full border-0"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
 
         {/* Event posters */}
