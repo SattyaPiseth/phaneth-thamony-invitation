@@ -9,14 +9,18 @@ export const GratitudeSection = () => {
         >
           <h3
             id="gratitude-title"
-            className="moul-regular text-[var(--primary)] text-base sm:text-lg tracking-wide text-center text-balance"
+            className="moul-regular text-[var(--primary)] text-xs sm:text-lg tracking-wide text-center text-balance"
           >
-            សេចក្ដីថ្លែងអំណរគុណ
+            សេចក្ដីថ្លែងអំណរគុណ និងសូមអភ័យទោស
           </h3>
 
           <p className="moulpali-regular mt-4 text-[0.65rem] sm:text-xs md:text-sm lg:text-base xl:text-lg tracking-wide leading-[3.5vh] text-[var(--text)]/90 text-pretty">
             សូមថ្លែងអំណរគុណ យ៉ាងជ្រាលជ្រៅចំពោះការអញ្ជើញចូលរួមជាភ្ញៀវកិត្តិយសក្នុង ពិធីអាពាហ៍ពិពាហ៍ កូនប្រុស-កូនស្រី របស់យើងខ្ញុំ សូមមានសេចក្តីសុខ​ សុភមង្គលគ្រប់ពេលវេលាកុំបីឃ្លៀងឃ្លាតឡើយ។{<br/>}សូមអរគុណ!
           </p>
+          <p className="moulpali-regular mt-4 text-[0.65rem] sm:text-xs md:text-sm lg:text-base xl:text-lg tracking-wide leading-[3.5vh] text-[var(--text)]/90 text-pretty">
+             យើងខ្ញុំជាមាតាបិតា កូនប្រុស កូនស្រី សូមអភ័យទោសដោយពុំបានជួបអញ្ជើញដោយផ្ទាល់។ វត្តមានរបស់ ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោកស្រី អ្នកនាងកញ្ញា និងប្រិយមិត្តទាំងអស់គឺជា កិត្តិយសដ៏ឧត្តុង្គឧត្តមសម្រាប់គ្រួសារយើងខ្ញុំ។ {<br/>}សូមអរគុណ!
+          </p>
+          
 
         </section>
         <div className="flex justify-center">
@@ -26,7 +30,7 @@ export const GratitudeSection = () => {
             alt="divider"
           />
         </div>
-        <section
+        {/* <section
           aria-labelledby="gratitude-title"
           className="my-[5vh] mx-auto max-w-screen-md"
         >
@@ -40,7 +44,7 @@ export const GratitudeSection = () => {
             យើងខ្ញុំជាមាតាបិតា កូនប្រុស កូនស្រី សូមអភ័យទោសដោយពុំបានជួបអញ្ជើញដោយផ្ទាល់។ វត្តមានរបស់ ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោកស្រី អ្នកនាងកញ្ញា និងប្រិយមិត្តទាំងអស់គឺជា កិត្តិយសដ៏ឧត្តុង្គឧត្តមសម្រាប់គ្រួសារយើងខ្ញុំ។ {<br/>}សូមអរគុណ!
           </p>
 
-        </section>
+        </section> */}
     </>
   )
 }
