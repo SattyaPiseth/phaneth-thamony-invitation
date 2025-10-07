@@ -14,10 +14,11 @@ import Discussion from "./comment/Discussion";
 
 export default function DescriptionSection({
   // Customizable props with safe defaults
-  eventDateIso = "2025-11-30T07:00:00+07:00", // Cambodia +07:00
-  venueName = "ភោជនីយដ្ឋាន ឡាក់គីប្រាយ",
-  startTimeText = "ដែលនឹងប្រព្រឹត្តទៅ ចាប់ពីម៉ោង ៥ ល្ងាច",
-  khmerDateText = "នៅថ្ងៃអាទិត្យ ទី៣០​ ខែវិច្ឆិកា ឆ្នំា ២០២៥",
+  eventDateIso = import.meta.env.VITE_EVENT_DATE || "2025-11-06T17:00:00+07:00", // Cambodia +07:00
+  venueName = "ភោជនីយដ្ឋាន ទន្លេបាសាក់ (ក្បាលថ្នល់)",
+  startTimeText = "និងពិសាភោជនីយអាហារដែលនឹង <br/> ប្រព្រឹត្តទៅនៅ",
+  khmerDateText = "ថ្ងៃ ព្រហស្បត្តិ៍ ទី០៦ ខែវិច្ឆិកា ឆ្នាំ២០២៥",
+  khmerBoranDateText = "ត្រូវនឹងថ្ងៃ ១រោច ខែកត្តិក <br/> ឆ្នាំម្សាញ់ សប្តស័ក ព.ស ២៥៦៩ <br/> វេលាម៉ោង ៥ៈ០០ ល្ងាច​",
   mapHref = "https://maps.app.goo.gl/usZXcfNpkuQMZxr27",
   galleryImages = GALLERY_IMAGES,
 }) {
@@ -80,42 +81,72 @@ export default function DescriptionSection({
           </dl>
         </section>
 
-        {/* Event meta */}
-        <section className="mt-4 flex flex-col gap-3 sm:gap-4 md:gap-5 leading-loose">
-          <p className="moulpali-regular text-xs sm:text-sm md:text-base lg:text-lg leading-normal sm:leading-relaxed md:leading-loose text-[var(--text)]/90">
-            {startTimeText}
+       {/* Event meta */}
+      <section className="mt-4">
+        <div className="mx-auto max-w-[32rem] px-3 sm:px-0 flex flex-col
+                        gap-2 sm:gap-3 md:gap-4">
+          {/* intro line */}
+          <p className="moulpali-regular text-pretty text-center
+                        text-xs leading-7
+                        sm:text-base sm:leading-8
+                        text-[var(--text)]/90">
+            {/* {startTimeText} */}
+          <span dangerouslySetInnerHTML={{__html: startTimeText}}/>
           </p>
-          <p className="moul-regular text-sm sm:text-base md:text-lg leading-relaxed md:leading-[1.7] text-[var(--secondary)]">
-            {khmerDateText}
+
+          {/* date (slightly larger, wrapped in <time>) */}
+          <p
+            className="moul-regular text-pretty text-center
+                      text-sm leading-7
+                      sm:text-lg sm:leading-8
+                      text-[var(--secondary)]"
+          >
+            <time dateTime={eventDateIso}>{khmerDateText}</time>
+            <br />
+            <span dangerouslySetInnerHTML={{ __html: khmerBoranDateText }} />
           </p>
-          <p className="moulpali-regular text-xs sm:text-sm md:text-base lg:text-lg leading-normal sm:leading-relaxed md:leading-loose text-[var(--text)]">
+
+
+          {/* venue */}
+          <p className="moulpali-regular text-pretty  text-center
+                        text-xs leading-7
+                        sm:text-base sm:leading-8
+                        text-[var(--text)]">
             {venueName}
           </p>
 
-          {/* Map link */}
+          {/* map button — bigger tap target on mobile */}
           <a
             href={mapHref}
             target="_blank"
             rel="noopener noreferrer"
             title="បើកទីតាំងក្នុងផែនទី"
-            className="inline-flex items-center justify-center gap-1 m-2 p-3 moul-regular tracking-wide text-[var(--primary)] hover:opacity-90 transition-opacity cursor-pointer"
+            className="mt-1 inline-flex items-center justify-center gap-2
+                      rounded-md px-4 py-2 sm:px-3 sm:py-2
+                      text-[var(--primary)] ring-1 ring-[var(--primary)]/20
+                      hover:bg-[var(--primary)]/5 transition-colors
+                      moul-regular tracking-wide"
             aria-label="បើកទីតាំងក្នុងផែនទី"
           >
             <img
-              className="w-7 h-auto sm:w-8"
+              className="w-6 h-auto sm:w-7"
               src={google_map_icon}
               loading="lazy"
               decoding="async"
               alt=""
               aria-hidden="true"
             />
-            <span className="text-sm underline-offset-4 hover:underline pt-2">
+            <span className="text-sm underline-offset-4 hover:underline">
               បើកមើលទីតាំង
             </span>
           </a>
 
-          {/* Responsive map embed */}
-          <div className="w-full aspect-video rounded-b-sm overflow-hidden shadow-md" data-aos="flip-up">
+          {/* map embed */}
+          <div
+            className="w-full aspect-video rounded-md overflow-hidden shadow-sm
+                      mt-2 sm:mt-3"
+            data-aos="flip-up"
+          >
             <iframe
               title={mapTitle}
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.962391983032!2d104.88787669999999!3d11.6260304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310953f0257737cd%3A0xac98c76694cbd37c!2sLucky%20Bright%20Restaurant!5e0!3m2!1sen!2suk!4v1759070792826!5m2!1sen!2suk"
@@ -125,7 +156,9 @@ export default function DescriptionSection({
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
-        </section>
+        </div>
+      </section>
+
 
         {/* Event posters */}
         {/* <figure className="mt-6">
