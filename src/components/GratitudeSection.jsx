@@ -18,10 +18,28 @@ export const GratitudeSection = () => {
             សូមថ្លែងអំណរគុណ យ៉ាងជ្រាលជ្រៅចំពោះការអញ្ជើញចូលរួមជាភ្ញៀវកិត្តិយសក្នុង ពិធីអាពាហ៍ពិពាហ៍ កូនប្រុស-កូនស្រី របស់យើងខ្ញុំ សូមមានសេចក្តីសុខ​ សុភមង្គលគ្រប់ពេលវេលាកុំបីឃ្លៀងឃ្លាតឡើយ។ សូមអរគុណ!
           </p>
 
-          <p className="siemreap-regular mt-[3vh] text-sm sm:text-base md:text-lg leading-relaxed md:leading-8 tracking-wide">
-            យើងខ្ញុំសូមខន្តីអភ័យទោស ដែលមិនអាចជូនលិខិតអញ្ជើញដោយផ្ទាល់បានដោយការគោរព សូមទទួលគារវកិច្ចដ៏ខ្ពង់ខ្ពស់
-            ពីយើងខ្ញុំ៕
+        </section>
+        <div className="flex justify-center">
+          <img
+            className="max-w-screen-md w-1/2"
+            src="/images/border-styles/divider.png"
+            alt="divider"
+          />
+        </div>
+        <section
+          aria-labelledby="gratitude-title"
+          className="my-[5vh] mx-auto max-w-screen-md"
+        >
+          <h3
+            id="gratitude-title"
+            className="moul-regular text-[var(--primary)] text-base sm:text-lg tracking-wide text-center text-balance"
+          >
+            លិខិតសូមអភ័យទោស
+          </h3>
+          <p className="moulpali-regular mt-4 text-[0.65rem] sm:text-xs md:text-sm lg:text-base xl:text-lg tracking-wide leading-[3.5vh] text-[var(--text)]/90 text-pretty">
+            យើងខ្ញុំជាមាតាបិតា កូនប្រុស កូនស្រី សូមអភ័យទោសដោយពុំបានជួបអញ្ជើញដោយផ្ទាល់។ វត្តមានរបស់ ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោកស្រី អ្នកនាងកញ្ញា និងប្រិយមិត្តទាំងអស់គឺជា កិត្តិយសដ៏ឧត្តុង្គឧត្តមសម្រាប់គ្រួសារយើងខ្ញុំ។ សូមអរគុណ!
           </p>
+
         </section>
     </>
   )
