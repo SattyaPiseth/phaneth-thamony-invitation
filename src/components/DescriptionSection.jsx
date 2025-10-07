@@ -128,13 +128,13 @@ export default function DescriptionSection({
         </section>
 
         {/* Event posters */}
-        <figure className="mt-6">
+        {/* <figure className="mt-6">
           <img src={morning_event_image} alt="Morning event" loading="lazy" decoding="async" />
         </figure>
 
         <figure className="mt-4">
           <img src={afternoon_event_image} alt="Afternoon event" loading="lazy" decoding="async" />
-        </figure>
+        </figure> */}
 
         {/* Countdown */}
         <section className="mt-6 flex flex-col items-center justify-center gap-3 text-3xl text-[var(--primary)]">
