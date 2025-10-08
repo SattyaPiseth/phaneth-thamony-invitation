@@ -6,8 +6,6 @@ import { Lightbox } from "./modal/Lightbox";
 
 import { GALLERY_IMAGES } from "../data/galleryImages";
 import google_map_icon from "/images/google-maps.png";
-import morning_event_image from "/images/morning-event.png";
-import afternoon_event_image from "/images/afternoon-event.png";
 import { GratitudeSection } from "./GratitudeSection";
 import { PromoteSection } from "./PromoteSection";
 import Discussion from "./comment/Discussion";
@@ -39,8 +37,7 @@ export default function DescriptionSection({
     <section
       lang="km"
       aria-labelledby="invite-title"
-      // className="w-full mx-auto max-w-[min(92vw,56rem)] py-1.5 sm:py-8 lg:px-[clamp(2rem,8vw,12rem)] xl:px-[clamp(2rem,7vw,14rem)] 2xl:px-[clamp(5rem,10vw,11rem)]"
-      className="w-full mx-auto max-w-[min(96vw,80rem)] py-1.5 sm:py-8 lg:px-[clamp(2rem,8vw,12rem)] xl:px-[clamp(2rem,7vw,14rem)] 2xl:px-[clamp(5rem,10vw,11rem)]"
+      className="w-full mx-auto max-w-[min(92vw,56rem)] py-1.5 sm:py-8 lg:px-[clamp(2rem,8vw,12rem)] xl:px-[clamp(2rem,7vw,14rem)] 2xl:px-[clamp(5rem,10vw,11rem)]"
       data-aos="fade-up"
     >
       <SoftCard>
@@ -109,6 +106,7 @@ export default function DescriptionSection({
               <span dangerouslySetInnerHTML={{ __html: khmerBoranDateText }} />
             </p>
 
+
             {/* venue */}
             <p className="moulpali-regular text-pretty  text-center
                           text-xs leading-7
@@ -125,6 +123,18 @@ export default function DescriptionSection({
                 alt="divider"
                 loading="lazy"
                 decoding="async"
+              />
+            </div>
+
+            {/* Bigger English gratitude image */}
+            <div className="mx-auto my-[2vh] max-w-screen-md flex justify-center">
+              <img
+                src="/images/home-page/gratitude/gratitude-english.png"
+                alt="Gratitude in English"
+                className="w-[clamp(20rem,90vw,50rem)] h-auto object-contain"
+                loading="lazy"
+                decoding="async"
+                sizes="(max-width: 768px) 90vw, 800px"
               />
             </div>
 
@@ -171,19 +181,6 @@ export default function DescriptionSection({
               />
             </div> */}
           </div>
-        {/* Bigger English gratitude image — extra large */}
-        <div className="mx-auto my-[3vh] w-full max-w-none flex justify-center">
-          <img
-            src="/images/home-page/gratitude/gratitude-english.png"
-            alt="Gratitude in English"
-            // className="w-[clamp(32rem,96vw,80rem)] h-auto object-contain drop-shadow-md"
-            className="w-[clamp(36rem,96vw,90rem)] h-auto object-contain drop-shadow-md"
-            loading="lazy"
-            decoding="async"
-            // sizes="(max-width: 768px) 96vw, 1280px"
-            sizes="(max-width: 768px) 96vw, 1440px"
-          />
-        </div>
         </section>
 
 
