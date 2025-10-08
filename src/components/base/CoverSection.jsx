@@ -1,6 +1,7 @@
 import React from "react";
 import useCustomerByUuid from "../../hook/useCustomerByUuid";
 import CustomerNameInline from "../customer/CustomerNameInline";
+import AnimatedActionButton from "../button/AnimatedActionButton";
 
 const cn = (...parts) => parts.filter(Boolean).join(" ");
 
@@ -119,85 +120,8 @@ export default function CoverSection({
           >
             សូមចុចបើកធៀប
           </button> */}
-          <button
-            type="button"
-            onClick={(e) => {
-              // Optional tiny haptic on supported devices
-              try { window.navigator.vibrate?.(10); } catch {}
-              onStart?.(e);
-            }}
-            className={cn(
-              "group relative select-none touch-manipulation",
-              "rounded-2xl overflow-hidden font-semibold moul-regular",
-              "text-base sm:text-lg lg:text-xl 2xl:text-2xl tracking-wide",
-              "isolation-auto will-change-transform [-webkit-tap-highlight-color:transparent]",
-
-              // Base look (transparent until interaction)
-              "text-[color-mix(in_srgb,var(--primary)_90%,white)]",
-
-              // Motion & interaction
-              "transition-all duration-300 ease-out",
-              // Hover (desktop) + Active (mobile tap)
-              "hover:bg-[color-mix(in_srgb,var(--primary)_22%,transparent)]",
-              "active:bg-[color-mix(in_srgb,var(--primary)_30%,transparent)]",
-              "hover:scale-[1.02] active:scale-[0.975]",
-              "hover:shadow-[0_8px_28px_rgba(0,0,0,0.15)] active:shadow-[0_10px_36px_rgba(0,0,0,0.22)]",
-              "focus:outline-none focus:ring-2 focus:ring-[color-mix(in_srgb,var(--primary)_35%,transparent)]",
-
-              // Subtle glass on interaction (keeps perf good)
-              "hover:backdrop-blur-sm active:backdrop-blur-md",
-
-              // Entry animation you already use
-              "animate-[fade-up_700ms_ease-out_both] [animation-delay:560ms] motion-reduce:animate-none",
-
-              // Tiny offset on very small screens
-              "max-[340px]:-mt-[clamp(0.5rem,2vw,2rem)]"
-            )}
-            aria-label="ចូលទៅកាន់ពិសេសកម្ម"
-          >
-            {/* Shine sweep — moves on hover (desktop) and on tap (mobile via :active) */}
-            <span
-              aria-hidden="true"
-              className={[
-                "pointer-events-none absolute inset-0 rounded-2xl",
-                "after:content-[''] after:absolute after:inset-y-0 after:left-[-40%]",
-                "after:w-[60%] after:rounded-[inherit]",
-                "after:bg-[linear-gradient(100deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.28)_45%,rgba(255,255,255,0)_100%)]",
-                "after:translate-x-[-120%] after:transition-transform after:duration-700",
-                // Desktop hover sweep
-                "group-hover:after:translate-x-[160%]",
-                // Mobile tap sweep
-                "group-active:after:translate-x-[160%]",
-              ].join(" ")}
-            />
-
-            {/* Soft glass tint always present but very subtle */}
-            <span
-              aria-hidden="true"
-              className="absolute inset-0 rounded-2xl bg-[color-mix(in_srgb,var(--primary)_10%,transparent)]"
-            />
-
-            {/* Ripple (centered) on tap — CSS only */}
-            <span
-              aria-hidden="true"
-              className={[
-                "pointer-events-none absolute inset-0 rounded-2xl",
-                "before:content-[''] before:absolute before:inset-1/2 before:-translate-x-1/2 before:-translate-y-1/2",
-                "before:w-0 before:h-0 before:rounded-full",
-                "before:bg-[radial-gradient(closest-side,rgba(255,255,255,0.35),transparent)]",
-                "before:opacity-0 before:transition-[width,height,opacity] before:duration-300",
-                "active:before:w-[140%] active:before:h-[140%] active:before:opacity-100",
-              ].join(" ")}
-            />
-
-            {/* Content image */}
-            <img
-              className="relative w-[28vh] sm:w-[30vh] mx-auto drop-shadow-[0_0_10px_rgba(255,255,255,0.25)]"
-              src="/images/border-styles/border-button.png"
-              alt="button image"
-            />
-          </button>
-
+          
+          <AnimatedActionButton onStart={onStart}/>
 
         </div>
       </div>
