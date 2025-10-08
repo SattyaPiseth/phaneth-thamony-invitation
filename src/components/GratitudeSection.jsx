@@ -25,23 +25,11 @@ export const GratitudeSection = () => {
       {/* Divider (slightly wider than before but still modest) */}
       <div className="flex justify-center">
         <img
-          className="w-[clamp(12rem,40vw,28rem)] max-w-screen-md"
+          className="w-[clamp(10rem,40vw,15rem)] max-w-screen-md"
           src="/images/border-styles/divider.png"
           alt="divider"
           loading="lazy"
           decoding="async"
-        />
-      </div>
-
-      {/* Bigger English gratitude image */}
-      <div className="mx-auto mt-6 max-w-screen-md px-4 flex justify-center">
-        <img
-          src="/images/home-page/gratitude/gratitude-english.png"
-          alt="Gratitude in English"
-          className="w-[clamp(20rem,90vw,50rem)] h-auto object-contain"
-          loading="lazy"
-          decoding="async"
-          sizes="(max-width: 768px) 90vw, 800px"
         />
       </div>
     </>
