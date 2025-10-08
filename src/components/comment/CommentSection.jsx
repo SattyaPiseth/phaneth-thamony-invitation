@@ -175,7 +175,7 @@ export function CommentSection({
                 type="text"
                 name="name"
                 placeholder="សូមបញ្ចូលឈ្មោះរបស់អ្នក"
-                className="moulpali-regular text-xs text-pretty"
+                className="moulpali-regular text-xs text-pretty rounded-md"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -192,7 +192,7 @@ export function CommentSection({
                 label="សារជូនពរ"
                 name="message"
                 placeholder="សូមបញ្ចូលសារជូនពរ. . . . . "
-                className="moulpali-regular text-xs text-pretty"
+                className="moulpali-regular text-xs text-pretty rounded-md"
                 hint="💡 ព័ត៌មានរបស់អ្នកអាចត្រូវបានបង្ហាញលើទំព័រខាងក្រោម (បើអ្នកយល់ព្រម)"
                 hintId={hintId}
                 maxLength={maxLength}
