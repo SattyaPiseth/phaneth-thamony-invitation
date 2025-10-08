@@ -6,6 +6,8 @@ import { Lightbox } from "./modal/Lightbox";
 
 import { GALLERY_IMAGES } from "../data/galleryImages";
 import google_map_icon from "/images/google-maps.png";
+import morning_event_image from "/images/home-page/agenda/agenda-01.png";
+import afternoon_event_image from "/images/home-page/agenda/agenda-02.png";
 import { GratitudeSection } from "./GratitudeSection";
 import { PromoteSection } from "./PromoteSection";
 import Discussion from "./comment/Discussion";
@@ -198,13 +200,13 @@ export default function DescriptionSection({
 
 
         {/* Event posters */}
-        {/* <figure className="mt-6">
+        <figure>
           <img src={morning_event_image} alt="Morning event" loading="lazy" decoding="async" />
         </figure>
 
-        <figure className="mt-4">
+        <figure className="-mt-5 py-2 ">
           <img src={afternoon_event_image} alt="Afternoon event" loading="lazy" decoding="async" />
-        </figure> */}
+        </figure>
 
         {/* Countdown */}
         <section className="mt-6 flex flex-col items-center justify-center gap-3 text-3xl text-[var(--primary)]">
