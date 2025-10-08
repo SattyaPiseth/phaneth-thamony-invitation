@@ -26,6 +26,8 @@ async function loadWishes() {
     try { return await r.json(); } catch { return []; }
   }
 
+  
+
   // Fallback path: discover via list() once (slower; Advanced Op)
   try {
     const { blobs } = await list({ prefix: BLOB_KEY, token });
