@@ -124,6 +124,7 @@ export default function CoverSection({
           <AnimatedActionButton
             onStart={onStart}
             src="/images/border-styles/border-button.png"
+            variant="bare"     
           />
 
 
