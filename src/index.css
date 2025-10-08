@@ -78,6 +78,19 @@ body,
   font-style: normal;
 }
 
+@layer base {
+  .font-playfair {
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+  }
+
+  .font-merriweather {
+    font-family: "Merriweather", serif;
+    font-optical-sizing: auto;
+    font-variation-settings: "wdth" 100;
+  }
+}
+
 
 
 /* Keyframes (used via animate-[...]) */

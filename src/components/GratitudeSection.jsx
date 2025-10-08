@@ -21,7 +21,6 @@ export const GratitudeSection = () => {
           យើងខ្ញុំជាមាតាបិតា កូនប្រុស កូនស្រី សូមអភ័យទោសដោយពុំបានជួបអញ្ជើញដោយផ្ទាល់។ វត្តមានរបស់ ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោកស្រី អ្នកនាងកញ្ញា និងប្រិយមិត្តទាំងអស់គឺជា កិត្តិយសដ៏ឧត្តុង្គឧត្តមសម្រាប់គ្រួសារយើងខ្ញុំ។ <br />សូមអរគុណ!
         </p>
       </section>
-
       {/* Divider (slightly wider than before but still modest) */}
       <div className="flex justify-center">
         <img
@@ -32,6 +31,25 @@ export const GratitudeSection = () => {
           decoding="async"
         />
       </div>
+      <section
+        aria-labelledby="gratitude-title"
+        className="my-[5vh] mx-auto max-w-screen-md"
+      >
+        <h3
+          id="gratitude-title"
+          className="font-playfair font-bold text-[var(--primary)] text-sm sm:text-lg tracking-wide text-center text-balance uppercase"
+        >
+          Our Gratitude And Apology
+        </h3>
+
+        <p className="font-merriweather mt-4 text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg tracking-wide leading-[3.5vh] text-[var(--text)]/90 text-pretty">
+          We are extremely thankful for H.E., L.C., T., 
+          Neak Oknha, Oknha, ladies and gentlemen for 
+          your presence at the upcoming marriage of our children.
+          We would like to apologize if this invitation 
+          has not been personally delivered by us.
+        </p>
+      </section>
     </>
   )
 }
