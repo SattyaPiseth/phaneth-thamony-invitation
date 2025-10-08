@@ -180,7 +180,7 @@ export default function DescriptionSection({
             />
 
             {/* map embed */}
-            <img src="/images/home-page/map/map.png" alt="map image" className="rounded-md shadow-xs mx-auto" data-aos="flip-left"/>
+            <img src="/images/home-page/map/map.png" alt="map image" className="rounded-md shadow-sm mx-auto" data-aos="flip-left"/>
             {/* <div
               className="w-full aspect-video rounded-md overflow-hidden shadow-sm
                         mt-2 sm:mt-3"
