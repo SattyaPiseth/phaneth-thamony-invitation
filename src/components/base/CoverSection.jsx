@@ -125,6 +125,8 @@ export default function CoverSection({
             onStart={onStart}
             src="/images/border-styles/border-button.png"
             variant="bare"     
+            withShine={true}
+            withRipple={true}
           />
 
 
