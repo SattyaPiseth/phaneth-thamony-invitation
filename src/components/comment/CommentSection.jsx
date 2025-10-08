@@ -26,7 +26,7 @@ function Field({ id, label, className = "", size = "md", ...props }) {
     <div>
       <label
         htmlFor={id}
-        className="block mb-2 text-sm font-medium text-gray-800  siemreap-regular text-left"
+        className="block mb-2 text-xs font-medium text-[var(--secondary)] moulpali-regular text-left"
       >
         {label}
       </label>
@@ -53,7 +53,7 @@ function Textarea({
     <div>
       <label
         htmlFor={id}
-        className="block mb-2 text-sm font-medium text-gray-800  siemreap-regular text-left"
+        className="block mb-2 text-xs font-medium text-[var(--secondary)]  moulpali-regular text-left"
       >
         {label}
       </label>
@@ -71,7 +71,7 @@ function Textarea({
       />
       <div
         id={hintId}
-        className="mt-2 flex items-center justify-between text-[11px] text-gray-600/80 siemreap-regular"
+        className="mt-2 flex items-center justify-between text-[0.5rem] leading-5 tracking-wide text-pretty text-[var(--secondary)] moulpali-regular"
       >
         <span>{hint}</span>
         <span aria-live="polite" className={warn ? "font-semibold" : ""}>
@@ -149,11 +149,11 @@ export function CommentSection({
           <div className="pointer-events-none absolute -inset-1 rounded-[28px] bg-gradient-to-tr from-white/30 via-white/0 to-white/20 blur-2xl opacity-30" />
 
           <div className="relative p-6 sm:p-8">
-            <h2 className="text-center font-extrabold tracking-tight moul-regular text-base sm:text-lg leading-tight ">
+            <h2 className="text-center font-extrabold tracking-tight moul-regular text-base sm:text-lg leading-tight text-[var(--primary)]">
               {title}
             </h2>
 
-            <p className="mt-2 text-center text-xs sm:text-sm  siemreap-regular text-pretty leading-relaxed tracking-wide">
+            <p className="mt-3 text-center text-[0.65rem] sm:text-sm  moulpali-regular text-pretty leading-relaxed tracking-wide text-[var(--text)]">
               សូមបញ្ចូលឈ្មោះ និង ផ្ញើសារជូនពរ ដើម្បីប្រសិទ្ធពរជ័យ ដល់គូស្វាមី ភរិយាថ្មី
             </p>
 
@@ -175,6 +175,7 @@ export function CommentSection({
                 type="text"
                 name="name"
                 placeholder="សូមបញ្ចូលឈ្មោះរបស់អ្នក"
+                className="moulpali-regular text-[0.6rem] text-pretty"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -190,7 +191,8 @@ export function CommentSection({
                 id={msgId}
                 label="សារជូនពរ"
                 name="message"
-                placeholder="សូមបញ្ចូលសារជូនពរ"
+                placeholder="សូមបញ្ចូលសារជូនពរ. . . . . "
+                className="moulpali-regular text-[0.6rem] text-pretty"
                 hint="💡 ព័ត៌មានរបស់អ្នកអាចត្រូវបានបង្ហាញលើទំព័រខាងក្រោម (បើអ្នកយល់ព្រម)"
                 hintId={hintId}
                 maxLength={maxLength}
@@ -218,10 +220,10 @@ export function CommentSection({
                   disabled={isDisabled}
                   className={[
                     "inline-flex items-center justify-center rounded-lg px-5 py-3",
-                    "text-sm font-medium text-white",
-                    "bg-black/80  hover:bg-black ",
+                    "text-xs font-medium text-white",
+                    "bg-[var(--primary)]/85  hover:bg-[var(--secondary)] ",
                     "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/40",
-                    "active:scale-[0.99] transition shadow-md shadow-black/20 backdrop-blur siemreap-regular",
+                    "active:scale-[0.99] transition shadow-md shadow-black/20 backdrop-blur moulpali-regular",
                     isDisabled ? "opacity-60 cursor-not-allowed" : "",
                   ].join(" ")}
                 >
