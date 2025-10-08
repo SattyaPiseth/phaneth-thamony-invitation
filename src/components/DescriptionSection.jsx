@@ -173,7 +173,7 @@ export default function DescriptionSection({
               withRipple={true}
               className="bg-transparent shadow-none"
               onStart={() =>
-                window.open("https://maps.app.goo.gl/81yYewLn4oUyYuy58", "_blank")
+                window.open("https://maps.app.goo.gl/81yYewLn4oUyYuy58", "_self")
               }
             />
 
