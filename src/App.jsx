@@ -7,7 +7,7 @@ import PlayMusic from "./components/PlayMusic.jsx";
 import VideoLayer from "./components/video/VideoLayer.jsx";
 
 const STORY_VIDEOS = ["/videos/home.mp4"];
-const BGMUSIC = "/audio/beautiful-in-white.mp3";
+const BGMUSIC = "/audio/special-someone-audio-ladies.m4a";
 
 const DEFAULT_BG = {
   src: "/videos/background.mp4",
