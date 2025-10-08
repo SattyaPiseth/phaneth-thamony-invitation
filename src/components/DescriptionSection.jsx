@@ -19,7 +19,7 @@ export default function DescriptionSection({
   startTimeText = "និងពិសាភោជនីយអាហារដែលនឹង <br/> ប្រព្រឹត្តទៅនៅ",
   khmerDateText = "ថ្ងៃ ព្រហស្បត្តិ៍ ទី០៦ ខែវិច្ឆិកា ឆ្នាំ ២០២៥",
   khmerBoranDateText = "ត្រូវនឹងថ្ងៃ ១រោច ខែកត្តិក ឆ្នាំម្សាញ់ <br/> សប្តស័ក ព.ស ២៥៦៩ វេលាម៉ោង ៥:០០ នាទីល្ងាច​ ស្ថិតនៅ",
-  mapHref = "https://maps.app.goo.gl/usZXcfNpkuQMZxr27",
+  mapHref = "https://maps.app.goo.gl/DKWSGcHmyNRoVdAc8",
   galleryImages = GALLERY_IMAGES,
 }) {
   const [isOpen, setIsOpen] = useState(false);
