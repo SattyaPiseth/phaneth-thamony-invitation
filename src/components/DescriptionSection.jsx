@@ -144,7 +144,8 @@ export default function DescriptionSection({
             </a>
 
             {/* map embed */}
-            <div
+            <img src="/images/home-page/map/map.png" alt="map image" className="rounded-md shadow-xs mx-auto" data-aos="flip-left"/>
+            {/* <div
               className="w-full aspect-video rounded-md overflow-hidden shadow-sm
                         mt-2 sm:mt-3"
               data-aos="flip-up"
@@ -157,7 +158,7 @@ export default function DescriptionSection({
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
-            </div>
+            </div> */}
           </div>
         </section>
 
