@@ -231,7 +231,7 @@ export default function Discussion() {
           </div>
 
           <p className="mt-3 text-center text-xs text-gray-500">
-            Tip: Scroll to see earlier wishes.
+            💡 Scroll to see earlier wishes.
           </p>
         </div>
       </div>

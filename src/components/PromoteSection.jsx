@@ -21,7 +21,7 @@ import {
  * @param {number} [props.tiltRange=40]         // px radius mapped to rotation
  * @param {number} [props.hoverScale=1.01]      // figure hover scale
  * @param {boolean} [props.showGlow=true]       // toggle the soft animated glows
- * @param {string}  [props.rounded="rounded-lg"]// customize corner radius
+ * @param {string}  [props.rounded="rounded-lg"] // customize corner radius
  * @param {string}  [props.shadow="shadow-lg"]  // customize/remove shadow ("" to remove)
  */
 export const PromoteSection = ({
