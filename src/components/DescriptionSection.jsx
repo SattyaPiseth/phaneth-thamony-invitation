@@ -9,6 +9,7 @@ import google_map_icon from "/images/google-maps.png";
 import { GratitudeSection } from "./GratitudeSection";
 import { PromoteSection } from "./PromoteSection";
 import Discussion from "./comment/Discussion";
+import AnimatedActionButton from "./button/AnimatedActionButton";
 
 export default function DescriptionSection({
   // Customizable props with safe defaults
@@ -139,7 +140,7 @@ export default function DescriptionSection({
             </div>
 
             {/* map button — bigger tap target on mobile */}
-            <a
+            {/* <a
               href={mapHref}
               target="_blank"
               rel="noopener noreferrer"
@@ -162,10 +163,22 @@ export default function DescriptionSection({
               <span className="text-sm underline-offset-4 hover:underline">
                 បើកមើលទីតាំង
               </span>
-            </a>
+            </a> */}
+            <AnimatedActionButton
+              variant="bare"        
+              src="/images/home-page/map/location-button.png"
+              ariaLabel="បើកផែនទី"
+              imgClassName="relative block mx-auto w-[70%] object-contain"
+              withShine={true}
+              withRipple={true}
+              className="bg-transparent shadow-none"
+              onStart={() =>
+                window.open("https://maps.app.goo.gl/81yYewLn4oUyYuy58", "_blank")
+              }
+            />
 
             {/* map embed */}
-            <img src="/images/home-page/map/map.png" alt="map image" className="rounded-md shadow-xs mx-auto " data-aos="flip-left"/>
+            <img src="/images/home-page/map/map.png" alt="map image" className="rounded-md shadow-xs mx-auto" data-aos="flip-left"/>
             {/* <div
               className="w-full aspect-video rounded-md overflow-hidden shadow-sm
                         mt-2 sm:mt-3"

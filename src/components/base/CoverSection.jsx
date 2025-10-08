@@ -121,7 +121,11 @@ export default function CoverSection({
             សូមចុចបើកធៀប
           </button> */}
           
-          <AnimatedActionButton onStart={onStart}/>
+          <AnimatedActionButton
+            onStart={onStart}
+            src="/images/border-styles/border-button.png"
+          />
+
 
         </div>
       </div>
