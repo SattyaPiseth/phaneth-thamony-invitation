@@ -129,7 +129,7 @@ export default function DescriptionSection({
             </div>
 
             {/* Bigger English gratitude image */}
-            <div className="mx-auto my-[2vh] max-w-screen-md px-4 flex justify-center">
+            <div className="mx-auto my-[2vh] max-w-screen-md flex justify-center">
               <img
                 src="/images/home-page/gratitude/gratitude-english.png"
                 alt="Gratitude in English"
