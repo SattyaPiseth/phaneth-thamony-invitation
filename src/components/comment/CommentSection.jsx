@@ -7,7 +7,7 @@ const panel =
 
 /* Inputs */
 const inputBase =
-  "w-full rounded-lg siemreap-regular " +
+  "w-full rounded-lg" +
   "text-sm leading-6 px-4 py-3 " +
   "bg-white/60 border border-white/50  " +
   "text-gray-900  placeholder:text-gray-500  " +
