@@ -66,7 +66,7 @@ export default function ParentsSection({
         py-[clamp(1rem,4vw,2.5rem)]
         lg:px-[clamp(5rem,27.5vw,25rem)]
         xl:px-[clamp(5rem,19.5vw,30rem)]
-        2xl:px-[clamp(5rem,10vw,15rem)]
+        2xl:px-[clamp(5rem,14vw,30rem)]
         ${className}
       `}
     >
