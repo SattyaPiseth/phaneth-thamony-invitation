@@ -39,7 +39,7 @@ export default function DescriptionSection({
     <section
       lang="km"
       aria-labelledby="invite-title"
-      className="w-full mx-auto max-w-[min(92vw,56rem)] py-1.5 sm:py-8 lg:px-[clamp(2rem,8vw,12rem)] xl:px-[clamp(2rem,10vw,14rem)] 2xl:px-[clamp(5rem,10vw,11rem)]"
+      className="w-full mx-auto max-w-[min(92vw,56rem)] py-1.5 sm:py-8 lg:px-[clamp(2rem,8vw,12rem)] xl:px-[clamp(2rem,12vw,15rem)] 2xl:px-[clamp(5rem,10vw,11rem)]"
       data-aos="fade-up"
     >
       <SoftCard>
