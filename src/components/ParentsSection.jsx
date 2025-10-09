@@ -38,7 +38,7 @@ export default function ParentsSection({
       return <span className={align === "right" ? "text-right" : ""} />;
     }
 
-    // Convert all spaces in the person's full name to NBSP to avoid line breaks
+    // Prevent breaks inside Khmer names
     const personNbsp = person.replace(/\s+/g, "\u00A0");
 
     return (
@@ -59,35 +59,75 @@ export default function ParentsSection({
   return (
     <section
       aria-labelledby="parents-heading"
-      className={`
-        mx-auto w-full
-        max-w-[clamp(22rem,92vw,56rem)]
-        px-[clamp(3.5rem,5vw,5rem)]
-        py-[clamp(1rem,4vw,2.5rem)]
-        lg:px-[clamp(5rem,27.5vw,25rem)]
-        xl:px-[clamp(5rem,19.5vw,30rem)]
-        2xl:px-[clamp(5rem,14vw,30rem)]
-        ${className}
-      `}
+      className={[
+        // Center + width
+        "mx-auto w-full",
+        "max-w-[22rem]",                         // base phones
+        "sm:max-w-[28rem]",                      // small phones / small tablets
+        "md:max-w-[36rem]",                      // tablets
+        "lg:max-w-[48rem]",                      // laptops
+        "xl:max-w-[56rem]",                      // desktops
+        "2xl:max-w-[64rem]",                     // large desktops
+        "min-[1920px]:max-w-[72rem]",            // >2xl (UHD-ish)
+
+        // Horizontal padding—wider until lg, then taper a bit on xl/2xl
+        "px-4",
+        "sm:px-6",
+        "md:px-8",
+        "lg:px-[12rem]",
+        "xl:px-[14rem]",
+        "2xl:px-[16rem]",
+        "min-[1920px]:px-20",
+
+        // Vertical padding
+        "py-4 sm:py-6 md:py-8 lg:py-10 xl:py-8 2xl:py-8 min-[1920px]:py-10",
+
+        className,
+      ].join(" ")}
     >
-      <h2 id="parents-heading" className="sr-only">{title}</h2>
+      <h2 id="parents-heading" className="sr-only">
+        {title}
+      </h2>
 
       <div
-        className="
-          text-[var(--primary)]
-          leading-[1.9]
-          text-[clamp(0.6rem,2.5vw,1.25rem)] lg:text-[clamp(-1rem,2.5vw,0.8rem)]
-          flex flex-col
-          gap-y-[clamp(0.5rem,1.5vw,1rem)]
-        "
+        className={[
+          "text-[var(--primary)] leading-[1.85]",
+
+          // Font size steps (no negative clamp); tuned for Khmer readability
+          "text-[0.75rem]",        // base
+          "sm:text-[0.8125rem]",   // 13px
+          "md:text-[0.875rem]",    // 14px
+          "lg:text-[1rem]",        // 16px
+          "xl:text-[0.9375rem]",   // 15px (slight tighten at xl)
+          "2xl:text-[0.9rem]",     // ~14.4px (reduce a bit on very wide)
+          "min-[1920px]:text-[1rem]",
+
+          // Vertical rhythm: reduce at xl & 2xl as requested
+          "flex flex-col",
+          "gap-y-3",               // base
+          "sm:gap-y-3.5",
+          "md:gap-y-4",
+          "lg:gap-y-5",
+          "xl:gap-y-3.5",          // reduce spacing on xl
+          "2xl:gap-y-3",           // reduce more on 2xl
+          "min-[1920px]:gap-y-4",  // recover a touch for >2xl
+        ].join(" ")}
       >
         {rows.map(([left, right], i) => (
           <div
             key={i}
-            className="
-              grid grid-cols-2 items-center
-              gap-x-[clamp(0.75rem,6vw,6rem)]
-            "
+            className={[
+              "grid grid-cols-2 items-center",
+
+              // Column gap: grow to lg then compress on xl/2xl
+              "gap-x-4",
+              "sm:gap-x-6",
+              "md:gap-x-10",
+              "lg:gap-x-16",
+              "xl:gap-x-10",
+              "2xl:gap-x-8",
+              "min-[1920px]:gap-x-12",
+            ].join(" ")}
           >
             <NameCell item={left} />
             <NameCell item={right} align="right" />
