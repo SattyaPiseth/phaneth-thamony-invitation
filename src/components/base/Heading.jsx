@@ -33,7 +33,7 @@ export default function Heading({
             "aspect-[414/207]",
 
             // Wide-banner responsive widths
-            "w-[min(70vw,360px)] sm:w-[min(68vw,420px)] md:w-[min(60vw,400px)] lg:w-[min(52vw,280px)] xl:w-[min(70vw,300px)]",
+            "w-[min(70vw,360px)] sm:w-[min(68vw,420px)] md:w-[min(60vw,400px)] lg:w-[min(52vw,280px)] xl:w-[min(70vw,250px)]",
 
             // Gentle vertical lift for 2:1 art
             "translate-y-[clamp(0.5rem,2.5vw,2rem)]",
