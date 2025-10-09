@@ -52,7 +52,7 @@ export default function DescriptionSection({
         </h2>
 
         {/* Intro copy */}
-        <p className="moulpali-regular text-[0.65rem] sm:text-xs md:text-sm lg:text-sm xl:text-sm tracking-wide leading-[3.5vh] lg:leading-[4vh] text-[var(--text)]/90 text-pretty">
+        <p className="moulpali-regular text-[0.65rem] sm:text-xs md:text-sm lg:text-sm xl:text-xs tracking-wide leading-[3.5vh] lg:leading-[4vh] text-[var(--text)]/90 text-pretty">
           ឯកឧត្តម លោកឧកញ៉ា​ លោកជំទាវ {<br/>}លោក លោកស្រី អ្នកនាង កញ្ញា និងប្រិយមិត្តអញ្ជើញចូល រួមជាអធិបតីនិងជាភ្ញៀវកិត្តិយសដើម្បី ប្រសិទ្ធិពរជ័យសិរីសួស្តីជ័យមង្គលក្នុង ពិធីរៀបអាពាហ៍ពិពាហ៍
         </p>
         <p className="moulpali-regular text-[0.65rem] sm:text-xs md:text-sm lg:text-sm xl:text-sm tracking-wide leading-[3.5vh] text-[var(--text)]/90 text-pretty -mt-[2.5vh]">
@@ -65,18 +65,18 @@ export default function DescriptionSection({
           </h3>
           <dl className="mx-auto max-w-screen-md grid grid-cols-2 gap-4 sm:gap-6">
             <div className="flex flex-col items-center gap-3">
-              <dt className="moulpali-regular tracking-wide text-xs sm:text-sm md:text-base lg:text-base text-[var(--secondary)]">
+              <dt className="moulpali-regular tracking-wide text-xs sm:text-sm md:text-base lg:text-sm xl:text-sm text-[var(--secondary)]">
                 កូនប្រុសនាម
               </dt>
-              <dd className="moul-regular text-base sm:text-lg text-[var(--primary)]">
+              <dd className="moul-regular text-base sm:text-lg md:text-base lg:text-base xl:text-base text-[var(--primary)]">
                 សាវី ផានិត
               </dd>
             </div>
             <div className="flex flex-col items-center gap-3">
-              <dt className="moulpali-regular tracking-wide text-xs sm:text-sm md:text-base lg:text-base text-[var(--secondary)]">
+              <dt className="moulpali-regular tracking-wide text-xs sm:text-sm md:text-base lg:text-sm xl:text-sm text-[var(--secondary)]">
                 កូនស្រីនាម
               </dt>
-              <dd className="moul-regular text-base sm:text-lg text-[var(--primary)]">
+              <dd className="moul-regular text-base sm:text-lg md:text-base lg:text-base xl:text-base text-[var(--primary)]">
                 ឆាយ ថាមនី
               </dd>
             </div>
