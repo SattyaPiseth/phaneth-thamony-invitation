@@ -62,7 +62,7 @@ export default function ParentsSection({
       className={`
         mx-auto w-full
         max-w-[clamp(22rem,92vw,56rem)]
-        px-[clamp(2rem,5vw,2.5rem)]
+        px-[clamp(2.5rem,5vw,5rem)]
         py-[clamp(1rem,4vw,2.5rem)]
         xl:px-[clamp(5rem,12vw,15rem)]
         2xl:px-[clamp(5rem,10vw,15rem)]
@@ -75,7 +75,7 @@ export default function ParentsSection({
         className="
           text-[var(--primary)]
           leading-[1.9]
-          text-[clamp(0.7rem,3vw,1.25rem)]
+          text-[clamp(0.55rem,2.5vw,1.25rem)]
           flex flex-col
           gap-y-[clamp(0.5rem,1.5vw,1rem)]
         "
