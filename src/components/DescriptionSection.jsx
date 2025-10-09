@@ -46,7 +46,7 @@ export default function DescriptionSection({
         {/* Invite Heading */}
         <h2
           id="invite-title"
-          className="moul-regular text-[var(--primary)] text-sm sm:text-lg md:text-base lg:text-base xl:text-base tracking-wide text-center text-balance"
+          className="moul-regular text-[var(--primary)] text-sm sm:text-lg md:text-base lg:text-base xl:text-sm tracking-wide text-center text-balance"
         >
           មានកិត្តិយសសូមគោរពអញ្ជើញ
         </h2>
