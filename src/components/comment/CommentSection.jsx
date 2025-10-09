@@ -153,7 +153,7 @@ export function CommentSection({
               {title}
             </h2>
 
-            <p className="mt-3 text-center text-[0.65rem] sm:text-sm  moulpali-regular text-pretty leading-relaxed tracking-wide text-[var(--text)]">
+            <p className="mt-3 text-center text-[0.65rem] sm:text-sm lg:leading-[3.5vh]  moulpali-regular text-pretty leading-relaxed tracking-wide text-[var(--text)]">
               សូមបញ្ចូលឈ្មោះ និង ផ្ញើសារជូនពរ ដើម្បីប្រសិទ្ធពរជ័យ ដល់គូស្វាមី ភរិយាថ្មី
             </p>
 

@@ -67,7 +67,7 @@ export default function CoverSection({
         <div
           className={cn(
             "flex flex-col items-center",
-            "gap-y-[calc(var(--ry)*0.8)] sm:gap-y-[var(--ry)] lg:gap-y-[calc(var(--ry)*1.1)]",
+            "gap-y-[calc(var(--ry)*0.8)] sm:gap-y-[var(--ry)] lg:gap-y-[calc(var(--ry)*0.5)] xl:gap-y-[calc(var(--ry)*0.6)]",
             "mt-[var(--gap-above-text)]"
           )}
         >
