@@ -65,8 +65,8 @@ export default function ParentsSection({
         "max-w-[22rem]",                         // base phones
         "sm:max-w-[28rem]",                      // small phones / small tablets
         "md:max-w-[36rem]",                      // tablets
-        "lg:max-w-[48rem]",                      // laptops
-        "xl:max-w-[56rem]",                      // desktops
+        "lg:max-w-[42rem]",                      // laptops
+        "xl:max-w-[50rem]",                      // desktops
         "2xl:max-w-[64rem]",                     // large desktops
         "min-[1920px]:max-w-[72rem]",            // >2xl (UHD-ish)
 
@@ -75,7 +75,7 @@ export default function ParentsSection({
         "sm:px-6",
         "md:px-8",
         "lg:px-[12rem]",
-        "xl:px-[14rem]",
+        "xl:px-[16rem]",
         "2xl:px-[16rem]",
         "min-[1920px]:px-20",
 
@@ -97,8 +97,8 @@ export default function ParentsSection({
           "text-[0.75rem]",        // base
           "sm:text-[0.8125rem]",   // 13px
           "md:text-[0.875rem]",    // 14px
-          "lg:text-[1rem]",        // 16px
-          "xl:text-[0.9375rem]",   // 15px (slight tighten at xl)
+          "lg:text-[0.8125rem]",        // 16px
+          "xl:text-[0.8125rem]",   // 15px (slight tighten at xl)
           "2xl:text-[0.9rem]",     // ~14.4px (reduce a bit on very wide)
           "min-[1920px]:text-[1rem]",
 
