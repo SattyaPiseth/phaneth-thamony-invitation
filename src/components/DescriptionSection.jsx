@@ -7,7 +7,6 @@ import { Lightbox } from "./modal/Lightbox";
 import { GALLERY_IMAGES } from "../data/galleryImages";
 import google_map_icon from "/images/google-maps.png";
 import morning_event_image from "/images/home-page/agenda/agenda-01.png";
-import afternoon_event_image from "/images/home-page/agenda/agenda-02.png";
 import { GratitudeSection } from "./GratitudeSection";
 import { PromoteSection } from "./PromoteSection";
 import Discussion from "./comment/Discussion";
@@ -90,7 +89,7 @@ export default function DescriptionSection({
                           gap-3 sm:gap-4 md:gap-5">
             {/* intro line */}
             <p className="moulpali-regular text-pretty text-center
-                          text-xs leading-7
+                          text-xs leading-7 tracking-widest
                           sm:text-base sm:leading-8 lg:text-sm xl:text-base
                           text-[var(--text)]/90">
               {/* {startTimeText} */}
