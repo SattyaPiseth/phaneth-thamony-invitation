@@ -33,10 +33,10 @@ export default function Heading({
             "aspect-[414/207]",
 
             // Wide-banner responsive widths
-            "w-[min(70vw,360px)] sm:w-[min(68vw,420px)] md:w-[min(60vw,400px)] lg:w-[min(52vw,280px)] xl:w-[min(70vw,200px)]",
+            "w-[min(70vw,360px)] sm:w-[min(68vw,420px)] md:w-[min(60vw,400px)] lg:w-[min(52vw,280px)] xl:w-[min(70vw,200px)] 2xl:w-[min(70vw,350px)]",
 
             // Gentle vertical lift for 2:1 art
-            "translate-y-[clamp(0.5rem,2.5vw,2rem)]",
+            "translate-y-[clamp(0.5rem,2.5vw,3rem)]",
             "[@media(max-width:340px)]:-translate-y-[clamp(0.25rem,1.5vw,0.75rem)]",
 
             // Perf hints (v4-correct)
