@@ -75,7 +75,7 @@ export default function ParentsSection({
         "sm:px-6",
         "md:px-8",
         "lg:px-[12rem]",
-        "xl:px-[18rem]",
+        "xl:px-[18.5rem]",
         "2xl:px-[16rem]",
         "min-[1920px]:px-20",
 
