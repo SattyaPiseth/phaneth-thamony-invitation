@@ -83,7 +83,8 @@ export default function Seo19({
     [canonical, currentPath]
   );
 
-  const pageTitle = title ? `${title} • ${siteName}` : DEFAULTS.title;
+  // const pageTitle = title ? `${title} • ${siteName}` : DEFAULTS.title;
+  const pageTitle = title || DEFAULTS.title;
   const pageDesc = description || DEFAULTS.description;
 
   const imageUrl = absUrl(image);

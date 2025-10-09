@@ -1,4 +1,3 @@
-import { redirect } from "react-router-dom";
 import { findCustomerByUuid, isValidUuidFormat } from "../lib/customers";
 
 const abs = (origin, path = "/") => {
@@ -20,11 +19,11 @@ export async function coverLoader({ params, request }) {
       customer: null,
       indexable: true,
       seo: {
-        title: "Kim & Nary Wedding — Save the Date",
+        title: "Phaneth & Thamony Wedding — Save the Date",
         description:
           "Join us in celebrating love. Ceremony details, schedule, map, and RSVP.",
         canonical: abs(origin, "/"),
-        image: "/images/landscape-04.jpg",
+        image: "/images/seo/phaneth-thamony-logo.png",
         locale: "en_US",
         ogType: "website",
         updatedTime: new Date().toISOString(),
@@ -42,7 +41,7 @@ export async function coverLoader({ params, request }) {
         title: "Invitation not found",
         description: "This invite link is invalid or has expired.",
         canonical: abs(origin, "/"), // <- canonical to public page
-        image: "/images/landscape-04.jpg",
+        image: "/images/seo/phaneth-thamony-logo.png",
         locale: "en_US",
         ogType: "website",
         updatedTime: new Date().toISOString(),
@@ -62,7 +61,7 @@ export async function coverLoader({ params, request }) {
         title: "Invitation not found",
         description: "This invite link is invalid or has expired.",
         canonical: abs(origin, "/"), // <- canonical to public page
-        image: "/images/landscape-04.jpg",
+        image: "/images/seo/phaneth-thamony-logo.png",
         locale: "en_US",
         ogType: "website",
         updatedTime: new Date().toISOString(),
@@ -79,7 +78,7 @@ export async function coverLoader({ params, request }) {
       title: "Invitation",
       description: "Private invitation for the ceremony.",
       canonical: abs(origin, "/"), // <- canonical to public page
-      image: customer?.coverImageUrl ?? "/images/landscape-04.jpg",
+      image: customer?.coverImageUrl ?? "/images/seo/phaneth-thamony-logo.png",
       locale: customer?.locale ?? "km_KH",
       ogType: "website",
       updatedTime: new Date().toISOString(),
