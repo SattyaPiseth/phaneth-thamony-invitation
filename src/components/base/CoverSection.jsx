@@ -47,7 +47,7 @@ export default function CoverSection({
             className={cn(
               "block mx-auto h-auto select-none",
               "aspect-[2016/1453]",
-              "w-[min(68vw,300px)] sm:w-[min(62vw,360px)] md:w-[min(56vw,420px)] lg:w-[min(48vw,400px)] xl:w-[min(68vw,300px)] 2xl:w-[min(62vw,360px)]",
+              "w-[min(68vw,300px)] sm:w-[min(62vw,360px)] md:w-[min(56vw,300px)] lg:w-[min(48vw,250px)] xl:w-[min(68vw,300px)] 2xl:w-[min(62vw,360px)]",
               "-translate-y-[var(--lift)]",
               "max-[360px]:-translate-y-[clamp(0.25rem,2vw,1rem)]",
               "transform-gpu [will-change:transform]"
@@ -76,7 +76,7 @@ export default function CoverSection({
               className={cn(
                 "moul-regular text-center tracking-[0.01em]",
                 "leading-[1.25] lg:leading-[1.2]",
-                "text-xl sm:text-3xl lg:text-4xl xl:text-2xl 2xl:text-3xl",
+                "text-xl sm:text-3xl lg:text-2xl xl:text-2xl 2xl:text-3xl",
                 "text-[var(--secondary)]",
                 "animate-[fade-up_700ms_ease-out_both] [animation-delay:160ms] motion-reduce:animate-none",
                 "max-[340px]:text-xl"
@@ -91,7 +91,7 @@ export default function CoverSection({
               className={cn(
                 "mt-[calc(var(--ry)*0.5)]",
                 "moul-regular text-center tracking-[0.01em] leading-[1.2]",
-                "text-lg sm:text-3xl lg:text-4xl xl:text-2xl",
+                "text-lg sm:text-3xl lg:text-2xl xl:text-2xl",
                 "text-[var(--primary)]",
                 "animate-[fade-up_700ms_ease-out_both] [animation-delay:360ms] motion-reduce:animate-none",
                 "max-[340px]:text-xl"
@@ -103,7 +103,7 @@ export default function CoverSection({
             <CustomerNameInline />
           )}
 
-          <div className="mt-[calc(var(--ry)*1.25)]">
+          <div className="mt-[calc(var(--ry)*1.25)] lg:mt-[calc(var(--ry)*0.3)] xl:mt-[calc(var(--ry)*0.5)] 2xl:mt-[calc(var(--ry)*0)]">
             <AnimatedActionButton
               onStart={onStart}
               src="/images/border-styles/border-button.png"
@@ -112,6 +112,7 @@ export default function CoverSection({
               withRipple
             />
           </div>
+
         </div>
       </div>
     </section>
