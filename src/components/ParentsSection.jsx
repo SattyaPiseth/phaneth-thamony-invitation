@@ -62,7 +62,7 @@ export default function ParentsSection({
       className={[
         // Center + width
         "mx-auto w-full",
-        "max-w-[20rem]",                         // base phones
+        "max-w-[18rem]",                         // base phones
         "sm:max-w-[28rem]",                      // small phones / small tablets
         "md:max-w-[36rem]",                      // tablets
         "lg:max-w-[42rem]",                      // laptops
