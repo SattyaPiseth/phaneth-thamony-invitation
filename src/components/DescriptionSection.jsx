@@ -112,7 +112,7 @@ export default function DescriptionSection({
             {/* venue */}
             <p className="moulpali-regular text-pretty  text-center
                           text-xs leading-7 
-                          sm:text-base sm:leading-8 md:text-base lg:text-sm xl:text-sm
+                          sm:text-base sm:leading-8 md:text-base lg:text-xs xl:text-xs
                           text-[var(--text)]">
               {venueName}
             </p>
