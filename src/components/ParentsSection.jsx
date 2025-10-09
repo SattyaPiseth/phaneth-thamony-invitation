@@ -98,7 +98,7 @@ export default function ParentsSection({
           "sm:text-[0.8125rem]",   // 13px
           "md:text-[0.875rem]",    // 14px
           "lg:text-[0.8125rem]",        // 16px
-          "xl:text-[0.65rem]",   // 15px (slight tighten at xl)
+          "xl:text-[0.60rem]",   // 15px (slight tighten at xl)
           "2xl:text-[0.9rem]",     // ~14.4px (reduce a bit on very wide)
           "min-[1920px]:text-[1rem]",
 
