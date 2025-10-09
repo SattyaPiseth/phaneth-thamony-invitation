@@ -75,7 +75,7 @@ export default function ParentsSection({
         className="
           text-[var(--primary)]
           leading-[1.9]
-          text-[clamp(0.7rem,3vw,1.25rem)]
+          text-[clamp(0.55rem,2.5vw,1.25rem)]
           flex flex-col
           gap-y-[clamp(0.5rem,1.5vw,1rem)]
         "
