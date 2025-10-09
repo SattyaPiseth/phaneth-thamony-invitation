@@ -62,7 +62,7 @@ export default function ParentsSection({
       className={[
         // Center + width
         "mx-auto w-full",
-        "max-w-[22rem]",                         // base phones
+        "max-w-[20rem]",                         // base phones
         "sm:max-w-[28rem]",                      // small phones / small tablets
         "md:max-w-[36rem]",                      // tablets
         "lg:max-w-[42rem]",                      // laptops
@@ -71,7 +71,7 @@ export default function ParentsSection({
         "min-[1920px]:max-w-[72rem]",            // >2xl (UHD-ish)
 
         // Horizontal padding—wider until lg, then taper a bit on xl/2xl
-        "px-4",
+        "px-8",
         "sm:px-6",
         "md:px-8",
         "lg:px-[12rem]",
@@ -94,7 +94,7 @@ export default function ParentsSection({
           "text-[var(--primary)] leading-[1.85]",
 
           // Font size steps (no negative clamp); tuned for Khmer readability
-          "text-[0.75rem]",        // base
+          "text-[0.65rem]",        // base
           "sm:text-[0.8125rem]",   // 13px
           "md:text-[0.875rem]",    // 14px
           "lg:text-[0.8125rem]",        // 16px
