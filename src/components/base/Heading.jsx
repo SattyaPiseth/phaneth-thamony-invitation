@@ -41,8 +41,8 @@ export default function Heading({
             // ✅ SM (≥640px)
             "sm:w-[min(58vw,340px)] sm:translate-y-[clamp(1rem,2vw,2rem)]",
 
-            // ✅ MD enlarged by ~36vw / 360px
-            "md:w-[min(36vw,360px)] md:translate-y-[clamp(1.5rem,3vw,2.5rem)]",
+            // ✅ MD → Increased more (~44vw / 440px)
+            "md:w-[min(44vw,440px)] md:translate-y-[clamp(1.5rem,3vw,2.5rem)]",
 
             // ✅ Higher breakpoints unchanged
             "lg:w-[min(24vw,360px)] lg:translate-y-[clamp(2rem,3.5vw,3rem)]",
@@ -57,7 +57,7 @@ export default function Heading({
             (min-width:1536px) 20vw,
             (min-width:1280px) 20vw,
             (min-width:1024px) 24vw,
-            (min-width:768px) 36vw,
+            (min-width:768px) 44vw,
             (min-width:640px) 58vw,
             (min-width:480px) 66vw,
             68vw
