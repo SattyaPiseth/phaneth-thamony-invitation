@@ -46,16 +46,16 @@ export default function DescriptionSection({
         {/* Invite Heading */}
         <h2
           id="invite-title"
-          className="moul-regular text-[var(--primary)] text-sm sm:text-lg md:text-base lg:text-lg xl:text-lg tracking-wide text-center text-balance"
+          className="moul-regular text-[var(--primary)] text-sm sm:text-lg md:text-base lg:text-base xl:text-base tracking-wide text-center text-balance"
         >
           មានកិត្តិយសសូមគោរពអញ្ជើញ
         </h2>
 
         {/* Intro copy */}
-        <p className="moulpali-regular text-[0.65rem] sm:text-xs md:text-sm lg:text-sm xl:text-base tracking-wide leading-[3.5vh] lg:leading-[4vh] text-[var(--text)]/90 text-pretty">
+        <p className="moulpali-regular text-[0.65rem] sm:text-xs md:text-sm lg:text-sm xl:text-sm tracking-wide leading-[3.5vh] lg:leading-[4vh] text-[var(--text)]/90 text-pretty">
           ឯកឧត្តម លោកឧកញ៉ា​ លោកជំទាវ {<br/>}លោក លោកស្រី អ្នកនាង កញ្ញា និងប្រិយមិត្តអញ្ជើញចូល រួមជាអធិបតីនិងជាភ្ញៀវកិត្តិយសដើម្បី ប្រសិទ្ធិពរជ័យសិរីសួស្តីជ័យមង្គលក្នុង ពិធីរៀបអាពាហ៍ពិពាហ៍
         </p>
-        <p className="moulpali-regular text-[0.65rem] sm:text-xs md:text-sm lg:text-sm xl:text-base tracking-wide leading-[3.5vh] text-[var(--text)]/90 text-pretty -mt-[2.5vh]">
+        <p className="moulpali-regular text-[0.65rem] sm:text-xs md:text-sm lg:text-sm xl:text-sm tracking-wide leading-[3.5vh] text-[var(--text)]/90 text-pretty -mt-[2.5vh]">
         កូនប្រុស កូនស្រី របស់យើងខ្ញុំ។</p>
 
         {/* Couple names */}
@@ -90,7 +90,7 @@ export default function DescriptionSection({
             {/* intro line */}
             <p className="moulpali-regular text-pretty text-center
                           text-xs leading-7 tracking-widest
-                          sm:text-base sm:leading-8 lg:text-sm xl:text-base
+                          sm:text-base sm:leading-8 lg:text-sm xl:text-sm
                           text-[var(--text)]/90">
               {/* {startTimeText} */}
             <span dangerouslySetInnerHTML={{__html: startTimeText}}/>
@@ -112,7 +112,7 @@ export default function DescriptionSection({
             {/* venue */}
             <p className="moulpali-regular text-pretty  text-center
                           text-xs leading-7 
-                          sm:text-base sm:leading-8
+                          sm:text-base sm:leading-8 md:text-base lg:text-sm xl:text-sm
                           text-[var(--text)]">
               {venueName}
             </p>
