@@ -47,7 +47,7 @@ export default function CoverSection({
             className={cn(
               "block mx-auto h-auto select-none",
               "aspect-[2016/1453]",
-              "w-[min(68vw,200px)] sm:w-[min(62vw,360px)] md:w-[min(56vw,300px)] lg:w-[min(48vw,250px)] xl:w-[min(68vw,300px)] 2xl:w-[min(62vw,300px)]",
+              "w-[min(68vw,200px)] sm:w-[min(62vw,360px)] md:w-[min(56vw,300px)] lg:w-[min(48vw,250px)] xl:w-[min(68vw,250px)] 2xl:w-[min(62vw,300px)]",
               "-translate-y-[var(--lift)]",
               "max-[360px]:-translate-y-[clamp(0.25rem,2vw,1rem)]",
               "transform-gpu [will-change:transform]"
