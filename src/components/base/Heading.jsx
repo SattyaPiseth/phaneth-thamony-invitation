@@ -13,7 +13,6 @@ export default function Heading({
         "flex items-center justify-center tracking-wide text-[var(--gold)]",
         "p-4",
         "pt-[calc(var(--safe-top)+var(--pad-top-dynamic)+var(--pad-top-extra))]",
-        
         className
       )}
       data-aos="fade-down"
@@ -32,27 +31,37 @@ export default function Heading({
             "block mx-auto h-auto select-none",
             "aspect-[414/207]",
 
-            // Wide-banner responsive widths
-            "w-[min(70vw,360px)] sm:w-[min(68vw,420px)] md:w-[min(60vw,400px)] lg:w-[min(52vw,280px)] xl:w-[min(70vw,200px)] 2xl:w-[min(70vw,350px)]",
+            // 🔻 Default (<480px): same width, slightly lower
+            "w-[min(68vw,300px)] translate-y-[clamp(1rem,4vw,2rem)]",
+            "[@media(max-width:340px)]:translate-y-[clamp(0.75rem,3.5vw,1.75rem)]",
 
-            // Gentle vertical lift for 2:1 art
-            "translate-y-[clamp(0.5rem,2.5vw,3rem)]",
-            "[@media(max-width:340px)]:-translate-y-[clamp(0.25rem,1.5vw,0.75rem)]",
+            // ✅ XS (≥480px)
+            "xs:w-[min(66vw,300px)] xs:translate-y-[clamp(1.25rem,3vw,2.25rem)]",
 
-            // Perf hints (v4-correct)
-            "transform-gpu",
-            "[will-change:transform]"
+            // ✅ Higher breakpoints (unchanged)
+            "sm:w-[min(58vw,340px)] sm:translate-y-[clamp(1rem,2vw,2rem)]",
+            "md:w-[min(26vw,260px)] md:translate-y-[clamp(1.5rem,3vw,2.5rem)]",
+            "lg:w-[min(24vw,360px)] lg:translate-y-[clamp(2rem,3.5vw,3rem)]",
+            "xl:w-[min(20vw,400px)] xl:translate-y-[clamp(1.75rem,3vw,2.75rem)]",
+            "2xl:w-[min(20vw,480px)] 2xl:translate-y-[clamp(2.25rem,4vw,3.25rem)]",
+            "3xl:w-[min(21.6vw,492px)] 3xl:translate-y-[clamp(1.5rem,3vw,3rem)]",
+
+            "transform-gpu [will-change:transform]"
           )}
-          sizes="(min-width:1280px) 560px,
-                 (min-width:1024px) 52vw,
-                 (min-width:768px) 60vw,
-                 (min-width:640px) 68vw,
-                 70vw"
+          sizes="
+            (min-width:1920px) 21.6vw,
+            (min-width:1536px) 20vw,
+            (min-width:1280px) 20vw,
+            (min-width:1024px) 24vw,
+            (min-width:768px) 26vw,
+            (min-width:640px) 58vw,
+            (min-width:480px) 66vw,
+            68vw
+          "
           loading="eager"
           fetchPriority="high"
           decoding="async"
           draggable={false}
-          aria-hidden="true"
         />
       )}
     </header>

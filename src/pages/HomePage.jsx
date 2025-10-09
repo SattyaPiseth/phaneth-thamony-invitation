@@ -64,7 +64,8 @@ export default function HomePage() {
           md:bg-yellow-300     
           lg:bg-green-300      
           xl:bg-blue-300      
-          2xl:bg-purple-300    
+          2xl:bg-purple-300  
+          3xl:bg-gray-300
         "
       >
         <p className="text-center text-xl font-semibold pt-10 text-white">
