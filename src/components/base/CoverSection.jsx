@@ -39,26 +39,60 @@ export default function CoverSection({
 
       <div className="flex w-full max-w-[clamp(440px,92vw,56rem)] flex-col items-center">
         <figure className="flex flex-col items-center" aria-labelledby="invite-caption">
-          <img
-            src={src}
-            alt=""
-            width={2016}
-            height={1453}
-            className={cn(
-              "block mx-auto h-auto select-none",
-              "aspect-[2016/1453]",
-              "w-[min(68vw,200px)] sm:w-[min(62vw,360px)] md:w-[min(56vw,300px)] lg:w-[min(48vw,250px)] xl:w-[min(68vw,250px)] 2xl:w-[min(62vw,300px)]",
-              "-translate-y-[var(--lift)]",
-              "max-[360px]:-translate-y-[clamp(0.25rem,2vw,1rem)]",
-              "transform-gpu [will-change:transform]"
-            )}
-            sizes="(min-width:1536px) 40vw,(min-width:1280px) 44vw,(min-width:1024px) 48vw,(min-width:768px) 56vw,(min-width:640px) 62vw,68vw"
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-            draggable={false}
-            aria-hidden="true"
-          />
+<img
+  src={src}
+  alt=""
+  width={2016}
+  height={1453}
+  className={cn(
+    "block mx-auto h-auto select-none",
+    "aspect-[2016/1453]",
+
+    // Monotonic responsive widths
+    "w-[min(64vw,280px)]",                // default (<480px)
+    "xs:w-[min(58vw,260px)]",             // ≥480px
+    "sm:w-[min(58vw,340px)]",             // ≥640px
+    "md:w-[min(28vw,280px)]",             // ≥768px
+    "lg:w-[min(22vw,300px)]",             // ≥1024px
+    "xl:w-[min(18vw,300px)]",             // ≥1280px — ✅ smaller refined scale
+    "2xl:w-[min(16vw,320px)]",            // ≥1536px
+    "3xl:w-[min(15vw,315px)]",            // ≥1792px
+
+    // Lift control
+    "-translate-y-[calc(var(--lift)*0.95)]",
+    "xs:-translate-y-[calc(var(--lift)*0.9)]",
+    "md:-translate-y-[calc(var(--lift)*0.6)]",
+    "lg:-translate-y-[calc(var(--lift)*0.55)]",
+    "xl:-translate-y-[calc(var(--lift)*0.45)]",   // ✅ smoother, lower
+    "2xl:-translate-y-[calc(var(--lift)*0.35)]",
+    "3xl:-translate-y-[calc(var(--lift)*0.3)]",
+
+    "max-[360px]:-translate-y-[clamp(0.25rem,2vw,1rem)]",
+    "transform-gpu [will-change:transform]"
+  )}
+  sizes="
+    (min-width:1792px) 15vw,
+    (min-width:1536px) 16vw,
+    (min-width:1280px) 18vw,
+    (min-width:1024px) 22vw,
+    (min-width:768px) 28vw,
+    (min-width:640px) 58vw,
+    (min-width:480px) 58vw,
+    64vw
+  "
+  loading="eager"
+  fetchPriority="high"
+  decoding="async"
+  draggable={false}
+  aria-hidden="true"
+/>
+
+
+
+
+
+
+
           <figcaption className="sr-only" id="invite-caption">
             ការអញ្ជើញពិសេសសម្រាប់ភ្ញៀវកិត្តិយស
           </figcaption>
@@ -67,6 +101,7 @@ export default function CoverSection({
         <div
           className={cn(
             "flex flex-col items-center",
+            // keep your gap rhythm; slightly denser on lg like Heading
             "gap-y-[calc(var(--ry)*0.8)] sm:gap-y-[var(--ry)] lg:gap-y-[calc(var(--ry)*0.5)] xl:gap-y-[calc(var(--ry)*0.6)]",
             "mt-[var(--gap-above-text)]"
           )}
@@ -112,7 +147,6 @@ export default function CoverSection({
               withRipple
             />
           </div>
-
         </div>
       </div>
     </section>
