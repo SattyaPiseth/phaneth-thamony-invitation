@@ -1,43 +1,59 @@
 export const config = { runtime: "edge" };
 
-const UUID_RX = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+const UUID_RX =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 const esc = (s = "") =>
-  s.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  s
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
 
 // Build/version used for social preview cache-busting (?v=...)
 const BUILD_ID =
-  (typeof process !== "undefined" && process.env && (process.env.VITE_BUILD_ID || process.env.BUILD_ID)) ||
+  (typeof process !== "undefined" &&
+    process.env &&
+    (process.env.VITE_BUILD_ID || process.env.BUILD_ID)) ||
   new Date().toISOString().replace(/[-:TZ.]/g, "").slice(0, 12);
 
 function withVersion(u, v = BUILD_ID) {
-  try { const url = new URL(u); url.searchParams.set("v", v); return url.toString(); }
-  catch { return `${u}${u.includes("?") ? "&" : "?"}v=${encodeURIComponent(v)}`; }
+  try {
+    const url = new URL(u);
+    url.searchParams.set("v", v);
+    return url.toString();
+  } catch {
+    return `${u}${u.includes("?") ? "&" : "?"}v=${encodeURIComponent(v)}`;
+  }
 }
 
 function noStoreHeaders() {
   return {
     "content-type": "text/html; charset=utf-8",
     "Cache-Control": "no-store, no-cache, must-revalidate",
-    "Vercel-CDN-Cache-Control": "max-age=0, s-maxage=0, stale-while-revalidate=0"
+    "Vercel-CDN-Cache-Control": "max-age=0, s-maxage=0, stale-while-revalidate=0",
   };
 }
 
 function render({
   title,
   description,
-  canonical,  // clean (no ?v) for SEO
-  ogUrl,      // versioned share URL for bots
-  image,      // versioned image URL for bots
+  canonical, // clean (no ?v) for SEO
+  ogUrl, // versioned share URL for bots
+  image, // versioned image URL for bots
   locale = "km_KH",
   ogType = "website",
   noindex = false,
   updatedTime,
-  jsonLd
+  jsonLd,
 }) {
-  const robots = noindex ? "noindex,nofollow,max-image-preview:large" : "index,follow,max-image-preview:large";
+  const robots = noindex
+    ? "noindex,nofollow,max-image-preview:large"
+    : "index,follow,max-image-preview:large";
   const secureImage = image.replace(/^http:\/\//i, "https://");
-  const jsonLdTag = jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : "";
+  const jsonLdTag = jsonLd
+    ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`
+    : "";
 
   return `<!doctype html>
 <html lang="km">
@@ -50,8 +66,12 @@ function render({
   <link rel="canonical" href="${canonical}" />
 
   <meta name="robots" content="${robots}" />
-  ${noindex ? `<meta name="googlebot" content="noindex, nofollow, noarchive" />
-  <meta name="bingbot" content="noindex, nofollow, noarchive" />` : ""}
+  ${
+    noindex
+      ? `<meta name="googlebot" content="noindex, nofollow, noarchive" />
+  <meta name="bingbot" content="noindex, nofollow, noarchive" />`
+      : ""
+  }
 
   <meta name="description" content="${esc(description)}" />
 
@@ -62,9 +82,13 @@ function render({
   <meta property="og:url" content="${ogUrl || canonical}" />
   <meta property="og:image" content="${image}" />
   <meta property="og:image:secure_url" content="${secureImage}" />
-  <meta property="og:site_name" content="kim & nary wedding" />
+  <meta property="og:site_name" content="Phaneth & Thamony Wedding" />
   <meta property="og:locale" content="${locale}" />
-  ${updatedTime ? `<meta property="og:updated_time" content="${updatedTime}" />` : ""}
+  ${
+    updatedTime
+      ? `<meta property="og:updated_time" content="${updatedTime}" />`
+      : ""
+  }
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -86,7 +110,9 @@ export default async function handler(req) {
 
   // Prefer production canonical host
   const base =
-    (typeof process !== "undefined" && process.env && process.env.VITE_SITE_URL) ||
+    (typeof process !== "undefined" &&
+      process.env &&
+      process.env.VITE_SITE_URL) ||
     `${url.protocol}//${url.host}`;
   const siteUrl = base.replace(/\/+$/, "");
   const defaultImage = `${siteUrl}/images/landscape-04.jpg`;
@@ -100,35 +126,63 @@ export default async function handler(req) {
     const ogUrl = withVersion(canonical);
     const imageV = withVersion(defaultImage);
 
-    const site = { "@context": "https://schema.org", "@type": "WebSite", name: "kim & nary wedding", url: canonical };
-    const org  = { "@context": "https://schema.org", "@type": "Organization", name: "kim & nary wedding", url: canonical, logo: defaultImage };
-
-    const eventDate = (typeof process !== "undefined" && process.env && process.env.VITE_EVENT_DATE) || undefined;
-    const event = eventDate ? ({
+    const site = {
       "@context": "https://schema.org",
-      "@type": "Event",
-      "@id": `${canonical}#wedding-event`,
-      name: "Kim & Nary Wedding",
-      startDate: eventDate,
-      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-      eventStatus: "https://schema.org/EventScheduled",
-      location: { "@type": "Place", name: "Phnom Penh", address: { "@type": "PostalAddress", addressLocality: "Phnom Penh", addressCountry: "KH" } },
-      image: [defaultImage],
-      description: "Welcome to the celebration — schedule, gallery, and RSVP.",
-      organizer: { "@type": "Organization", name: "Kim & Nary" }
-    }) : null;
+      "@type": "WebSite",
+      name: "Phaneth & Thamony Wedding",
+      url: canonical,
+    };
+    const org = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Phaneth & Thamony Wedding",
+      url: canonical,
+      logo: defaultImage,
+    };
+
+    const eventDate =
+      (typeof process !== "undefined" &&
+        process.env &&
+        process.env.VITE_EVENT_DATE) ||
+      undefined;
+    const event = eventDate
+      ? {
+          "@context": "https://schema.org",
+          "@type": "Event",
+          "@id": `${canonical}#wedding-event`,
+          name: "Phaneth & Thamony Wedding",
+          startDate: eventDate,
+          eventAttendanceMode:
+            "https://schema.org/OfflineEventAttendanceMode",
+          eventStatus: "https://schema.org/EventScheduled",
+          location: {
+            "@type": "Place",
+            name: "Phnom Penh",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Phnom Penh",
+              addressCountry: "KH",
+            },
+          },
+          image: [defaultImage],
+          description:
+            "Join us in celebrating love. Ceremony details, schedule, map, and RSVP.",
+          organizer: { "@type": "Organization", name: "Phaneth & Thamony" },
+        }
+      : null;
 
     return new Response(
       render({
-        title: "Home • kim & nary wedding",
-        description: "Welcome to the celebration — schedule, gallery, and RSVP.",
+        title: "Home • Phaneth & Thamony Wedding",
+        description:
+          "Join us in celebrating love. Ceremony details, schedule, map, and RSVP.",
         canonical,
-        ogUrl,             // versioned
-        image: imageV,     // versioned
+        ogUrl, // versioned
+        image: imageV, // versioned
         locale: "km_KH",
         ogType: "website",
         updatedTime: nowIso,
-        jsonLd: event ? [site, org, event] : [site, org]
+        jsonLd: event ? [site, org, event] : [site, org],
       }),
       { status: 200, headers: noStoreHeaders() }
     );
@@ -141,16 +195,16 @@ export default async function handler(req) {
     const imageV = withVersion(defaultImage);
     return new Response(
       render({
-        title: "Invitation • kim & nary wedding",
+        title: "Invitation • Phaneth & Thamony Wedding",
         description: "Private invitation for the ceremony.",
         canonical,
-        ogUrl,            // versioned
-        image: imageV,    // versioned
+        ogUrl, // versioned
+        image: imageV, // versioned
         locale: "km_KH",
         ogType: "website",
         updatedTime: nowIso,
         noindex: true,
-        jsonLd: null
+        jsonLd: null,
       }),
       { status: 200, headers: noStoreHeaders() }
     );
@@ -163,14 +217,15 @@ export default async function handler(req) {
     const imageV = withVersion(defaultImage);
     return new Response(
       render({
-        title: "kim & nary wedding",
-        description: "Welcome.",
+        title: "Phaneth & Thamony Wedding",
+        description:
+          "Join us in celebrating love. Ceremony details, schedule, map, and RSVP.",
         canonical,
-        ogUrl,          // versioned
-        image: imageV,  // versioned
+        ogUrl, // versioned
+        image: imageV, // versioned
         locale: "km_KH",
         ogType: "website",
-        updatedTime: nowIso
+        updatedTime: nowIso,
       }),
       { status: 200, headers: noStoreHeaders() }
     );
