@@ -31,16 +31,20 @@ export default function Heading({
             "block mx-auto h-auto select-none",
             "aspect-[414/207]",
 
-            // 🔻 Default (<480px): same width, slightly lower
+            // 🔻 Default (<480px)
             "w-[min(68vw,300px)] translate-y-[clamp(1rem,4vw,2rem)]",
             "[@media(max-width:340px)]:translate-y-[clamp(0.75rem,3.5vw,1.75rem)]",
 
             // ✅ XS (≥480px)
             "xs:w-[min(66vw,300px)] xs:translate-y-[clamp(1.25rem,3vw,2.25rem)]",
 
-            // ✅ Higher breakpoints (unchanged)
+            // ✅ SM (≥640px)
             "sm:w-[min(58vw,340px)] sm:translate-y-[clamp(1rem,2vw,2rem)]",
-            "md:w-[min(31vw,312px)] md:translate-y-[clamp(1.5rem,3vw,2.5rem)]",
+
+            // ✅ MD enlarged by ~36vw / 360px
+            "md:w-[min(36vw,360px)] md:translate-y-[clamp(1.5rem,3vw,2.5rem)]",
+
+            // ✅ Higher breakpoints unchanged
             "lg:w-[min(24vw,360px)] lg:translate-y-[clamp(2rem,3.5vw,3rem)]",
             "xl:w-[min(20vw,400px)] xl:translate-y-[clamp(1.75rem,3vw,2.75rem)]",
             "2xl:w-[min(20vw,480px)] 2xl:translate-y-[clamp(2.25rem,4vw,3.25rem)]",
@@ -53,7 +57,7 @@ export default function Heading({
             (min-width:1536px) 20vw,
             (min-width:1280px) 20vw,
             (min-width:1024px) 24vw,
-            (min-width:768px) 31vw,
+            (min-width:768px) 36vw,
             (min-width:640px) 58vw,
             (min-width:480px) 66vw,
             68vw
