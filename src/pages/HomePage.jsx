@@ -56,7 +56,7 @@ export default function HomePage() {
         <ParentsSection />
         </div>
         <DescriptionSection />
-      <div
+      {/* <div
         className="
           w-full h-screen
           bg-red-300           
@@ -71,7 +71,7 @@ export default function HomePage() {
         <p className="text-center text-xl font-semibold pt-10 text-white">
           Resize the window to see the background change
         </p>
-      </div> 
+      </div>  */}
       </div>
     </>
   );
