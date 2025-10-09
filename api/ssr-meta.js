@@ -5,11 +5,30 @@ const UUID_RX = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-
 const esc = (s = "") =>
   s.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 
+// Build/version used for social preview cache-busting (?v=...)
+const BUILD_ID =
+  (typeof process !== "undefined" && process.env && (process.env.VITE_BUILD_ID || process.env.BUILD_ID)) ||
+  new Date().toISOString().replace(/[-:TZ.]/g, "").slice(0, 12);
+
+function withVersion(u, v = BUILD_ID) {
+  try { const url = new URL(u); url.searchParams.set("v", v); return url.toString(); }
+  catch { return `${u}${u.includes("?") ? "&" : "?"}v=${encodeURIComponent(v)}`; }
+}
+
+function noStoreHeaders() {
+  return {
+    "content-type": "text/html; charset=utf-8",
+    "Cache-Control": "no-store, no-cache, must-revalidate",
+    "Vercel-CDN-Cache-Control": "max-age=0, s-maxage=0, stale-while-revalidate=0"
+  };
+}
+
 function render({
   title,
   description,
-  canonical,
-  image,
+  canonical,  // clean (no ?v) for SEO
+  ogUrl,      // versioned share URL for bots
+  image,      // versioned image URL for bots
   locale = "km_KH",
   ogType = "website",
   noindex = false,
@@ -40,7 +59,7 @@ function render({
   <meta property="og:type" content="${ogType}" />
   <meta property="og:title" content="${esc(title)}" />
   <meta property="og:description" content="${esc(description)}" />
-  <meta property="og:url" content="${canonical}" />
+  <meta property="og:url" content="${ogUrl || canonical}" />
   <meta property="og:image" content="${image}" />
   <meta property="og:image:secure_url" content="${secureImage}" />
   <meta property="og:site_name" content="kim & nary wedding" />
@@ -78,11 +97,12 @@ export default async function handler(req) {
   // HOME – indexable + JSON-LD
   if (path === "/") {
     const canonical = `${siteUrl}/`;
+    const ogUrl = withVersion(canonical);
+    const imageV = withVersion(defaultImage);
 
     const site = { "@context": "https://schema.org", "@type": "WebSite", name: "kim & nary wedding", url: canonical };
     const org  = { "@context": "https://schema.org", "@type": "Organization", name: "kim & nary wedding", url: canonical, logo: defaultImage };
 
-    // Optional event JSON-LD if provided at build time
     const eventDate = (typeof process !== "undefined" && process.env && process.env.VITE_EVENT_DATE) || undefined;
     const event = eventDate ? ({
       "@context": "https://schema.org",
@@ -103,46 +123,56 @@ export default async function handler(req) {
         title: "Home • kim & nary wedding",
         description: "Welcome to the celebration — schedule, gallery, and RSVP.",
         canonical,
-        image: defaultImage,
+        ogUrl,             // versioned
+        image: imageV,     // versioned
         locale: "km_KH",
         ogType: "website",
         updatedTime: nowIso,
         jsonLd: event ? [site, org, event] : [site, org]
       }),
-      { status: 200, headers: { "content-type": "text/html; charset=utf-8" } }
+      { status: 200, headers: noStoreHeaders() }
     );
   }
 
   // UUID – always private (noindex), generic preview, canonical → root
   if (UUID_RX.test(slug)) {
     const canonical = `${siteUrl}/`;
+    const ogUrl = withVersion(canonical);
+    const imageV = withVersion(defaultImage);
     return new Response(
       render({
         title: "Invitation • kim & nary wedding",
         description: "Private invitation for the ceremony.",
         canonical,
-        image: defaultImage,
+        ogUrl,            // versioned
+        image: imageV,    // versioned
         locale: "km_KH",
         ogType: "website",
         updatedTime: nowIso,
         noindex: true,
         jsonLd: null
       }),
-      { status: 200, headers: { "content-type": "text/html; charset=utf-8" } }
+      { status: 200, headers: noStoreHeaders() }
     );
   }
 
-  // Fallback (shouldn’t normally hit because SPA handles it)
-  return new Response(
-    render({
-      title: "kim & nary wedding",
-      description: "Welcome.",
-      canonical: `${siteUrl}/`,
-      image: defaultImage,
-      locale: "km_KH",
-      ogType: "website",
-      updatedTime: nowIso
-    }),
-    { status: 200, headers: { "content-type": "text/html; charset=utf-8" } }
-  );
+  // Fallback
+  {
+    const canonical = `${siteUrl}/`;
+    const ogUrl = withVersion(canonical);
+    const imageV = withVersion(defaultImage);
+    return new Response(
+      render({
+        title: "kim & nary wedding",
+        description: "Welcome.",
+        canonical,
+        ogUrl,          // versioned
+        image: imageV,  // versioned
+        locale: "km_KH",
+        ogType: "website",
+        updatedTime: nowIso
+      }),
+      { status: 200, headers: noStoreHeaders() }
+    );
+  }
 }
