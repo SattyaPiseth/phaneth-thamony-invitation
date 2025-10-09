@@ -100,7 +100,7 @@ export default function DescriptionSection({
             <p
               className="moul-regular text-pretty text-center
                         text-sm leading-7
-                        sm:text-lg sm:leading-8 lg:text-base xl:px-2
+                        sm:text-lg sm:leading-8 lg:text-base xl:px-2 xl:text-sm
                         text-[var(--secondary)]"
             >
               <time dateTime={eventDateIso} className="whitespace-nowrap">{khmerDateText}</time>
