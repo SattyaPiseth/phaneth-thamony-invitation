@@ -10,13 +10,13 @@ const STORY_VIDEOS = ["/videos/home.mp4"];
 const BGMUSIC = "/audio/special-someone-audio.mp3";
 
 const DEFAULT_BG = {
-  src: "/videos/background.mp4",
+  src: "/videos/homepage-background.mp4",
   poster: "/images/cover-page/background.png",
   loop: true,
 };
 
 const BG_BY_ROUTE = {
-  "/": { src: "/videos/background.mp4", poster: "/images/cover-page/background.png", loop: true },
+  "/": { src: "/videos/homepage-background.mp4", poster: "/images/cover-page/background.png", loop: true },
   "/home": { src: "/videos/homepage-background.mp4", poster: "/images/cover-page/background.png", loop: true },
 };
 
