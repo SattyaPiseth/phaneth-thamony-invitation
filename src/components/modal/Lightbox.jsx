@@ -331,11 +331,11 @@ export const Lightbox = ({
             </AnimatePresence>
 
             {/* Subtle loading overlay */}
-            {isLoading && (
+            {/* {isLoading && (
               <div className="absolute inset-0 grid place-items-center">
                 <div className="animate-pulse rounded-full bg-white/20 w-10 h-10 backdrop-blur-sm" />
               </div>
-            )}
+            )} */}
 
             {/* Close button: top-end of the image box */}
             <button
