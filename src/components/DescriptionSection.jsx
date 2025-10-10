@@ -5,7 +5,6 @@ import { MasonryGallery } from "./gallery/MasonryGallery";
 import { Lightbox } from "./modal/Lightbox";
 
 import { GALLERY_IMAGES } from "../data/galleryImages";
-import google_map_icon from "/images/google-maps.png";
 import morning_event_image from "/images/home-page/agenda/agenda-01.png";
 import { GratitudeSection } from "./GratitudeSection";
 import { PromoteSection } from "./PromoteSection";
@@ -176,7 +175,7 @@ export default function DescriptionSection({
             </a> */}
             <AnimatedActionButton
               variant="bare"        
-              src="/images/home-page/map/location-button.png"
+              src="/images/home-page/map/location-button-01.png"
               ariaLabel="បើកផែនទី"
               imgClassName="relative block mx-auto w-[70%] object-contain"
               withShine={true}
