@@ -86,8 +86,8 @@ export default function ParentsSection({
           "text-[0.65rem]",       // Slightly larger font for the base
           "sm:text-[0.875rem]",   // For small screens
           "md:text-[0.925rem]",   // Slight increase for medium screens
-          "lg:text-[1rem]",       // Refined font size for large screens
-          "xl:text-[1rem]",       // Keep it consistent at XL
+          "lg:text-[0.65rem]",       // Refined font size for large screens
+          "xl:text-[0.65rem]",       // Keep it consistent at XL
           "2xl:text-[1.1rem]",    // Increase slightly for wide screens
           "min-[1920px]:text-[1.15rem]", // Slightly larger on UHD
 
