@@ -156,7 +156,7 @@ export default function DescriptionSection({
             </section>
 
 
-              {/* Full-bleed image inside SoftCard */}
+            {/* Full-bleed image inside SoftCard */}
             <div className="-mx-2 sm:-mx-7 md:-mx-8 my-5 overflow-hidden rounded-lg" data-aos="fade-up">
               <div className="relative w-full aspect-[3/4]">
                 <img
@@ -171,9 +171,6 @@ export default function DescriptionSection({
                 />
               </div>
             </div>
-
-
-
 
             {/* map button — bigger tap target on mobile */}
             {/* <a
