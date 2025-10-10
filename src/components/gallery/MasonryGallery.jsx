@@ -4,10 +4,10 @@ import MasonryImage from "./MasonryImage";
 export function MasonryGallery({ images, onOpen }) {
   return (
     <section
-      className="columns-2 gap-x-4 md:columns-4 content-visibility-auto"
+      className="grid grid-cols-1 gap-x-4 content-visibility-auto"
       style={{ contain: "layout style paint", containIntrinsicSize: "1px 1000px" }}
       data-aos="fade-up"
-      data-aos-anchor-placement="center-bottom"
+      data-aos-anchor-placement="top-bottom"
     >
       {images.map((img, i) => (
         <MasonryImage
