@@ -37,7 +37,7 @@ export default function CoverSection({
         ការអញ្ជើញចូលរួមពិធីអាពាហ៍ពិពាហ៍
       </h2>
 
-      <div className="flex w-full max-w-[clamp(440px,92vw,56rem)] flex-col items-center">
+      <div className="flex w/full max-w-[clamp(440px,92vw,56rem)] flex-col items-center xl:-translate-y-[calc(var(--ry)*0.5)] 2xl:-translate-y-[calc(var(--ry)*0.4)] transform-gpu">
         <figure className="flex flex-col items-center" aria-labelledby="invite-caption">
       <img
         src={src}
@@ -54,7 +54,7 @@ export default function CoverSection({
           "sm:w-[min(58vw,340px)]",             // ≥640px
           "md:w-[min(28vw,280px)]",             // ≥768px
           "lg:w-[min(22vw,300px)]",             // ≥1024px
-          "xl:w-[min(18vw,300px)]",             // ≥1280px — ✅ smaller refined scale
+          "xl:w-[min(18vw,200px)]",             // ≥1280px — ✅ smaller refined scale
           "2xl:w-[min(16vw,320px)]",            // ≥1536px
           "3xl:w-[min(15vw,315px)]",            // ≥1792px
 
@@ -63,9 +63,10 @@ export default function CoverSection({
           "xs:-translate-y-[calc(var(--lift)*0.9)]",
           "md:-translate-y-[calc(var(--lift)*0.6)]",
           "lg:-translate-y-[calc(var(--lift)*0.55)]",
-          "xl:-translate-y-[calc(var(--lift)*0.45)]",   // ✅ smoother, lower
-          "2xl:-translate-y-[calc(var(--lift)*0.35)]",
-          "3xl:-translate-y-[calc(var(--lift)*0.3)]",
+          "xl:-translate-y-[calc(var(--lift)*0.7)]",     // ✅ stronger lift on large desktop
+          "2xl:-translate-y-[calc(var(--lift)*0.6)]",    // still elegant
+          "3xl:-translate-y-[calc(var(--lift)*0.5)]",    // slightly less for ultra-wide
+
 
           "max-[360px]:-translate-y-[clamp(0.25rem,2vw,1rem)]",
           "transform-gpu [will-change:transform]"
@@ -97,8 +98,8 @@ export default function CoverSection({
           className={cn(
             "flex flex-col items-center",
             // keep your gap rhythm; slightly denser on lg like Heading
-            "gap-y-[calc(var(--ry)*0.8)] sm:gap-y-[var(--ry)] lg:gap-y-[calc(var(--ry)*0.5)] xl:gap-y-[calc(var(--ry)*0.6)]",
-            "mt-[var(--gap-above-text)]"
+            "gap-y-[calc(var(--ry)*0.8)] sm:gap-y-[var(--ry)] lg:gap-y-[calc(var(--ry)*0.5)] xl:gap-y-[calc(var(--ry)*0.3)] 2xl:gap-y-[calc(var(--ry)*0.5)] 3xl:gap-y-[calc(var(--ry)*0.6)]",
+            "mt-[var(--gap-above-text)] xl:-translate-y-[calc(var(--ry)*0.3)] 2xl:-translate-y-[calc(var(--ry)*0.3)] 3xl:-translate-y-[calc(var(--ry)*0)] transform-gpu [will-change:transform]"
           )}
         >
           {showPersonalized && (
@@ -133,7 +134,7 @@ export default function CoverSection({
             <CustomerNameInline />
           )}
 
-          <div className="mt-[calc(var(--ry)*1.25)] lg:mt-[calc(var(--ry)*0.3)] xl:mt-[calc(var(--ry)*0.5)] 2xl:mt-[calc(var(--ry)*0)]">
+        <div className="mt-[calc(var(--ry)*1.25)] lg:mt-[calc(var(--ry)*0.3)] xl:mt-[calc(var(--ry)*0.25)] 2xl:mt-[calc(var(--ry)*0.30)]">
             <AnimatedActionButton
               onStart={onStart}
               src="/images/border-styles/border-button.avif"
