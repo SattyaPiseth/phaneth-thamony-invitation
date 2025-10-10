@@ -149,11 +149,28 @@ export default function DescriptionSection({
             </div>
 
             {/* Countdown */}
-            <section className="mt-6 flex flex-col items-center justify-center gap-3 text-3xl text-[var(--primary)] my-[8vh]">
+            <section className="mt-6 flex flex-col items-center justify-center gap-3 text-3xl text-[var(--primary)] ">
               <h3 className="great-vibes-regular tracking-wide">Save The Date</h3>
               <p className="great-vibes-regular text-xl tracking-wider">Phaneth&amp;Thamony Wedding</p>
               <Countdown target={eventDateIso} ariaLabel={countdownLabel} />
             </section>
+
+
+              {/* Full-bleed image inside SoftCard */}
+            <div className="-mx-2 sm:-mx-7 md:-mx-8 my-5 overflow-hidden rounded-lg" data-aos="fade-up">
+              <div className="relative w-full aspect-[3/4]">
+                <img
+                  src="/images/home-page/gallary/portrait-03.jpg"
+                  alt="image"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                  draggable={false}
+                  width="1200"
+                  height="1600"
+                />
+              </div>
+            </div>
 
 
 
