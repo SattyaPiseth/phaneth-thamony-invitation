@@ -5,7 +5,7 @@ import { MasonryGallery } from "./gallery/MasonryGallery";
 import { Lightbox } from "./modal/Lightbox";
 
 import { GALLERY_IMAGES } from "../data/galleryImages";
-import morning_event_image from "/images/home-page/agenda/agenda-01.png";
+import morning_event_image from "/images/home-page/agenda/agenda-01.avif";
 import { GratitudeSection } from "./GratitudeSection";
 import { PromoteSection } from "./PromoteSection";
 import Discussion from "./comment/Discussion";
@@ -138,7 +138,7 @@ export default function DescriptionSection({
             {/* Bigger English gratitude image */}
             <div className="mx-auto my-[2vh] max-w-screen-md flex justify-center">
               <img
-                src="/images/home-page/gratitude/gratitude-english.png"
+                src="/images/home-page/gratitude/gratitude-english.avif"
                 alt="Gratitude in English"
                 className="w-[clamp(20rem,90vw,50rem)] h-auto object-contain"
                 loading="lazy"
