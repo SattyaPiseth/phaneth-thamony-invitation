@@ -157,7 +157,7 @@ export default function DescriptionSection({
 
             
               {/* Full-bleed image inside SoftCard */}
-              <div className="-mx-2 sm:-mx-7 md:-mx-8 my-5 overflow-hidden rounded-lg" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+              <div className="-mx-2 sm:-mx-7 md:-mx-8 my-[5vh] overflow-hidden rounded-lg" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
                 <div className="relative w-full aspect-[3/4]">
                   <img
                     src="/images/home-page/gallary/portrait-03.jpg"
