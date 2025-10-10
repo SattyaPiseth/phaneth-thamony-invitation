@@ -9,8 +9,6 @@
       "dest": "/$1"
     },
 
-    { "src": "^/memora-logo\\.jpg$", "headers": { "Cache-Control": "public, max-age=31536000, immutable" }, "dest": "/memora-logo.jpg" },
-
     {
       "src": "^/api/.*$",
       "headers": {
