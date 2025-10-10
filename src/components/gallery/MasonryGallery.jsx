@@ -14,7 +14,7 @@ export function MasonryGallery({ images, onOpen }) {
           data={img}
           index={i}
           onOpen={onOpen}
-          eager={i < 5}   // only first 3 images are eager/high
+          eager={i < 3}   // only first 3 images are eager/high
         />
       ))}
     </section>

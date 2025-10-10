@@ -16,14 +16,17 @@ function useScrollLock(locked) {
     if (!locked) return;
     const docEl = document.documentElement;
     const prevOverflow = docEl.style.overflow;
+    const prevOverflowY = docEl.style.overflowY;
     const prevPaddingRight = docEl.style.paddingRight;
 
     const scrollBar = window.innerWidth - docEl.clientWidth;
     docEl.style.overflow = "hidden";
+    docEl.style.overflowY = "hidden";
     if (scrollBar > 0) docEl.style.paddingRight = `${scrollBar}px`;
 
     return () => {
       docEl.style.overflow = prevOverflow;
+      docEl.style.overflowY = prevOverflowY;
       docEl.style.paddingRight = prevPaddingRight;
     };
   }, [locked]);
@@ -73,6 +76,15 @@ export const Lightbox = ({
     const h = el.naturalHeight;
     if (w && h) setIsPortrait(h > w);
   }, []);
+
+
+  useEffect(() => {
+  const el = document.documentElement;
+  el.setAttribute("data-lightbox-open", "1");
+  return () => el.removeAttribute("data-lightbox-open");
+}, []);
+
+
   useEffect(() => {
     setIsPortrait(false);
     const t = requestAnimationFrame(handleImageReady);
@@ -249,10 +261,7 @@ export const Lightbox = ({
       aria-describedby={descId}
       tabIndex={-1}
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-3 sm:p-4 md:p-6"
-      onMouseDown={(e) => {
-        if (e.target === e.currentTarget) onClose?.();
-      }}
-      onTouchStart={(e) => {
+      onPointerDown={(e) => {
         if (e.target === e.currentTarget) onClose?.();
       }}
     >
@@ -283,6 +292,7 @@ export const Lightbox = ({
             drag={reduceMotion ? false : "x"}
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.12}
+            style={{ touchAction: "pan-y" }}
             onDragEnd={(_, info) => {
               if (busy || isLoading) return; // respect debounce & decoding
               if (info.offset.x > swipeThreshold) {

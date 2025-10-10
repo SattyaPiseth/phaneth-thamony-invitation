@@ -95,6 +95,22 @@ export default function App() {
     }
   }, [unlocked, muted]);
 
+  // Skip AOS work while Lightbox is open
+  const lightboxOpen = () =>
+    typeof document !== "undefined" &&
+    document.documentElement.getAttribute("data-lightbox-open") === "1";
+
+  const aosSafeRefresh = () => {
+    if (!aosReadyRef.current || lightboxOpen()) return;
+    try { aosRef.current.refresh(); } catch {}
+  };
+
+  const aosSafeRefreshHard = () => {
+    if (!aosReadyRef.current || lightboxOpen()) return;
+    try { aosRef.current.refreshHard(); } catch {}
+  };
+
+
   // One-time unlock on first interaction
   useEffect(() => {
     const onFirstInteract = () => primeAudio();
@@ -128,9 +144,7 @@ export default function App() {
         aosReadyRef.current = true;
         // one more hard refresh after CSS/fonts/images likely settle
         setTimeout(() => {
-          try {
-            aosRef.current.refreshHard();
-          } catch {}
+          aosSafeRefreshHard(); // one-time after init
         }, 200);
       });
     })();
@@ -143,27 +157,11 @@ export default function App() {
   useEffect(() => {
     const raf = requestAnimationFrame(() => {
       if (aosReadyRef.current) {
-        try {
-          aosRef.current.refreshHard();
-        } catch {}
+        aosSafeRefresh();
       }
     });
     return () => cancelAnimationFrame(raf);
   }, [pathname]);
-
-  // keep offsets fresh if content resizes after load
-  useEffect(() => {
-    if (!("ResizeObserver" in window)) return;
-    const ro = new ResizeObserver(() => {
-      if (aosReadyRef.current) {
-        try {
-          aosRef.current.refreshHard();
-        } catch {}
-      }
-    });
-    ro.observe(document.body);
-    return () => ro.disconnect();
-  }, []);
 
   // Clear background override on route change
   useEffect(() => setBgOverride(null), [pathname]);
@@ -255,9 +253,7 @@ export default function App() {
     const el = videoRef.current;
     if (!el || !aosReadyRef.current) return;
     const onLoaded = () => {
-      try {
-        aosRef.current.refreshHard();
-      } catch {}
+      aosSafeRefresh();
     };
     el.addEventListener("loadeddata", onLoaded);
     el.addEventListener("loadedmetadata", onLoaded);
