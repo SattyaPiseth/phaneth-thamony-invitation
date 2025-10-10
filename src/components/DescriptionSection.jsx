@@ -148,6 +148,16 @@ export default function DescriptionSection({
               />
             </div>
 
+            {/* Countdown */}
+            <section className="mt-6 flex flex-col items-center justify-center gap-3 text-3xl text-[var(--primary)] my-[8vh]">
+              <h3 className="great-vibes-regular tracking-wide">Save The Date</h3>
+              <p className="great-vibes-regular text-xl tracking-wider">Phaneth&amp;Thamony Wedding</p>
+              <Countdown target={eventDateIso} ariaLabel={countdownLabel} />
+            </section>
+
+
+
+
             {/* map button — bigger tap target on mobile */}
             {/* <a
               href={mapHref}
@@ -215,12 +225,6 @@ export default function DescriptionSection({
           <img src={afternoon_event_image} alt="Afternoon event" loading="lazy" decoding="async" />
         </figure> */}
 
-        {/* Countdown */}
-        <section className="mt-6 flex flex-col items-center justify-center gap-3 text-3xl text-[var(--primary)]">
-          <h3 className="great-vibes-regular tracking-wide">Save The Date</h3>
-          <p className="great-vibes-regular text-xl tracking-wider">Phaneth&amp;Thamony Wedding</p>
-          <Countdown target={eventDateIso} ariaLabel={countdownLabel} />
-        </section>
 
         {/* Gallery */}
         <h3 className="moul-regular text-base mt-6 text-[var(--primary)]">កម្រងរូបភាព</h3>
