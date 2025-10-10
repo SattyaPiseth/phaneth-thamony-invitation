@@ -52,7 +52,8 @@ export default function PlayMusic({
           aria-hidden="true"
           className="h-5 w-5"
           decoding="async"
-          loading="eager"
+          loading="lazy"
+          title="open music"
         />
       ) : (
         <img
@@ -61,7 +62,8 @@ export default function PlayMusic({
           aria-hidden="true"
           className="h-5 w-5"
           decoding="async"
-          loading="eager"
+          loading="lazy"
+          title="sound on"
         />
       )}
 
