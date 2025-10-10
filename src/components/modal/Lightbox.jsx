@@ -49,7 +49,13 @@ export const Lightbox = ({
   const count = images.length;
   if (!count) return null;
 
-  const { src, alt } = useImageSrc(images, index);
+  // Current target source/alt for this index
+  const incoming = useImageSrc(images, index);
+
+  // The image actually displayed (only updated after decode())
+  const [shownSrc, setShownSrc] = useState(incoming.src);
+  const [shownAlt, setShownAlt] = useState(incoming.alt);
+  const [isLoading, setIsLoading] = useState(false);
 
   const backdropRef = useRef(null);
   const imgRef = useRef(null);
@@ -58,7 +64,7 @@ export const Lightbox = ({
   const headingId = useId();
   const descId = useId();
 
-  // Orientation detection
+  // Orientation detection (based on shown image)
   const [isPortrait, setIsPortrait] = useState(false);
   const handleImageReady = useCallback(() => {
     const el = imgRef.current;
@@ -71,24 +77,53 @@ export const Lightbox = ({
     setIsPortrait(false);
     const t = requestAnimationFrame(handleImageReady);
     return () => cancelAnimationFrame(t);
-  }, [src, handleImageReady]);
+  }, [shownSrc, handleImageReady]);
+
+  // Decode-before-swap
+  useEffect(() => {
+    let cancelled = false;
+    if (!incoming.src) return;
+
+    setIsLoading(true);
+    const img = new Image();
+    img.decoding = "async";
+    img.loading = "eager";
+    img.src = incoming.src;
+
+    (async () => {
+      try {
+        if (img.decode) await img.decode();
+      } catch {
+        // ignore decode errors; still swap
+      }
+      if (!cancelled) {
+        setShownSrc(incoming.src);
+        setShownAlt(incoming.alt);
+        requestAnimationFrame(() => setIsLoading(false));
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [incoming.src, incoming.alt]);
 
   // Direction of travel: -1 prev, +1 next
   const dirRef = useRef(0);
 
   // Debounce to prevent spam clicking during transition
   const [busy, setBusy] = useState(false);
-  const transitionMs = 280; // keep in sync with 'transition' below
+  const transitionMs = 280; // keep in sync with transition below
 
   const safePrev = () => {
-    if (busy) return;
+    if (busy || isLoading) return;
     setBusy(true);
     dirRef.current = -1;
     onPrev?.();
     setTimeout(() => setBusy(false), transitionMs);
   };
   const safeNext = () => {
-    if (busy) return;
+    if (busy || isLoading) return;
     setBusy(true);
     dirRef.current = 1;
     onNext?.();
@@ -98,7 +133,7 @@ export const Lightbox = ({
   // Lock background scroll while open
   useScrollLock(true);
 
-  // Ensure the focus trap actually traps: focus the backdrop
+  // Focus the backdrop for the trap to work
   useEffect(() => {
     backdropRef.current?.focus();
   }, []);
@@ -141,7 +176,7 @@ export const Lightbox = ({
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [onClose]); // safePrev/safeNext are stable enough for this scope
+  }, [onClose, isLoading, busy]);
 
   // Simple focus trap
   useEffect(() => {
@@ -249,7 +284,7 @@ export const Lightbox = ({
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.12}
             onDragEnd={(_, info) => {
-              if (busy) return; // respect debounce
+              if (busy || isLoading) return; // respect debounce & decoding
               if (info.offset.x > swipeThreshold) {
                 dirRef.current = -1;
                 safePrev();
@@ -266,10 +301,12 @@ export const Lightbox = ({
               mode="wait"
             >
               <motion.img
-                key={src} // re-mount on src change
+                key={shownSrc} // re-mount only when decoded
                 ref={imgRef}
-                src={src}
-                alt={alt}
+                src={shownSrc}
+                alt={shownAlt}
+                fetchPriority="high"
+                decoding="async"
                 onLoad={handleImageReady}
                 custom={dirRef.current}
                 variants={variants}
@@ -284,6 +321,7 @@ export const Lightbox = ({
                     : "max-h-[82svh] sm:max-h-[86svh] md:max-h-[88svh] max-w-[94vw] sm:max-w-[92vw] md:max-w-[90vw] w-auto h-auto",
                 ].join(" ")}
                 draggable={false}
+                sizes="(max-width: 640px) 94vw, (max-width: 1024px) 92vw, 90vw"
                 style={{
                   backfaceVisibility: "hidden",
                   WebkitFontSmoothing: "antialiased",
@@ -292,17 +330,24 @@ export const Lightbox = ({
               />
             </AnimatePresence>
 
+            {/* Subtle loading overlay */}
+            {isLoading && (
+              <div className="absolute inset-0 grid place-items-center">
+                <div className="animate-pulse rounded-full bg-white/20 w-10 h-10 backdrop-blur-sm" />
+              </div>
+            )}
+
             {/* Close button: top-end of the image box */}
             <button
               ref={closeBtnRef}
               type="button"
               onClick={onClose}
               className="absolute top-2 end-2 z-10 rounded-full
-             bg-black/40 text-white backdrop-blur-md
-             p-2 sm:p-2.5 md:p-3
-             shadow-lg shadow-black/30
-             hover:bg-black/50
-             focus:outline-none focus-visible:ring-2"
+                         bg-black/40 text-white backdrop-blur-md
+                         p-2 sm:p-2.5 md:p-3
+                         shadow-lg shadow-black/30
+                         hover:bg-black/50
+                         focus:outline-none focus-visible:ring-2"
               aria-label="Close"
             >
               <XIcon />
@@ -313,7 +358,7 @@ export const Lightbox = ({
           <button
             type="button"
             onClick={safePrev}
-            disabled={count <= 1 || busy}
+            disabled={count <= 1 || busy || isLoading}
             className={[
               "absolute top-1/2 -translate-y-1/2 rounded-full bg-white/10 text-white backdrop-blur",
               "hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500",
@@ -331,7 +376,7 @@ export const Lightbox = ({
           <button
             type="button"
             onClick={safeNext}
-            disabled={count <= 1 || busy}
+            disabled={count <= 1 || busy || isLoading}
             className={[
               "absolute top-1/2 -translate-y-1/2 rounded-full bg-white/10 text-white backdrop-blur",
               "hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500",
@@ -351,7 +396,6 @@ export const Lightbox = ({
             id={descId}
             className={[
               "pointer-events-none absolute inset-x-0 bottom-0 text-center text-neutral-100",
-              
               isPortrait
                 ? "text-sm sm:text-base px-3 py-3 sm:px-4 sm:py-3.5"
                 : "text-xs sm:text-sm md:text-base px-3 py-2 sm:px-4 sm:py-2.5",
