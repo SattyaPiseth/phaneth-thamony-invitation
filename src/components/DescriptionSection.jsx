@@ -44,9 +44,9 @@ export default function DescriptionSection({
              xs:py-4 sm:py-8 
              md:px-[clamp(1.5rem,6vw,10rem)] 
              lg:px-[clamp(2rem,8vw,12rem)] 
-             xl:px-[clamp(2rem,10vw,17rem)]  
+             xl:px-[clamp(2rem,10vw,17rem)]
              2xl:px-[clamp(5rem,10vw,11rem)] 
-             3xl:px-[clamp(8rem,3vw,24rem)]"
+             3xl:px-[clamp(5rem,6vw,14rem)]"
       data-aos="fade-up"
     >
       <SoftCard>
