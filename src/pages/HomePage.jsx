@@ -82,7 +82,7 @@ export default function HomePage() {
             sm:-mt-[clamp(0.5rem,3vw,1.25rem)]
             md:-mt-[clamp(0.5rem,2.5vw,1.25rem)]
             lg:-mt-[clamp(0.75rem,2vw,1.25rem)] 
-            xl:-mt-[clamp(1rem,2.25vw,1.5rem)] 
+            xl:-mt-[clamp(1rem,2.25vw,1.5rem)]
             2xl:-mt-[clamp(1.25rem,2.5vw,2rem)]
             3xl:-mt-[clamp(1.5rem,3vw,2.25rem)]
           `}
