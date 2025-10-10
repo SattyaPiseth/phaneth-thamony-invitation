@@ -124,7 +124,7 @@ export default function DescriptionSection({
             </p>
 
             {/* Divider (slightly wider than before but still modest) */}
-            <div className="flex justify-center mt-[1vh]">
+            <div className="flex justify-center mt-[1vh]" data-aos="fade-up">
               <img
                 className="w-[clamp(10rem,40vw,15rem)] max-w-screen-md"
                 src="/images/border-styles/divider.avif"
@@ -136,7 +136,7 @@ export default function DescriptionSection({
             </div>
 
             {/* Bigger English gratitude image */}
-            <div className="mx-auto my-[2vh] max-w-screen-md flex justify-center">
+            <div className="mx-auto my-[2vh] max-w-screen-md flex justify-center" data-aos="fade-up">
               <img
                 src="/images/home-page/gratitude/gratitude-english.avif"
                 alt="Gratitude in English"
@@ -149,28 +149,28 @@ export default function DescriptionSection({
             </div>
 
             {/* Countdown */}
-            <section className="mt-6 flex flex-col items-center justify-center gap-3 text-3xl text-[var(--primary)] ">
+            <section className="mt-6 flex flex-col items-center justify-center gap-3 text-3xl text-[var(--primary)] " data-aos="fade-up">
               <h3 className="great-vibes-regular tracking-wide">Save The Date</h3>
               <p className="great-vibes-regular text-xl tracking-wider">Phaneth&amp;Thamony Wedding</p>
               <Countdown target={eventDateIso} ariaLabel={countdownLabel} />
             </section>
 
-
-            {/* Full-bleed image inside SoftCard */}
-            <div className="-mx-2 sm:-mx-7 md:-mx-8 my-5 overflow-hidden rounded-lg" data-aos="fade-up">
-              <div className="relative w-full aspect-[3/4]">
-                <img
-                  src="/images/home-page/gallary/portrait-03.jpg"
-                  alt="image"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                  draggable={false}
-                  width="1200"
-                  height="1600"
-                />
+            
+              {/* Full-bleed image inside SoftCard */}
+              <div className="-mx-2 sm:-mx-7 md:-mx-8 my-5 overflow-hidden rounded-lg" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+                <div className="relative w-full aspect-[3/4]">
+                  <img
+                    src="/images/home-page/gallary/portrait-03.jpg"
+                    alt="image"
+                    className="absolute inset-0 w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                    draggable={false}
+                    width="1200"
+                    height="1600"
+                  />
+                </div>
               </div>
-            </div>
 
             {/* map button — bigger tap target on mobile */}
             {/* <a
