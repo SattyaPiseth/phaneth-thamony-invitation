@@ -137,6 +137,9 @@ export default function App() {
           duration: 800,
           easing: "ease-in-out",
           once: true,
+          // disable: "phone",
+          throttleDelay: 150,
+          debounceDelay: 100,   
           disable: () =>
             typeof window !== "undefined" &&
             window.matchMedia?.("(prefers-reduced-motion: reduce)").matches,
@@ -144,8 +147,10 @@ export default function App() {
         aosReadyRef.current = true;
         // one more hard refresh after CSS/fonts/images likely settle
         setTimeout(() => {
-          aosSafeRefreshHard(); // one-time after init
-        }, 200);
+          const rIC = window.requestIdleCallback || ((cb) => setTimeout(cb, 120));
+          rIC(() => aosSafeRefreshHard());
+        }, 300);
+
       });
     })();
     return () => {

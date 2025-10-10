@@ -9,6 +9,8 @@ export default function MasonryImage({ data, index, onOpen, eager = false }) {
       onClick={() => onOpen?.(index)}
       className="mb-4 block w-full break-inside-avoid rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
       aria-label={alt}
+      style={{ aspectRatio: `${width} / ${height}` }}
+
     >
       <img
         src={src}

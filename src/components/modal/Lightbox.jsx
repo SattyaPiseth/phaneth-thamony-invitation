@@ -150,26 +150,48 @@ export const Lightbox = ({
     backdropRef.current?.focus();
   }, []);
 
-  // Preload neighbor images for smoother transitions
+  // // Preload neighbor images for smoother transitions
+  // useEffect(() => {
+  //   const preload = (url) => {
+  //     if (!url) return;
+  //     const img = new Image();
+  //     img.decoding = "async";
+  //     img.loading = "eager";
+  //     img.src = url;
+  //   };
+
+  //   if (!count) return;
+
+  //   const nextIdx = (index + 1) % count;
+  //   const prevIdx = (index - 1 + count) % count;
+
+  //   const getSrc = (item) => (typeof item === "string" ? item : item?.src);
+
+  //   preload(getSrc(images[nextIdx]));
+  //   preload(getSrc(images[prevIdx]));
+  // }, [index, images, count]);
+
+ // Preload only the NEXT image, and only when the browser is idle
   useEffect(() => {
-    const preload = (url) => {
-      if (!url) return;
+    if (!count) return;
+    const nextIdx = (index + 1) % count;
+    const getSrc = (item) => (typeof item === "string" ? item : item?.src);
+    const nextUrl = getSrc(images[nextIdx]);
+    if (!nextUrl) return;
+
+    const rIC = window.requestIdleCallback || ((cb) => setTimeout(cb, 120));
+    const cancelRIC = window.cancelIdleCallback || clearTimeout;
+    const id = rIC(() => {
       const img = new Image();
       img.decoding = "async";
-      img.loading = "eager";
-      img.src = url;
-    };
-
-    if (!count) return;
-
-    const nextIdx = (index + 1) % count;
-    const prevIdx = (index - 1 + count) % count;
-
-    const getSrc = (item) => (typeof item === "string" ? item : item?.src);
-
-    preload(getSrc(images[nextIdx]));
-    preload(getSrc(images[prevIdx]));
+      // don't force eager here; let the browser schedule
+      img.src = nextUrl;
+    });
+    return () => cancelRIC(id);
   }, [index, images, count]);
+
+
+
 
   // Global key handlers with direction
   useEffect(() => {

@@ -5,6 +5,7 @@ export function MasonryGallery({ images, onOpen }) {
   return (
     <section
       className="columns-2 gap-x-4 md:columns-4 content-visibility-auto"
+      style={{ contain: "layout style paint", containIntrinsicSize: "1px 1000px" }}
       data-aos="fade-up"
       data-aos-anchor-placement="center-bottom"
     >
