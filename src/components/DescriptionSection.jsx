@@ -144,6 +144,7 @@ export default function DescriptionSection({
                 loading="lazy"
                 decoding="async"
                 sizes="(max-width: 768px) 90vw, 800px"
+                title="Gratitude in English"
               />
             </div>
 
@@ -186,7 +187,7 @@ export default function DescriptionSection({
             />
 
             {/* map embed */}
-            <img src="/images/home-page/map/map.png" alt="map image" className="rounded-md shadow-sm mx-auto" data-aos="flip-left"/>
+            <img src="/images/home-page/map/map.png" alt="Map of the Location" className="rounded-md shadow-sm mx-auto" data-aos="flip-left" loading="lazy" title="Map of the Location"/>
             {/* <div
               className="w-full aspect-video rounded-md overflow-hidden shadow-sm
                         mt-2 sm:mt-3"

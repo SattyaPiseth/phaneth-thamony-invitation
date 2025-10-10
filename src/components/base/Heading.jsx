@@ -24,7 +24,7 @@ export default function Heading({
       {!isStoryPlaying && (
         <img
           src={src}
-          alt=""
+          alt="Cover page heading"
           width={414}
           height={207}
           className={cn(
@@ -62,10 +62,11 @@ export default function Heading({
             (min-width:480px) 66vw,
             68vw
           "
-          loading="eager"
+          loading="lazy"
           fetchPriority="high"
           decoding="async"
           draggable={false}
+          title="Cover page heading"
         />
       )}
     </header>
