@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <>
-        <ScrollRestoration getKey={(loc) => loc.pathname + loc.search} />
+        {/* <ScrollRestoration getKey={(loc) => loc.pathname + loc.search} /> */}
         <App />
       </>
     ),
