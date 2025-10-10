@@ -5,7 +5,7 @@ const cn = (...parts) => parts.filter(Boolean).join(" ");
 export default function Heading({
   isStoryPlaying = false,
   className = "",
-  src = "/images/cover-page/heading-cover-page-01.png",
+  src = "/images/cover-page/heading-cover-page-01.avif",
 }) {
   return (
     <header

@@ -127,7 +127,7 @@ export default function DescriptionSection({
             <div className="flex justify-center mt-[1vh]">
               <img
                 className="w-[clamp(10rem,40vw,15rem)] max-w-screen-md"
-                src="/images/border-styles/divider.png"
+                src="/images/border-styles/divider.avif"
                 alt="Divider Image"
                 loading="lazy"
                 decoding="async"

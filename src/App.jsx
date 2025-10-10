@@ -11,13 +11,13 @@ const BGMUSIC = "/audio/special-someone-audio.mp3";
 
 const DEFAULT_BG = {
   src: "/videos/homepage-background.mp4",
-  poster: "/images/cover-page/background.png",
+  poster: "/images/cover-page/background.avif",
   loop: true,
 };
 
 const BG_BY_ROUTE = {
-  "/": { src: "/videos/homepage-background.mp4", poster: "/images/cover-page/background.png", loop: true },
-  "/home": { src: "/videos/homepage-background.mp4", poster: "/images/cover-page/background.png", loop: true },
+  "/": { src: "/videos/homepage-background.mp4", poster: "/images/cover-page/background.avif", loop: true },
+  "/home": { src: "/videos/homepage-background.mp4", poster: "/images/cover-page/background.avif", loop: true },
 };
 
 export default function App() {

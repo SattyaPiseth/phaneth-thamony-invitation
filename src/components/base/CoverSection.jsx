@@ -9,7 +9,7 @@ export default function CoverSection({
   isStoryPlaying = false,
   onStart = () => {},
   customer,
-  src = "/images/cover-page/name-cover-01.png",
+  src = "/images/cover-page/name-cover-01.avif",
 }) {
   const customerFromHook = useCustomerByUuid();
   const person = customer ?? customerFromHook;
