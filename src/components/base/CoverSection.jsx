@@ -49,7 +49,7 @@ export default function CoverSection({
     "aspect-[2016/1453]",
 
     // Monotonic responsive widths
-    "w-[min(64vw,280px)]",                // default (<480px)
+    "w-[min(54vw,240px)]",                // default (<480px)
     "xs:w-[min(58vw,260px)]",             // ≥480px
     "sm:w-[min(58vw,340px)]",             // ≥640px
     "md:w-[min(28vw,280px)]",             // ≥768px
@@ -59,7 +59,7 @@ export default function CoverSection({
     "3xl:w-[min(15vw,315px)]",            // ≥1792px
 
     // Lift control
-    "-translate-y-[calc(var(--lift)*0.95)]",
+    "-translate-y-[calc(var(--lift)*0.85)]",
     "xs:-translate-y-[calc(var(--lift)*0.9)]",
     "md:-translate-y-[calc(var(--lift)*0.6)]",
     "lg:-translate-y-[calc(var(--lift)*0.55)]",
@@ -78,7 +78,7 @@ export default function CoverSection({
     (min-width:768px) 28vw,
     (min-width:640px) 58vw,
     (min-width:480px) 58vw,
-    64vw
+    54vw
   "
   loading="eager"
   fetchPriority="high"
