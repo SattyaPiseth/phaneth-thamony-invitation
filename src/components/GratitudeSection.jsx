@@ -6,6 +6,7 @@ export const GratitudeSection = () => {
       <section
         aria-labelledby="gratitude-title"
         className="my-[5vh] mx-auto max-w-screen-md xl:mx-[1.5vh]"
+        data-aos="fade-up"
       >
         <h3
           id="gratitude-title"
@@ -22,7 +23,7 @@ export const GratitudeSection = () => {
         </p>
       </section>
       {/* Divider (slightly wider than before but still modest) */}
-      <div className="flex justify-center">
+      <div className="flex justify-center" data-aos="fade-up">
         <img
           className="w-[clamp(10rem,40vw,15rem)] max-w-screen-md"
           src="/images/border-styles/divider.avif"
@@ -35,6 +36,7 @@ export const GratitudeSection = () => {
       <section
         aria-labelledby="gratitude-title"
         className="my-[5vh] mx-auto max-w-screen-md"
+        data-aos="fade-up"
       >
         <h3
           id="gratitude-title"

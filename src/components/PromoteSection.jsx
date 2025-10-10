@@ -137,6 +137,7 @@ export const PromoteSection = ({
         willChange: enableTilt && !prefersReduced ? "transform" : undefined,
       }}
       whileHover={prefersReduced ? {} : { scale: hoverScale }}
+     
       className={
         [
           // Perspective improves the 3D feel of rotateX/rotateY
@@ -180,6 +181,7 @@ export const PromoteSection = ({
         }}
       >
         <motion.img
+          data-aos="fade-up"
           src={src}
           alt={alt}
           loading="lazy"

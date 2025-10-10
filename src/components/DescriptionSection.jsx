@@ -197,7 +197,7 @@ export default function DescriptionSection({
             />
 
             {/* map embed */}
-            <img src="/images/home-page/map/map.avif" alt="Map of the Location" className="rounded-md shadow-sm mx-auto" data-aos="flip-left" loading="lazy" title="Map of the Location"/>
+            <img src="/images/home-page/map/map.avif" alt="Map of the Location" className="rounded-md shadow-sm mx-auto" data-aos="fade-up" loading="lazy" title="Map of the Location"/>
             {/* <div
               className="w-full aspect-video rounded-md overflow-hidden shadow-sm
                         mt-2 sm:mt-3"
@@ -218,7 +218,7 @@ export default function DescriptionSection({
 
         {/* Event posters */}
         <figure>
-          <img src={morning_event_image} alt="Morning event" loading="lazy" decoding="async" />
+          <img src={morning_event_image} alt="Morning event" loading="lazy" decoding="async" data-aos="fade-up"/>
         </figure>
 
         {/* <figure className="-mt-5 py-2 ">
@@ -227,7 +227,7 @@ export default function DescriptionSection({
 
 
         {/* Gallery */}
-        <h3 className="moul-regular text-base mt-6 text-[var(--primary)]">កម្រងរូបភាព</h3>
+        <h3 className="moul-regular text-base mt-6 text-[var(--primary)]" data-aos="fade-down">កម្រងរូបភាព</h3>
         <MasonryGallery images={galleryImages} onOpen={open} />
 
         {isOpen && (
@@ -244,6 +244,7 @@ export default function DescriptionSection({
         <Discussion />
         <PromoteSection
           src="/images/memora-shine/memora-shine-end-page.png"
+          
           alt="Clean image"
           shadow=""      // no shadow
           showGlow={false} // no glow
