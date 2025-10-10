@@ -61,7 +61,7 @@ export default function CoverPage() {
       </div>
 
       {/* ====================== COLOR BAND FOR TEST ====================== */}
-      <div
+      {/* <div
         className={`
           w-full h-screen
           bg-red-300
@@ -77,7 +77,7 @@ export default function CoverPage() {
         <p className="text-center text-xl font-semibold pt-10 text-white">
           Resize window → background color changes (responsive test)
         </p>
-      </div>
+      </div> */}
     </>
   );
 }
