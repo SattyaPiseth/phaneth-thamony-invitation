@@ -15,7 +15,7 @@ export default function MasonryImage({
         src={src}
         alt={alt || ""}
         className="w-full rounded-lg shadow-sm hover:brightness-105"
-        loading="lazy"
+        loading="eager"
         decoding="async"
         draggable={false}
       />
