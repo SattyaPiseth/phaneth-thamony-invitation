@@ -18,6 +18,7 @@ export default function MasonryImage({
         loading="eager"
         decoding="async"
         draggable={false}
+        fetchPriority="high"
       />
     </button>
   );
