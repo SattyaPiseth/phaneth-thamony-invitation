@@ -1,4 +1,5 @@
 // MasonryGallery.jsx
+import { div } from "framer-motion/client";
 import MasonryImage from "./MasonryImage";
 
 export function MasonryGallery({ images, onOpen }) {
@@ -6,10 +7,10 @@ export function MasonryGallery({ images, onOpen }) {
     <section
       className="grid grid-cols-1 gap-x-4 content-visibility-auto"
       style={{ contain: "layout style paint", containIntrinsicSize: "1px 1000px" }}
-      data-aos="fade-up"
-      data-aos-anchor-placement="top-bottom"
     >
       {images.map((img, i) => (
+        <div data-aos="fade-up"
+     data-aos-anchor-placement="top-center">
         <MasonryImage
           key={img.src}
           data={img}
@@ -17,6 +18,7 @@ export function MasonryGallery({ images, onOpen }) {
           onOpen={onOpen}
           eager={i < 3}   // only first 3 images are eager/high
         />
+        </div>
       ))}
     </section>
   );
