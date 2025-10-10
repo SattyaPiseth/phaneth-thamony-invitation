@@ -8,10 +8,8 @@ export default function ParentsSection({
   ],
   className = "animate-[fade-up_0.6s_ease-out]",
 }) {
-  // Normalize spaces
   const cleanNames = names.map((n) => n.trim().replace(/\s+/g, " "));
 
-  // Split honorific + person (supports both "លោកស្រី" and "លោក")
   const splitHonorific = (full) => {
     const HONORIFICS = ["អ្នកស្រី", "លោក"];
     for (const h of HONORIFICS) {
@@ -25,7 +23,6 @@ export default function ParentsSection({
 
   const items = cleanNames.map(splitHonorific);
 
-  // Build rows of 2; pad last if odd
   const rows = [];
   for (let i = 0; i < items.length; i += 2) {
     rows.push([items[i], items[i + 1] ?? { honorific: "", person: "" }]);
@@ -38,7 +35,6 @@ export default function ParentsSection({
       return <span className={align === "right" ? "text-right" : ""} />;
     }
 
-    // Prevent breaks inside Khmer names
     const personNbsp = person.replace(/\s+/g, "\u00A0");
 
     return (
@@ -60,28 +56,22 @@ export default function ParentsSection({
     <section
       aria-labelledby="parents-heading"
       className={[
-        // Center + width
         "mx-auto w-full",
-        "max-w-[18rem]",                         // base phones
-        "sm:max-w-[28rem]",                      // small phones / small tablets
-        "md:max-w-[36rem]",                      // tablets
-        "lg:max-w-[42rem]",                      // laptops
-        "xl:max-w-[50rem]",                      // desktops
-        "2xl:max-w-[64rem]",                     // large desktops
-        "min-[1920px]:max-w-[72rem]",            // >2xl (UHD-ish)
-
-        // Horizontal padding—wider until lg, then taper a bit on xl/2xl
-        "px-8",
-        "sm:px-6",
-        "md:px-8",
-        "lg:px-[12rem]",
-        "xl:px-[18.5rem]",
-        "2xl:px-[16rem]",
-        "min-[1920px]:px-20",
-
-        // Vertical padding
-        "py-4 sm:py-6 md:py-8 lg:py-10 xl:py-8 2xl:py-8 min-[1920px]:py-10",
-
+        "max-w-[28rem]",            // Increased width for default (base) screens
+        "sm:max-w-[42rem]",         // Further increase for small screens
+        "md:max-w-[50rem]",         // Tablets
+        "lg:max-w-[54rem]",         // Laptops
+        "xl:max-w-[60rem]",         // Desktops
+        "2xl:max-w-[72rem]",        // Large desktops
+        "min-[1920px]:max-w-[80rem]", // UHD screens
+        "px-10",                    // Increased padding on default and XS
+        "sm:px-8",                  // More refined padding for small screens
+        "md:px-10",                 // Increased padding for tablets
+        "lg:px-[14rem]",            // Wide padding for large screens
+        "xl:px-[18rem]",            // Refined padding for XL
+        "2xl:px-[16rem]",           // Padding adjustments for larger screens
+        "min-[1920px]:px-20",       // Max padding for very large screens
+        "py-6 sm:py-8 md:py-10 lg:py-12 xl:py-10 2xl:py-10 min-[1920px]:py-12", // Adjusted vertical padding
         className,
       ].join(" ")}
     >
@@ -93,24 +83,22 @@ export default function ParentsSection({
         className={[
           "text-[var(--primary)] leading-[1.85]",
 
-          // Font size steps (no negative clamp); tuned for Khmer readability
-          "text-[0.65rem]",        // base
-          "sm:text-[0.8125rem]",   // 13px
-          "md:text-[0.875rem]",    // 14px
-          "lg:text-[0.8125rem]",        // 16px
-          "xl:text-[0.60rem]",   // 15px (slight tighten at xl)
-          "2xl:text-[0.9rem]",     // ~14.4px (reduce a bit on very wide)
-          "min-[1920px]:text-[1rem]",
+          "text-[0.65rem]",       // Slightly larger font for the base
+          "sm:text-[0.875rem]",   // For small screens
+          "md:text-[0.925rem]",   // Slight increase for medium screens
+          "lg:text-[1rem]",       // Refined font size for large screens
+          "xl:text-[1rem]",       // Keep it consistent at XL
+          "2xl:text-[1.1rem]",    // Increase slightly for wide screens
+          "min-[1920px]:text-[1.15rem]", // Slightly larger on UHD
 
-          // Vertical rhythm: reduce at xl & 2xl as requested
           "flex flex-col",
-          "gap-y-3",               // base
-          "sm:gap-y-3.5",
-          "md:gap-y-4",
-          "lg:gap-y-5",
-          "xl:gap-y-3.5",          // reduce spacing on xl
-          "2xl:gap-y-3",           // reduce more on 2xl
-          "min-[1920px]:gap-y-4",  // recover a touch for >2xl
+          "gap-y-3",              // Base gap
+          "sm:gap-y-3.5",         // Increased gap for small screens
+          "md:gap-y-4",           // Medium screens
+          "lg:gap-y-5",           // Larger gap for large screens
+          "xl:gap-y-4",           // Adjusted gap for XL
+          "2xl:gap-y-3",          // Reduced gap for 2XL
+          "min-[1920px]:gap-y-4", // Slightly increased gap for UHD
         ].join(" ")}
       >
         {rows.map(([left, right], i) => (
@@ -118,15 +106,13 @@ export default function ParentsSection({
             key={i}
             className={[
               "grid grid-cols-2 items-center",
-
-              // Column gap: grow to lg then compress on xl/2xl
-              "gap-x-4",
-              "sm:gap-x-6",
-              "md:gap-x-10",
-              "lg:gap-x-16",
-              "xl:gap-x-10",
-              "2xl:gap-x-8",
-              "min-[1920px]:gap-x-12",
+              "gap-x-10",            // Wider gap for base and small screens
+              "sm:gap-x-12",         // More gap for small screens
+              "md:gap-x-14",         // Medium screens
+              "lg:gap-x-16",         // Larger gap for large screens
+              "xl:gap-x-12",         // Adjusted gap for XL
+              "2xl:gap-x-10",        // Reduced gap for 2XL
+              "min-[1920px]:gap-x-12", // Max gap for UHD
             ].join(" ")}
           >
             <NameCell item={left} />

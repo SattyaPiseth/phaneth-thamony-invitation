@@ -31,7 +31,8 @@ export default function CoverPage() {
           max-w-[clamp(440px,92vw,56rem)]
 
           /* Fluid inner padding */
-          px-[clamp(1rem,4vw,2rem)]
+          px-[clamp(0.75rem,3.5vw,1.5rem)]
+          xs:px-[clamp(0.9rem,3.75vw,1.75rem)]
           sm:px-[clamp(1.25rem,4vw,2.5rem)]
           md:px-[clamp(1.5rem,5vw,3rem)]
           lg:px-[clamp(2rem,6vw,4rem)]
@@ -40,7 +41,8 @@ export default function CoverPage() {
           3xl:px-[clamp(6rem,12vw,8rem)]
 
           /* Vertical spacing between sections */
-          gap-y-[clamp(1.25rem,4vw,2.25rem)]
+          gap-y-[clamp(1rem,3.25vw,1.5rem)]
+          xs:gap-y-[clamp(1.1rem,3.5vw,1.75rem)]
           sm:gap-y-[clamp(1.25rem,3.5vw,2rem)]
           md:gap-y-[clamp(1rem,3vw,1.75rem)]
           lg:gap-y-[clamp(0.75rem,2vw,1.5rem)]
@@ -59,7 +61,7 @@ export default function CoverPage() {
       </div>
 
       {/* ====================== COLOR BAND FOR TEST ====================== */}
-      {/* <div
+      <div
         className={`
           w-full h-screen
           bg-red-300
@@ -75,7 +77,7 @@ export default function CoverPage() {
         <p className="text-center text-xl font-semibold pt-10 text-white">
           Resize window → background color changes (responsive test)
         </p>
-      </div> */}
+      </div>
     </>
   );
 }

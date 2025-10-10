@@ -33,22 +33,22 @@ export default function Heading({
 
             // 🔻 Default (<480px)
             "w-[min(68vw,300px)] translate-y-[clamp(1rem,4vw,2rem)]",
-            "[@media(max-width:340px)]:translate-y-[clamp(0.75rem,3.5vw,1.75rem)]",
+            "[@media(max-width:340px)]:-translate-y-[clamp(0.75rem,3.5vw,1.75rem)]",
 
             // ✅ XS (≥480px)
-            "xs:w-[min(66vw,300px)] xs:translate-y-[clamp(1.25rem,3vw,2.25rem)]",
+            "xs:w-[min(66vw,300px)]  xs:-translate-y-[clamp(2.25rem,6.5vw,3.75rem)]",
 
             // ✅ SM (≥640px)
-            "sm:w-[min(58vw,340px)] sm:translate-y-[clamp(1rem,2vw,2rem)]",
+            "sm:w-[min(58vw,340px)] sm:-translate-y-[clamp(3rem,7vw,4rem)]",
 
             // ✅ MD → Increased more (~44vw / 440px)
-            "md:w-[min(44vw,440px)] md:translate-y-[clamp(1.5rem,3vw,2.5rem)]",
+            "md:w-[min(44vw,440px)] md:-translate-y-[clamp(2.25rem,6vw,3.5rem)]",
 
             // ✅ Higher breakpoints unchanged
             "lg:w-[min(24vw,360px)] lg:translate-y-[clamp(2rem,3.5vw,3rem)]",
             "xl:w-[min(20vw,400px)] xl:translate-y-[clamp(1.75rem,3vw,2.75rem)]",
             "2xl:w-[min(20vw,480px)] 2xl:translate-y-[clamp(2.25rem,4vw,3.25rem)]",
-            "3xl:w-[min(21.6vw,492px)] 3xl:translate-y-[clamp(1.5rem,3vw,3rem)]",
+            "3xl:w-[min(18vw,400px)] 3xl:translate-y-[clamp(1.75rem,3vw,3.25rem)]",
 
             "transform-gpu [will-change:transform]"
           )}
