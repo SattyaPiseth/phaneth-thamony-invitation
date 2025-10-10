@@ -57,7 +57,7 @@ export default function ParentsSection({
       aria-labelledby="parents-heading"
       className={[
         "mx-auto w-full",
-        "max-w-[28rem]",            // Increased width for default (base) screens
+        "max-w-[20rem]",            // Increased width for default (base) screens
         "sm:max-w-[42rem]",         // Further increase for small screens
         "md:max-w-[50rem]",         // Tablets
         "lg:max-w-[54rem]",         // Laptops
@@ -88,7 +88,8 @@ export default function ParentsSection({
           "md:text-[0.925rem]",   // Slight increase for medium screens
           "lg:text-[0.65rem]",       // Refined font size for large screens
           "xl:text-[0.65rem]",       // Keep it consistent at XL
-          "2xl:text-[1.1rem]",    // Increase slightly for wide screens
+          "2xl:text-[0.7rem]",    // Increase slightly for wide screens
+          "3xl:text-[0.80rem]",
           "min-[1920px]:text-[1.15rem]", // Slightly larger on UHD
 
           "flex flex-col",
