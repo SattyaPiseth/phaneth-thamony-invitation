@@ -141,7 +141,7 @@ export default function CoverSection({
           <div className="mt-[calc(var(--ry)*1.25)] lg:mt-[calc(var(--ry)*0.3)] xl:mt-[calc(var(--ry)*0.5)] 2xl:mt-[calc(var(--ry)*0)]">
             <AnimatedActionButton
               onStart={onStart}
-              src="/images/border-styles/border-button.png"
+              src="/images/border-styles/border-button.avif"
               variant="bare"
               withShine
               withRipple

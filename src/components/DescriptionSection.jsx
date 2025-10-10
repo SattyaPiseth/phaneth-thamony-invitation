@@ -175,7 +175,7 @@ export default function DescriptionSection({
             </a> */}
             <AnimatedActionButton
               variant="bare"        
-              src="/images/home-page/map/location-button-01.png"
+              src="/images/home-page/map/location-button-01.avif"
               ariaLabel="បើកផែនទី"
               imgClassName="relative block mx-auto w-[70%] object-contain"
               withShine={true}
@@ -187,7 +187,7 @@ export default function DescriptionSection({
             />
 
             {/* map embed */}
-            <img src="/images/home-page/map/map.png" alt="Map of the Location" className="rounded-md shadow-sm mx-auto" data-aos="flip-left" loading="lazy" title="Map of the Location"/>
+            <img src="/images/home-page/map/map.avif" alt="Map of the Location" className="rounded-md shadow-sm mx-auto" data-aos="flip-left" loading="lazy" title="Map of the Location"/>
             {/* <div
               className="w-full aspect-video rounded-md overflow-hidden shadow-sm
                         mt-2 sm:mt-3"
