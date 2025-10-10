@@ -48,7 +48,7 @@ export default function PlayMusic({
       {!allowAudio ? (
         <img
           src="/images/svg/play-music.svg"
-          alt=""
+          alt="open music"
           aria-hidden="true"
           className="h-5 w-5"
           decoding="async"
@@ -58,7 +58,7 @@ export default function PlayMusic({
       ) : (
         <img
           src={muted ? "/images/svg/sound-off.svg" : "/images/svg/sound-on.svg"}
-          alt=""
+          alt="sound on"
           aria-hidden="true"
           className="h-5 w-5"
           decoding="async"

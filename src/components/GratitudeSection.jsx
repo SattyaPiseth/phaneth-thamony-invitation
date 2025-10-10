@@ -26,9 +26,10 @@ export const GratitudeSection = () => {
         <img
           className="w-[clamp(10rem,40vw,15rem)] max-w-screen-md"
           src="/images/border-styles/divider.png"
-          alt="divider"
+          alt="Divider"
           loading="lazy"
           decoding="async"
+          title='Divider'
         />
       </div>
       <section
