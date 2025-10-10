@@ -17,7 +17,7 @@ const EVENT_HUMAN = EVENT_ISO
 // Defaults for SEO/Event schema
 const DEFAULTS = {
   coupleName: "Phaneth & Thamony Wedding",
-  coverImageUrl: "/images/seo/phaneth-thamony-logo.png",
+  coverImageUrl: "/images/seo/phaneth-thamony-logo.avif",
   locationShort: "Phnom Penh",
   locationFull: "Phnom Penh, Cambodia",
   locale: "km_KH",

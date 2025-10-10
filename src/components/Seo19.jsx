@@ -5,7 +5,7 @@ const DEFAULTS = {
   siteName: "Phaneth & Thamony Wedding",
   title: "Phaneth & Thamony Wedding — Save the Date",
   description: "Join us in celebrating love. Ceremony details, schedule, map, and RSVP.",
-  image: "/images/seo/phaneth-thamony-logo.png",
+  image: "/images/seo/phaneth-thamony-logo.avif",
   imageAlt: "Phaneth & Thamony Wedding Cover",
   themeColor: "#ffffff",
   ogType: "website",
