@@ -77,7 +77,7 @@ export default function HomePage() {
         <div
           className={`
             w-full
-            -mt-[var(--hero-lift)]
+            -mt-[clamp(1.5rem,5vw,3rem)]
             xs:-mt-[var(--hero-lift-xs)]
             sm:-mt-[clamp(0.5rem,3vw,1.25rem)]
             md:-mt-[clamp(0.5rem,2.5vw,1.25rem)]
