@@ -335,6 +335,34 @@ export default function App() {
     } catch {}
   }, [muted]);
 
+  // A11y hardening: if something sets aria-hidden on a container that still has focusables,
+  // convert that container to inert instead (removes it from tab order safely).
+  useEffect(() => {
+    const hasFocusable = (el) =>
+      !!el.querySelector('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+
+    const enforce = () => {
+      document.querySelectorAll('[aria-hidden="true"]').forEach((el) => {
+        if (hasFocusable(el)) {
+          el.setAttribute('inert', '');
+          el.removeAttribute('aria-hidden');
+        }
+      });
+    };
+
+    enforce();
+
+    const mo = new MutationObserver(() => enforce());
+    mo.observe(document.body, {
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['aria-hidden'],
+    });
+
+    return () => mo.disconnect();
+  }, []);
+
+
   // Only show PlayMusic on /home and NOT during the story
   const showPlayMusic = pathname === "/home" && mode !== "story";
 

@@ -35,3 +35,30 @@ createRoot(document.getElementById("root")).render(
     <SpeedInsights />
   </StrictMode>
 );
+
+// ---- A11y FIX: make sure #root is never aria-hidden ----
+const rootEl = document.getElementById("root");
+if (rootEl) {
+  rootEl.removeAttribute("aria-hidden");
+  rootEl.removeAttribute("data-aria-hidden");
+}
+
+// Prevent any script (modal/lightbox/anim) from putting it back
+if (rootEl) {
+  const mo = new MutationObserver((mutations) => {
+    for (const m of mutations) {
+      if (
+        m.type === "attributes" &&
+        (m.attributeName === "aria-hidden" || m.attributeName === "data-aria-hidden")
+      ) {
+        rootEl.removeAttribute("aria-hidden");
+        rootEl.removeAttribute("data-aria-hidden");
+      }
+    }
+  });
+
+  mo.observe(rootEl, {
+    attributes: true,
+    attributeFilter: ["aria-hidden", "data-aria-hidden"],
+  });
+}
