@@ -181,7 +181,6 @@ export const PromoteSection = ({
         }}
       >
         <motion.img
-          data-aos="fade-up"
           src={src}
           alt={alt}
           loading="lazy"
