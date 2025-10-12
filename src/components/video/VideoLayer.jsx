@@ -10,7 +10,8 @@ return (
     autoPlay
     muted
     playsInline
-    preload="metadata"
+    // preload="metadata"
+    preload="none"
     poster={poster}
     onEnded={onEnded}
     tabIndex={-1}

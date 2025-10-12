@@ -1,10 +1,20 @@
+// App.jsx
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useRef, useState, useEffect, useCallback } from "react";
+import {
+  useRef,
+  useState,
+  useEffect,
+  useCallback,
+  lazy,
+  Suspense,
+} from "react";
 
-import Overlay from "./components/base/Overlay.jsx";
 import Seo19 from "./components/Seo19.jsx";
-import PlayMusic from "./components/PlayMusic.jsx";
 import VideoLayer from "./components/video/VideoLayer.jsx";
+
+// Lazy-load non-critical UI to reduce TBT on first paint
+const Overlay = lazy(() => import("./components/base/Overlay.jsx"));
+const PlayMusic = lazy(() => import("./components/PlayMusic.jsx"));
 
 const STORY_VIDEOS = ["/videos/home.mp4"];
 const BGMUSIC = "/audio/special-someone-audio.mp3";
@@ -36,6 +46,9 @@ export default function App() {
   const [storyIndex, setStoryIndex] = useState(-1);
   const [unlocked, setUnlocked] = useState(false);
   const [allowAudio, setAllowAudio] = useState(false);
+
+  // Defer background video src until idle/interaction (protect LCP)
+  const [bgSrcReady, setBgSrcReady] = useState(false);
 
   // Persisted mute preference
   const [muted, setMuted] = useState(() => {
@@ -110,10 +123,12 @@ export default function App() {
     try { aosRef.current.refreshHard(); } catch {}
   };
 
-
-  // One-time unlock on first interaction
+  // One-time unlock on first interaction (also mark bg video ready)
   useEffect(() => {
-    const onFirstInteract = () => primeAudio();
+    const onFirstInteract = () => {
+      primeAudio();
+      setBgSrcReady(true);
+    };
     window.addEventListener("pointerdown", onFirstInteract, { once: true, passive: true });
     window.addEventListener("keydown", onFirstInteract, { once: true });
     return () => {
@@ -121,6 +136,14 @@ export default function App() {
       window.removeEventListener("keydown", onFirstInteract);
     };
   }, [primeAudio]);
+
+  // Mark bg ready on idle (in case there was no interaction yet)
+  useEffect(() => {
+    const rIC = window.requestIdleCallback || ((cb) => setTimeout(cb, 500));
+    const id = rIC(() => setBgSrcReady(true));
+    // no need to cancel for setTimeout fallback; requestIdleCallback cancel is optional
+    return () => {};
+  }, []);
 
   // ✅ AOS: lazy-load lib, defer init to next frame, then extra refreshHard
   useEffect(() => {
@@ -137,9 +160,8 @@ export default function App() {
           duration: 800,
           easing: "ease-in-out",
           once: true,
-          // disable: "phone",
           throttleDelay: 150,
-          debounceDelay: 100,   
+          debounceDelay: 100,
           disable: () =>
             typeof window !== "undefined" &&
             window.matchMedia?.("(prefers-reduced-motion: reduce)").matches,
@@ -150,7 +172,6 @@ export default function App() {
           const rIC = window.requestIdleCallback || ((cb) => setTimeout(cb, 120));
           rIC(() => aosSafeRefreshHard());
         }, 300);
-
       });
     })();
     return () => {
@@ -158,7 +179,7 @@ export default function App() {
     };
   }, []);
 
-  // refresh HARD on route change after paint
+  // refresh on route change after paint
   useEffect(() => {
     const raf = requestAnimationFrame(() => {
       if (aosReadyRef.current) {
@@ -244,16 +265,20 @@ export default function App() {
     };
 
     if (mode === "story") {
+      // Story videos should be immediate
       const src = STORY_VIDEOS[storyIndex] ?? STORY_VIDEOS[0];
       applyAndPlay(src, { loop: false });
       ensureAudioPlaying();
     } else {
-      applyAndPlay(effectiveBg.src, { loop: effectiveBg.loop });
-      ensureAudioPlaying();
+      // Background video only attaches after idle/interaction
+      if (bgSrcReady) {
+        applyAndPlay(effectiveBg.src, { loop: effectiveBg.loop });
+        ensureAudioPlaying();
+      }
     }
-  }, [mode, storyIndex, unlocked, muted, effectiveBg, fadeTo, allowAudio]);
+  }, [mode, storyIndex, unlocked, muted, effectiveBg, fadeTo, allowAudio, bgSrcReady]);
 
-  // ✅ AOS: refresh HARD when the active video stabilizes (reduces jank on first load)
+  // ✅ AOS: refresh when active video stabilizes
   useEffect(() => {
     const el = videoRef.current;
     if (!el || !aosReadyRef.current) return;
@@ -335,8 +360,7 @@ export default function App() {
     } catch {}
   }, [muted]);
 
-  // A11y hardening: if something sets aria-hidden on a container that still has focusables,
-  // convert that container to inert instead (removes it from tab order safely).
+  // A11y hardening: convert any aria-hidden tree with focusables to inert
   useEffect(() => {
     const hasFocusable = (el) =>
       !!el.querySelector('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
@@ -361,7 +385,6 @@ export default function App() {
 
     return () => mo.disconnect();
   }, []);
-
 
   // Only show PlayMusic on /home and NOT during the story
   const showPlayMusic = pathname === "/home" && mode !== "story";
@@ -389,16 +412,20 @@ export default function App() {
         onEnded={mode === "story" ? handleEnded : undefined}
       />
 
-      <Overlay />
+      <Suspense fallback={null}>
+        <Overlay />
+      </Suspense>
 
       {showPlayMusic && (
-        <PlayMusic
-          allowAudio={allowAudio}
-          setAllowAudio={setAllowAudio}
-          muted={muted}
-          setMuted={setMuted}
-          onEnableAudio={enableAudioNow}
-        />
+        <Suspense fallback={null}>
+          <PlayMusic
+            allowAudio={allowAudio}
+            setAllowAudio={setAllowAudio}
+            muted={muted}
+            setMuted={setMuted}
+            onEnableAudio={enableAudioNow}
+          />
+        </Suspense>
       )}
 
       {/* Children get the small API */}

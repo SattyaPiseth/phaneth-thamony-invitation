@@ -62,7 +62,6 @@ export default function Heading({
             (min-width:480px) 66vw,
             68vw
           "
-          loading="lazy"
           fetchPriority="high"
           decoding="async"
           draggable={false}
