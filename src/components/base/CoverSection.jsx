@@ -17,6 +17,19 @@ export default function CoverSection({
   const person = customer ?? customerFromHook;
   const showPersonalized = !!person?.guestName;
 
+// ============ Invisible-but-clickable button logic ============
+const VISIBLE_DELAY_MS = 3000; // show visually after 3s
+const [isVisible, setIsVisible] = useState(false);
+const [isPreclick, setIsPreclick] = useState(false);
+
+useEffect(() => {
+  setIsPreclick(true);                      // clickable immediately
+  const t = setTimeout(() => setIsVisible(true), VISIBLE_DELAY_MS); // visible after 3s
+  return () => clearTimeout(t);
+}, []);
+// =============================================================
+
+
   // ---- Idle-gate the decorative image so it can't win LCP ----
   const [showArt, setShowArt] = useState(false);
   useEffect(() => {
@@ -162,7 +175,24 @@ export default function CoverSection({
             <CustomerNameInline />
           )}
 
-          <div className="mt-[calc(var(--ry)*1.25)] lg:mt-[calc(var(--ry)*0.3)] xl:mt-[calc(var(--ry)*0.25)] 2xl:mt-[calc(var(--ry)*0.30)]">
+          {/* <div className="mt-[calc(var(--ry)*1.25)] lg:mt-[calc(var(--ry)*0.3)] xl:mt-[calc(var(--ry)*0.25)] 2xl:mt-[calc(var(--ry)*0.30)]">
+            <AnimatedActionButton
+              onStart={onStart}
+              src="/images/border-styles/border-button.avif"
+              variant="bare"
+              withShine
+              withRipple
+            />
+          </div> */}
+
+          <div
+            className={cn(
+              "mt-[calc(var(--ry)*1.25)] lg:mt-[calc(var(--ry)*0.3)] xl:mt-[calc(var(--ry)*0.25)] 2xl:mt-[calc(var(--ry)*0.30)]",
+              "transition-opacity duration-700",
+              isVisible ? "opacity-100" : "opacity-0"   // hidden visually until delay
+            )}
+            style={{ pointerEvents: isPreclick ? "auto" : "none" }} // clickable even when hidden
+          >
             <AnimatedActionButton
               onStart={onStart}
               src="/images/border-styles/border-button.avif"
@@ -171,6 +201,8 @@ export default function CoverSection({
               withRipple
             />
           </div>
+
+
         </div>
       </div>
     </section>
