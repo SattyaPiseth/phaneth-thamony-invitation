@@ -1,8 +1,6 @@
-// export default function VideoLayer({ videoRef, poster, onEnded }) {
-export default function VideoLayer({ videoRef, poster, onEnded, hidden }) {
+export default function VideoLayer({ videoRef, poster, onEnded }) {
 return (
   <div
-  hidden={hidden}
   className="fixed inset-0 z-0 pointer-events-none bg-[#ffe5ec]"
   aria-hidden="true"
   >

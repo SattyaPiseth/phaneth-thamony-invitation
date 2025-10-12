@@ -49,7 +49,6 @@ export default function App() {
 
   // Defer background video src until idle/interaction (protect LCP)
   const [bgSrcReady, setBgSrcReady] = useState(false);
-  const bgVideoShouldRender = (mode === "story") || (mode !== "story" && bgSrcReady);
 
   // Persisted mute preference
   const [muted, setMuted] = useState(() => {
@@ -124,8 +123,6 @@ export default function App() {
     try { aosRef.current.refreshHard(); } catch {}
   };
 
-  const [bgVideoVisible, setBgVideoVisible] = useState(false);
-
   // One-time unlock on first interaction (also mark bg video ready)
   useEffect(() => {
     const onFirstInteract = () => {
@@ -142,17 +139,9 @@ export default function App() {
 
   // Mark bg ready on idle (in case there was no interaction yet)
   useEffect(() => {
-    // const rIC = window.requestIdleCallback || ((cb) => setTimeout(cb, 500));
-    // const id = rIC(() => setBgSrcReady(true));
+    const rIC = window.requestIdleCallback || ((cb) => setTimeout(cb, 500));
+    const id = rIC(() => setBgSrcReady(true));
     // no need to cancel for setTimeout fallback; requestIdleCallback cancel is optional
-    // return () => {};
-
-    const arm = () => setTimeout(() => setBgSrcReady(true), 1500);
-    if (document.readyState === 'complete') {
-      arm();
-    } else {
-      window.addEventListener('load', arm, { once: true });
-    }
     return () => {};
   }, []);
 
@@ -289,32 +278,6 @@ export default function App() {
     }
   }, [mode, storyIndex, unlocked, muted, effectiveBg, fadeTo, allowAudio, bgSrcReady]);
 
-  // When the video’s first frame (or poster) is actually painted, remove the fallback
-    useEffect(() => {
-    const el = videoRef.current;
-    if (!el) return;
-    // Only when we’re rendering the background video (not before)
-    if (!bgVideoShouldRender) return;
-    const showAndCleanup = () => {
-      setBgVideoVisible(true); // <- make the video visible now
-      // remove fallback poster NOW so LCP stays with the early <img>, not this video
-      document.documentElement.classList.add('js-ready');
-      const fallback = document.getElementById('lcp-poster');
-      if (fallback) fallback.remove();
-    };
-    // If metadata or data is already available, do it immediately
-    if (el.readyState >= 2) {
-      showAndCleanup();
-      return;
-    }
-    el.addEventListener('loadeddata', showAndCleanup, { once: true });
-    el.addEventListener('loadedmetadata', showAndCleanup, { once: true });
-    return () => {
-      el.removeEventListener('loadeddata', showAndCleanup);
-      el.removeEventListener('loadedmetadata', showAndCleanup);
-    };
-  }, [bgVideoShouldRender]);
-
   // ✅ AOS: refresh when active video stabilizes
   useEffect(() => {
     const el = videoRef.current;
@@ -442,24 +405,12 @@ export default function App() {
       {/* Ambient music */}
       <audio ref={audioRef} src={BGMUSIC} preload="auto" loop hidden />
 
-      {/* Background / Story video
+      {/* Background / Story video */}
       <VideoLayer
         videoRef={videoRef}
         poster={effectiveBg.poster}
         onEnded={mode === "story" ? handleEnded : undefined}
-      /> */}
-
-      {/* Background / Story video */}
-      {bgVideoShouldRender && (
-        <VideoLayer
-          videoRef={videoRef}
-          // IMPORTANT: don't pass a poster until we're ready,
-          // otherwise the video will paint and become a late LCP candidate.
-          poster={mode === "story" ? effectiveBg.poster : (bgSrcReady ? effectiveBg.poster : undefined)}
-          hidden={!bgVideoVisible}   // <- NEW
-          onEnded={mode === "story" ? handleEnded : undefined}
-        />
-      )}
+      />
 
       <Suspense fallback={null}>
         <Overlay />
