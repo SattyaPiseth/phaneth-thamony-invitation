@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useCustomerByUuid from "../../hook/useCustomerByUuid";
 import CustomerNameInline from "../customer/CustomerNameInline";
 import AnimatedActionButton from "../button/AnimatedActionButton";
@@ -15,6 +15,23 @@ export default function CoverSection({
   const person = customer ?? customerFromHook;
   const showPersonalized = !!person?.guestName;
 
+  // ---- Idle-gate the decorative image so it can't win LCP ----
+  const [showArt, setShowArt] = useState(false);
+  useEffect(() => {
+    const rIC = window.requestIdleCallback || ((cb) => setTimeout(cb, 400));
+    const id = rIC(() => setShowArt(true));
+
+    // Also reveal on first interaction (whichever comes first)
+    const onFirstInteract = () => setShowArt(true);
+    window.addEventListener("pointerdown", onFirstInteract, { once: true, passive: true });
+    window.addEventListener("keydown", onFirstInteract, { once: true });
+
+    return () => {
+      window.removeEventListener("pointerdown", onFirstInteract);
+      window.removeEventListener("keydown", onFirstInteract);
+    };
+  }, []);
+
   if (isStoryPlaying) return null;
 
   return (
@@ -26,7 +43,8 @@ export default function CoverSection({
         "text-[var(--text)] tracking-wide"
       )}
       aria-labelledby="cover-section-title"
-      data-aos="zoom-in"
+      /* Keep AOS off the very first fold if you want max perf; otherwise leave it: */
+      // data-aos="zoom-in"
       style={{
         "--ry": "clamp(1.25rem, 4.5vw, 3rem)",
         "--lift": "clamp(0.5rem, 2.5vw, 3rem)",
@@ -38,66 +56,83 @@ export default function CoverSection({
       </h2>
 
       <div className="flex w/full max-w-[clamp(440px,92vw,56rem)] flex-col items-center xl:-translate-y-[calc(var(--ry)*0.5)] 2xl:-translate-y-[calc(var(--ry)*0.4)] transform-gpu">
-        <figure className="flex flex-col items-center" aria-labelledby="invite-caption">
-      <img
-        src={src}
-        alt=""
-        width={2016}
-        height={1453}
-        className={cn(
-          "block mx-auto h-auto select-none",
-          "aspect-[2016/1453]",
+        {/* Reserve intrinsic size to avoid layout shift before image appears */}
+        {showArt && (
+          <figure
+            className="flex flex-col items-center"
+            aria-labelledby="invite-caption"
+            style={{
+              // Helps browsers allocate space even before the image paints
+              containIntrinsicSize: "2016px 1453px",
+              contentVisibility: "auto",
+            }}
+          >
+            <img
+              src={src}
+              alt=""
+              width={2016}
+              height={1453}
+              className={cn(
+                "block mx-auto h-auto select-none",
+                "aspect-[2016/1453]",
 
-          // Monotonic responsive widths
-          "w-[min(54vw,240px)]",                // default (<480px)
-          "xs:w-[min(58vw,260px)]",             // ≥480px
-          "sm:w-[min(58vw,340px)]",             // ≥640px
-          "md:w-[min(28vw,280px)]",             // ≥768px
-          "lg:w-[min(22vw,300px)]",             // ≥1024px
-          "xl:w-[min(18vw,200px)]",             // ≥1280px — ✅ smaller refined scale
-          "2xl:w-[min(16vw,320px)]",            // ≥1536px
-          "3xl:w-[min(15vw,315px)]",            // ≥1792px
+                // Monotonic responsive widths
+                "w-[min(54vw,240px)]", // default (<480px)
+                "xs:w-[min(58vw,260px)]", // ≥480px
+                "sm:w-[min(58vw,340px)]", // ≥640px
+                "md:w-[min(28vw,280px)]", // ≥768px
+                "lg:w-[min(22vw,300px)]", // ≥1024px
+                "xl:w-[min(18vw,200px)]", // ≥1280px
+                "2xl:w-[min(16vw,320px)]", // ≥1536px
+                "3xl:w-[min(15vw,315px)]", // ≥1792px
 
-          // Lift control
-          "-translate-y-[calc(var(--lift)*0.85)]",
-          "xs:-translate-y-[calc(var(--lift)*0.9)]",
-          "md:-translate-y-[calc(var(--lift)*0.6)]",
-          "lg:-translate-y-[calc(var(--lift)*0.55)]",
-          "xl:-translate-y-[calc(var(--lift)*0.7)]",     // ✅ stronger lift on large desktop
-          "2xl:-translate-y-[calc(var(--lift)*0.6)]",    // still elegant
-          "3xl:-translate-y-[calc(var(--lift)*0.5)]",    // slightly less for ultra-wide
+                // Lift control
+                "-translate-y-[calc(var(--lift)*0.85)]",
+                "xs:-translate-y-[calc(var(--lift)*0.9)]",
+                "md:-translate-y-[calc(var(--lift)*0.6)]",
+                "lg:-translate-y-[calc(var(--lift)*0.55)]",
+                "xl:-translate-y-[calc(var(--lift)*0.7)]",
+                "2xl:-translate-y-[calc(var(--lift)*0.6)]",
+                "3xl:-translate-y-[calc(var(--lift)*0.5)]",
 
-
-          "max-[360px]:-translate-y-[clamp(0.25rem,2vw,1rem)]",
-          "transform-gpu [will-change:transform]"
+                "max-[360px]:-translate-y-[clamp(0.25rem,2vw,1rem)]",
+                "transform-gpu [will-change:transform]"
+              )}
+              sizes="
+                (min-width:1792px) 15vw,
+                (min-width:1536px) 16vw,
+                (min-width:1280px) 18vw,
+                (min-width:1024px) 22vw,
+                (min-width:768px) 28vw,
+                (min-width:640px) 58vw,
+                (min-width:480px) 58vw,
+                54vw
+              "
+              loading="lazy"
+              fetchPriority="low"
+              srcSet="
+                /images/cover-page/name-cover-01-320.avif 320w,
+                /images/cover-page/name-cover-01-480.avif 480w,
+                /images/cover-page/name-cover-01-640.avif 640w,
+                /images/cover-page/name-cover-01-768.avif 768w,
+                /images/cover-page/name-cover-01-1024.avif 1024w,
+                /images/cover-page/name-cover-01-1280.avif 1280w,
+                /images/cover-page/name-cover-01-1536.avif 1536w,
+                /images/cover-page/name-cover-01-2016.avif 2016w
+              "
+              decoding="async"
+              draggable={false}
+              aria-hidden="true"
+            />
+            <figcaption className="sr-only" id="invite-caption">
+              ការអញ្ជើញពិសេសសម្រាប់ភ្ញៀវកិត្តិយស
+            </figcaption>
+          </figure>
         )}
-        sizes="
-          (min-width:1792px) 15vw,
-          (min-width:1536px) 16vw,
-          (min-width:1280px) 18vw,
-          (min-width:1024px) 22vw,
-          (min-width:768px) 28vw,
-          (min-width:640px) 58vw,
-          (min-width:480px) 58vw,
-          54vw
-        "
-        loading="eager"
-        fetchPriority="high"
-        decoding="async"
-        draggable={false}
-        aria-hidden="true"
-      />
-
-
-          <figcaption className="sr-only" id="invite-caption">
-            ការអញ្ជើញពិសេសសម្រាប់ភ្ញៀវកិត្តិយស
-          </figcaption>
-        </figure>
 
         <div
           className={cn(
             "flex flex-col items-center",
-            // keep your gap rhythm; slightly denser on lg like Heading
             "gap-y-[calc(var(--ry)*0.8)] sm:gap-y-[var(--ry)] lg:gap-y-[calc(var(--ry)*0.5)] xl:gap-y-[calc(var(--ry)*0.3)] 2xl:gap-y-[calc(var(--ry)*0.5)] 3xl:gap-y-[calc(var(--ry)*0.6)]",
             "mt-[var(--gap-above-text)] xl:-translate-y-[calc(var(--ry)*0.3)] 2xl:-translate-y-[calc(var(--ry)*0.3)] 3xl:-translate-y-[calc(var(--ry)*0)] transform-gpu [will-change:transform]"
           )}
@@ -134,7 +169,7 @@ export default function CoverSection({
             <CustomerNameInline />
           )}
 
-        <div className="mt-[calc(var(--ry)*1.25)] lg:mt-[calc(var(--ry)*0.3)] xl:mt-[calc(var(--ry)*0.25)] 2xl:mt-[calc(var(--ry)*0.30)]">
+          <div className="mt-[calc(var(--ry)*1.25)] lg:mt-[calc(var(--ry)*0.3)] xl:mt-[calc(var(--ry)*0.25)] 2xl:mt-[calc(var(--ry)*0.30)]">
             <AnimatedActionButton
               onStart={onStart}
               src="/images/border-styles/border-button.avif"
