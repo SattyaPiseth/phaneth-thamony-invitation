@@ -52,6 +52,7 @@ useEffect(() => {
   return (
     <section
       className={cn(
+        "-mt-[2vh]",
         "flex flex-col items-center justify-center",
         "px-4 sm:px-6 lg:px-8",
         "py-[var(--ry)] sm:py-[calc(var(--ry)*1.25)] lg:py-[calc(var(--ry)*1.5)]",
