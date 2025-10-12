@@ -56,79 +56,69 @@ export default function CoverSection({
       </h2>
 
       <div className="flex w/full max-w-[clamp(440px,92vw,56rem)] flex-col items-center xl:-translate-y-[calc(var(--ry)*0.5)] 2xl:-translate-y-[calc(var(--ry)*0.4)] transform-gpu">
-        {/* Reserve intrinsic size to avoid layout shift before image appears */}
-        {showArt && (
-          <figure
-            className="flex flex-col items-center"
-            aria-labelledby="invite-caption"
+
+        {/* CLS-safe art block: spacer always in flow, image overlays later */}
+        <div className="relative flex flex-col items-center"
+            style={{ "--art-w": "min(54vw, 240px)" }}>
+          {/* 1) Spacer reserves space immediately (prevents layout shift) */}
+          <div
+            aria-hidden="true"
             style={{
-              // Helps browsers allocate space even before the image paints
-              containIntrinsicSize: "2016px 1453px",
-              contentVisibility: "auto",
+              width: "var(--art-w)",
+              aspectRatio: "2016 / 1453",
+              transform: "translateY(calc(var(--lift) * -0.85))",
             }}
-          >
-            <img
-              src={src}
-              alt=""
-              width={2016}
-              height={1453}
-              className={cn(
-                "block mx-auto h-auto select-none",
-                "aspect-[2016/1453]",
+          />
 
-                // Monotonic responsive widths
-                "w-[min(54vw,240px)]", // default (<480px)
-                "xs:w-[min(58vw,260px)]", // ≥480px
-                "sm:w-[min(58vw,340px)]", // ≥640px
-                "md:w-[min(28vw,280px)]", // ≥768px
-                "lg:w-[min(22vw,300px)]", // ≥1024px
-                "xl:w-[min(18vw,200px)]", // ≥1280px
-                "2xl:w-[min(16vw,320px)]", // ≥1536px
-                "3xl:w-[min(15vw,315px)]", // ≥1792px
+          {/* 2) Real image overlays when allowed to load */}
+          {showArt && (
+            <figure
+              className="pointer-events-none absolute inset-0 flex flex-col items-center"
+              aria-labelledby="invite-caption"
+              style={{ containIntrinsicSize: "2016px 1453px", contentVisibility: "auto" }}
+            >
+              <img
+                src={src}
+                alt=""
+                width={2016}
+                height={1453}
+                className="block mx-auto h-auto select-none aspect-[2016/1453]"
+                style={{
+                  width: "var(--art-w)",
+                }}
+                sizes="
+                  (min-width:1792px) 15vw,
+                  (min-width:1536px) 16vw,
+                  (min-width:1280px) 18vw,
+                  (min-width:1024px) 22vw,
+                  (min-width:768px) 28vw,
+                  (min-width:640px) 58vw,
+                  (min-width:480px) 58vw,
+                  54vw
+                "
+                loading="lazy"
+                fetchPriority="low"
+                srcSet="
+                  /images/cover-page/name-cover-01-320.avif 320w,
+                  /images/cover-page/name-cover-01-480.avif 480w,
+                  /images/cover-page/name-cover-01-640.avif 640w,
+                  /images/cover-page/name-cover-01-768.avif 768w,
+                  /images/cover-page/name-cover-01-1024.avif 1024w,
+                  /images/cover-page/name-cover-01-1280.avif 1280w,
+                  /images/cover-page/name-cover-01-1536.avif 1536w,
+                  /images/cover-page/name-cover-01-2016.avif 2016w
+                "
+                decoding="async"
+                draggable={false}
+                aria-hidden="true"
+              />
+              <figcaption className="sr-only" id="invite-caption">
+                ការអញ្ជើញពិសេសសម្រាប់ភ្ញៀវកិត្តិយស
+              </figcaption>
+            </figure>
+          )}
+        </div>
 
-                // Lift control
-                "-translate-y-[calc(var(--lift)*0.85)]",
-                "xs:-translate-y-[calc(var(--lift)*0.9)]",
-                "md:-translate-y-[calc(var(--lift)*0.6)]",
-                "lg:-translate-y-[calc(var(--lift)*0.55)]",
-                "xl:-translate-y-[calc(var(--lift)*0.7)]",
-                "2xl:-translate-y-[calc(var(--lift)*0.6)]",
-                "3xl:-translate-y-[calc(var(--lift)*0.5)]",
-
-                "max-[360px]:-translate-y-[clamp(0.25rem,2vw,1rem)]",
-                "transform-gpu [will-change:transform]"
-              )}
-              sizes="
-                (min-width:1792px) 15vw,
-                (min-width:1536px) 16vw,
-                (min-width:1280px) 18vw,
-                (min-width:1024px) 22vw,
-                (min-width:768px) 28vw,
-                (min-width:640px) 58vw,
-                (min-width:480px) 58vw,
-                54vw
-              "
-              loading="lazy"
-              fetchPriority="low"
-              srcSet="
-                /images/cover-page/name-cover-01-320.avif 320w,
-                /images/cover-page/name-cover-01-480.avif 480w,
-                /images/cover-page/name-cover-01-640.avif 640w,
-                /images/cover-page/name-cover-01-768.avif 768w,
-                /images/cover-page/name-cover-01-1024.avif 1024w,
-                /images/cover-page/name-cover-01-1280.avif 1280w,
-                /images/cover-page/name-cover-01-1536.avif 1536w,
-                /images/cover-page/name-cover-01-2016.avif 2016w
-              "
-              decoding="async"
-              draggable={false}
-              aria-hidden="true"
-            />
-            <figcaption className="sr-only" id="invite-caption">
-              ការអញ្ជើញពិសេសសម្រាប់ភ្ញៀវកិត្តិយស
-            </figcaption>
-          </figure>
-        )}
 
         <div
           className={cn(
