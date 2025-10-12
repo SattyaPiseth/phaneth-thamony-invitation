@@ -62,12 +62,3 @@ if (rootEl) {
     attributeFilter: ["aria-hidden", "data-aria-hidden"],
   });
 }
-
-// Remove LCP fallback poster after React is ready (next frame)
- requestAnimationFrame(() => {
-   requestAnimationFrame(() => {
-     document.documentElement.classList.add('js-ready');
-     const fallback = document.getElementById('lcp-poster');
-     if (fallback) fallback.remove();
-   });
- });
