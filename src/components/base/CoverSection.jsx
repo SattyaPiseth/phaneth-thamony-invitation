@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import useCustomerByUuid from "../../hook/useCustomerByUuid";
 import CustomerNameInline from "../customer/CustomerNameInline";
 import AnimatedActionButton from "../button/AnimatedActionButton";
+import { renderNameWithFonts } from "../../utils/scriptRuns";
+
 
 const cn = (...parts) => parts.filter(Boolean).join(" ");
 
@@ -153,7 +155,8 @@ export default function CoverSection({
                 "max-[340px]:text-xl"
               )}
             >
-              {person.guestName}
+              {/* {person.guestName} */}
+              {renderNameWithFonts(person.guestName)}
             </p>
           ) : (
             <CustomerNameInline />
