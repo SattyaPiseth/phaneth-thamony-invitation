@@ -12,7 +12,7 @@
       content="Join us in celebrating love. Ceremony details, schedule, map, and RSVP."
     />
 
-    <!-- Favicon (only memora-logo.jpg) -->
+    <!-- Favicon -->
     <link
       rel="icon"
       type="image/png"
@@ -20,18 +20,44 @@
       href="/images/seo/phaneth-thamony-logo.png"
     />
 
-    <!-- Fonts / CSS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Moulpali&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Moul&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Siemreap&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-
+    <!-- Fonts (non-blocking) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
+      href="https://fonts.googleapis.com/css2?family=Moulpali&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Moul&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Siemreap&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 🚀 Non-blocking Flowbite CSS -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
+      />
+    </noscript>
 
     <!-- Page Title -->
     <title>Phaneth & Thamony Wedding — Save the Date</title>
@@ -40,7 +66,10 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Phaneth & Thamony Wedding" />
     <meta property="og:locale" content="km_KH" />
-    <meta property="og:title" content="Phaneth & Thamony Wedding — Save the Date" />
+    <meta
+      property="og:title"
+      content="Phaneth & Thamony Wedding — Save the Date"
+    />
     <meta
       property="og:description"
       content="Join us in celebrating love. Ceremony details, schedule, map, and RSVP."
@@ -52,39 +81,96 @@
       property="og:image:alt"
       content="Phaneth & Thamony Wedding Invitation Banner"
     />
-    <meta property="og:url" content="https://phaneth-thamony-wedding-invitation.memora-shine.shop/?v=20251009" />
-    <meta property="og:image" content="https://phaneth-thamony-wedding-invitation.memora-shine.shop/images/seo/phaneth-thamony-logo.png?v=20251009" />
-    <meta property="og:image:secure_url" content="https://phaneth-thamony-wedding-invitation.memora-shine.shop/images/seo/phaneth-thamony-logo.png?v=20251009" />
+    <meta
+      property="og:url"
+      content="https://phaneth-thamony-wedding-invitation.memora-shine.shop/?v=20251009"
+    />
+    <meta
+      property="og:image"
+      content="https://phaneth-thamony-wedding-invitation.memora-shine.shop/images/seo/phaneth-thamony-logo.png?v=20251009"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://phaneth-thamony-wedding-invitation.memora-shine.shop/images/seo/phaneth-thamony-logo.png?v=20251009"
+    />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Phaneth & Thamony Wedding — Save the Date" />
+    <meta
+      name="twitter:title"
+      content="Phaneth & Thamony Wedding — Save the Date"
+    />
     <meta
       name="twitter:description"
       content="Join us in celebrating love. Ceremony details, schedule, map, and RSVP."
     />
-
-    <meta name="twitter:image" content="https://phaneth-thamony-wedding-invitation.memora-shine.shop/images/seo/phaneth-thamony-logo.png?v=20251009" />
+    <meta
+      name="twitter:image"
+      content="https://phaneth-thamony-wedding-invitation.memora-shine.shop/images/seo/phaneth-thamony-logo.png?v=20251009"
+    />
     <meta
       name="twitter:image:alt"
       content="Phaneth & Thamony Wedding Invitation Banner"
     />
 
-  <link
-    rel="preload"
-    as="image"
-    href="/images/cover-page/heading-cover-page-01.avif"
-  />
-  <link rel="preload" as="image" href="/images/cover-page/background.avif">
+    <!-- 🖼 Preload critical hero images -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/cover-page/background.avif"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/images/cover-page/heading-cover-page-01.avif"
+      fetchpriority="low"
+    />
 
+    <!-- 🎨 Critical inline CSS for instant poster paint -->
+    <style>
+      #lcp-poster {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background: #ffe5ec;
+        pointer-events: none;
+      }
+      @media (orientation: landscape) {
+        #lcp-poster {
+          object-fit: contain;
+        }
+      }
+      .js-ready #lcp-poster {
+        display: none;
+      }
+    </style>
   </head>
+
   <body>
+    <!-- 🖼 Instant LCP candidate (no JS needed) -->
+    <img
+      id="lcp-poster"
+      src="/images/cover-page/background.avif"
+      width="1920"
+      height="1080"
+      alt=""
+      aria-hidden="true"
+      fetchpriority="high"
+      decoding="async"
+    />
+
+    <!-- React Root -->
     <div id="root"></div>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+    <!-- JS (deferred to avoid render blocking) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"
+      defer
+    ></script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
-
-
-
-
