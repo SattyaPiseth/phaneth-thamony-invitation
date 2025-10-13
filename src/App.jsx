@@ -1,14 +1,5 @@
-// App.jsx
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import {
-  useRef,
-  useState,
-  useEffect,
-  useCallback,
-  lazy,
-  Suspense,
-} from "react";
-
+import { useRef, useState, useEffect, useCallback, lazy, Suspense } from "react";
 import Seo19 from "./components/Seo19.jsx";
 import VideoLayer from "./components/video/VideoLayer.jsx";
 
@@ -108,21 +99,6 @@ export default function App() {
     }
   }, [unlocked, muted]);
 
-  // Skip AOS work while Lightbox is open
-  const lightboxOpen = () =>
-    typeof document !== "undefined" &&
-    document.documentElement.getAttribute("data-lightbox-open") === "1";
-
-  const aosSafeRefresh = () => {
-    if (!aosReadyRef.current || lightboxOpen()) return;
-    try { aosRef.current.refresh(); } catch {}
-  };
-
-  const aosSafeRefreshHard = () => {
-    if (!aosReadyRef.current || lightboxOpen()) return;
-    try { aosRef.current.refreshHard(); } catch {}
-  };
-
   // One-time unlock on first interaction (also mark bg video ready)
   useEffect(() => {
     const onFirstInteract = () => {
@@ -147,44 +123,46 @@ export default function App() {
 
   // ✅ AOS: lazy-load lib, defer init to next frame, then extra refreshHard
   useEffect(() => {
-  const loadAOS = async () => {
-    // 🟩 Dynamically inject the AOS CSS (defer from first paint)
-    if (!document.getElementById("aos-css")) {
-      const link = document.createElement("link");
-      link.id = "aos-css";
-      link.rel = "stylesheet";
-      link.href = "https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css";
-      document.head.appendChild(link);
-    }
+    const loadAOS = async () => {
+      // 🟩 Dynamically inject the AOS CSS (defer from first paint)
+      if (!document.getElementById("aos-css")) {
+        const link = document.createElement("link");
+        link.id = "aos-css";
+        link.rel = "stylesheet";
+        link.href = "https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css";
+        document.head.appendChild(link);
+      }
 
-    // 🟩 Then import and initialize AOS
-    const AOS = (await import("aos")).default;
-    AOS.init({
-      once: true,
-      duration: 700,
-      easing: "ease-out-cubic",
-    });
-    // make guarded refreshers operational
-    aosRef.current = AOS;
-    aosReadyRef.current = true;
+      // 🟩 Then import and initialize AOS
+      const AOS = (await import("aos")).default;
+      AOS.init({
+        once: true,
+        duration: 700,
+        easing: "ease-out-cubic",
+      });
+      // make guarded refreshers operational
+      aosRef.current = AOS;
+      aosReadyRef.current = true;
 
-    // 🟩 Refresh after first paint settles
-    if (window.requestIdleCallback) {
-      requestIdleCallback(() => AOS.refreshHard());
-    } else {
-      setTimeout(() => AOS.refreshHard(), 1000);
-    }
-  };
+      // 🟩 Refresh after first paint settles
+      if (window.requestIdleCallback) {
+        requestIdleCallback(() => AOS.refreshHard());
+      } else {
+        setTimeout(() => AOS.refreshHard(), 1000);
+      }
+    };
 
-  loadAOS();
-}, []);
-
+    loadAOS();
+  }, []);
 
   // refresh on route change after paint
   useEffect(() => {
     const raf = requestAnimationFrame(() => {
       if (aosReadyRef.current) {
-        aosSafeRefresh();
+        // Fix: Call refresh directly from aosRef.current instead of aosSafeRefresh
+        if (aosRef.current) {
+          aosRef.current.refresh();
+        }
       }
     });
     return () => cancelAnimationFrame(raf);
@@ -283,15 +261,17 @@ export default function App() {
   useEffect(() => {
     const el = videoRef.current;
     if (!el || !aosReadyRef.current) return;
-    // const onLoaded = () => {
-    //   aosSafeRefresh();
-    // };
-     const onLoaded = () => {
-       // hide the poster once the video can paint
-       const poster = document.getElementById("lcp-poster");
-       if (poster) poster.style.display = "none";
-       aosSafeRefresh();
-     };
+
+    const onLoaded = () => {
+      // hide the poster once the video can paint
+      const poster = document.getElementById("lcp-poster");
+      if (poster) poster.style.display = "none";
+      
+      // Fix: Call refresh directly from aosRef.current instead of aosSafeRefresh
+      if (aosRef.current) {
+        aosRef.current.refresh();
+      }
+    };
 
     el.addEventListener("loadeddata", onLoaded);
     el.addEventListener("loadedmetadata", onLoaded);

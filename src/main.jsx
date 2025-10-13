@@ -1,5 +1,5 @@
 // main.jsx
-import { StrictMode, lazy, Suspense } from "react";
+import { StrictMode, lazy, Suspense, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 // import "aos/dist/aos.css";
@@ -16,8 +16,8 @@ const HomePage  = lazy(() => import("./pages/HomePage.jsx"));
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,                      // no inner Suspense needed
-    errorElement: <ErrorPage />,           // ditto
+    element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <CoverPage />, loader: coverLoader },
       { path: "home", element: <HomePage /> },
@@ -27,38 +27,52 @@ const router = createBrowserRouter([
   },
 ]);
 
+// Wrapper component to manage MutationObserver
+function MutationObserverWrapper() {
+  useEffect(() => {
+    const rootEl = document.getElementById("root");
+
+    if (rootEl) {
+      rootEl.removeAttribute("aria-hidden");
+      rootEl.removeAttribute("data-aria-hidden");
+
+      const mo = new MutationObserver((mutations) => {
+        for (const m of mutations) {
+          if (
+            m.type === "attributes" &&
+            (m.attributeName === "aria-hidden" || m.attributeName === "data-aria-hidden")
+          ) {
+            rootEl.removeAttribute("aria-hidden");
+            rootEl.removeAttribute("data-aria-hidden");
+          }
+        }
+      });
+
+      mo.observe(rootEl, {
+        attributes: true,
+        attributeFilter: ["aria-hidden", "data-aria-hidden"],
+      });
+
+      // Cleanup observer when the component unmounts
+      return () => {
+        mo.disconnect();
+      };
+    }
+  }, []); // Empty dependency array ensures this effect runs only once on mount
+
+  return null; // No visible rendering needed
+}
+
+// App root component with Suspense and conditional SpeedInsights
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Suspense fallback={null}>
+    <Suspense fallback={<div>Loading...</div>}>
       <RouterProvider router={router} />
     </Suspense>
-    <SpeedInsights />
+
+    {/* Render SpeedInsights only in production environment */}
+    {process.env.NODE_ENV === "production" && <SpeedInsights />}
+
+    <MutationObserverWrapper />
   </StrictMode>
 );
-
-// ---- A11y FIX: make sure #root is never aria-hidden ----
-const rootEl = document.getElementById("root");
-if (rootEl) {
-  rootEl.removeAttribute("aria-hidden");
-  rootEl.removeAttribute("data-aria-hidden");
-}
-
-// Prevent any script (modal/lightbox/anim) from putting it back
-if (rootEl) {
-  const mo = new MutationObserver((mutations) => {
-    for (const m of mutations) {
-      if (
-        m.type === "attributes" &&
-        (m.attributeName === "aria-hidden" || m.attributeName === "data-aria-hidden")
-      ) {
-        rootEl.removeAttribute("aria-hidden");
-        rootEl.removeAttribute("data-aria-hidden");
-      }
-    }
-  });
-
-  mo.observe(rootEl, {
-    attributes: true,
-    attributeFilter: ["aria-hidden", "data-aria-hidden"],
-  });
-}
