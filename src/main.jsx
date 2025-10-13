@@ -7,10 +7,10 @@ import "aos/dist/aos.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { coverLoader } from "./routes/loaders.js";
+import App from "./App.jsx";
+import CoverPage from "./pages/CoverPage.jsx";
 
-const App       = lazy(() => import("./App.jsx"));
 const ErrorPage = lazy(() => import("./routes/ErrorPage.jsx"));
-const CoverPage = lazy(() => import("./pages/CoverPage.jsx"));
 const HomePage  = lazy(() => import("./pages/HomePage.jsx"));
 
 const router = createBrowserRouter([
