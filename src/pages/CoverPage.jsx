@@ -53,11 +53,11 @@ export default function CoverPage() {
         data-aos="zoom-in"
       >
         {/* <Heading isStoryPlaying={isStoryPlaying} /> */}
-        <CoverSection
+        {/* <CoverSection
           isStoryPlaying={isStoryPlaying}
           onStart={startStory}
           customer={customer}
-        />
+        /> */}
       </div>
 
       {/* ====================== COLOR BAND FOR TEST ====================== */}
