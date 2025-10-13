@@ -11,7 +11,7 @@ export default function CoverSection({
   isStoryPlaying = false,
   onStart = () => {},
   customer,
-  src = "https://phaneth-thamony-wedding-invitation.memora-shine.shop/images/cover-page/name-cover-01.avif",
+  src = "/images/cover-page/name-cover-01.avif",
 }) {
   const customerFromHook = useCustomerByUuid();
   const person = customer ?? customerFromHook;
