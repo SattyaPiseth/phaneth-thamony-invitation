@@ -23,22 +23,24 @@ export default function Heading({
 
       {!isStoryPlaying && (
         <picture>
-          {/* Preload the LCP image for faster fetching */}
+          {/* Preload the LCP image formats for faster fetching */}
           <link rel="preload" href={src} as="image" />
+          <link rel="preload" href="/images/cover-page/heading-cover-page-01.webp" as="image" />
+          <link rel="preload" href="/images/cover-page/heading-cover-page-01.avif" as="image" />
           
           {/* Serve WebP and AVIF formats for optimized performance */}
           <source srcSet="/images/cover-page/heading-cover-page-01.webp" type="image/webp" />
           <source srcSet="/images/cover-page/heading-cover-page-01.avif" type="image/avif" />
 
-          {/* Fallback to default image (JPEG or other format) if neither WebP nor AVIF is supported */}
+          {/* Fallback to the original image format if neither WebP nor AVIF is supported */}
           <img
-            src={src}
+            src={src}  // Default image format if WebP and AVIF are unsupported
             alt="Cover page heading for wedding invitation"
             width={414}
             height={207}
-            loading="eager" // Ensure this image is loaded as soon as possible for LCP
-            fetchPriority="high" // High priority for LCP element
-            decoding="async"
+            loading="eager" // Ensure the image is loaded as soon as possible for LCP
+            fetchPriority="high" // Prioritize this LCP image
+            decoding="async" // Allows the browser to render the page while decoding the image
             className={cn(
               "block mx-auto h-auto select-none",
               "aspect-[414/207]",
