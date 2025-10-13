@@ -147,37 +147,38 @@ export default function App() {
 
   // ✅ AOS: lazy-load lib, defer init to next frame, then extra refreshHard
   useEffect(() => {
-    let mounted = true;
-    (async () => {
-      if (!aosRef.current) {
-        const { default: AOS } = await import("aos");
-        aosRef.current = AOS;
-      }
-      // wait for first paint to avoid measuring mid-layout
-      requestAnimationFrame(() => {
-        if (!mounted) return;
-        aosRef.current.init({
-          duration: 800,
-          easing: "ease-in-out",
-          once: true,
-          throttleDelay: 150,
-          debounceDelay: 100,
-          disable: () =>
-            typeof window !== "undefined" &&
-            window.matchMedia?.("(prefers-reduced-motion: reduce)").matches,
-        });
-        aosReadyRef.current = true;
-        // one more hard refresh after CSS/fonts/images likely settle
-        setTimeout(() => {
-          const rIC = window.requestIdleCallback || ((cb) => setTimeout(cb, 120));
-          rIC(() => aosSafeRefreshHard());
-        }, 300);
-      });
-    })();
-    return () => {
-      mounted = false;
-    };
-  }, []);
+  const loadAOS = async () => {
+    // 🟩 Dynamically inject the AOS CSS (defer from first paint)
+    if (!document.getElementById("aos-css")) {
+      const link = document.createElement("link");
+      link.id = "aos-css";
+      link.rel = "stylesheet";
+      link.href = "https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css";
+      document.head.appendChild(link);
+    }
+
+    // 🟩 Then import and initialize AOS
+    const AOS = (await import("aos")).default;
+    AOS.init({
+      once: true,
+      duration: 700,
+      easing: "ease-out-cubic",
+    });
+    // make guarded refreshers operational
+    aosRef.current = AOS;
+    aosReadyRef.current = true;
+
+    // 🟩 Refresh after first paint settles
+    if (window.requestIdleCallback) {
+      requestIdleCallback(() => AOS.refreshHard());
+    } else {
+      setTimeout(() => AOS.refreshHard(), 1000);
+    }
+  };
+
+  loadAOS();
+}, []);
+
 
   // refresh on route change after paint
   useEffect(() => {
@@ -282,9 +283,16 @@ export default function App() {
   useEffect(() => {
     const el = videoRef.current;
     if (!el || !aosReadyRef.current) return;
-    const onLoaded = () => {
-      aosSafeRefresh();
-    };
+    // const onLoaded = () => {
+    //   aosSafeRefresh();
+    // };
+     const onLoaded = () => {
+       // hide the poster once the video can paint
+       const poster = document.getElementById("lcp-poster");
+       if (poster) poster.style.display = "none";
+       aosSafeRefresh();
+     };
+
     el.addEventListener("loadeddata", onLoaded);
     el.addEventListener("loadedmetadata", onLoaded);
     return () => {

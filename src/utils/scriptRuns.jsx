@@ -1,4 +1,3 @@
-// src/utils/scriptsRuns.js
 import React from "react";
 
 // Khmer Unicode block: U+1780–U+17FF

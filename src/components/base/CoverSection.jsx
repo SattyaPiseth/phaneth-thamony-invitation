@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import useCustomerByUuid from "../../hook/useCustomerByUuid";
 import CustomerNameInline from "../customer/CustomerNameInline";
 import AnimatedActionButton from "../button/AnimatedActionButton";
-import { renderNameWithFonts } from "../../utils/scriptRuns";
+import { renderNameWithFonts } from "../../utils/scriptRuns.jsx";
 
 
 const cn = (...parts) => parts.filter(Boolean).join(" ");

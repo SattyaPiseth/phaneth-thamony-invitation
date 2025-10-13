@@ -2,7 +2,7 @@
 import { StrictMode, lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import "aos/dist/aos.css";
+// import "aos/dist/aos.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { SpeedInsights } from "@vercel/speed-insights/react";
