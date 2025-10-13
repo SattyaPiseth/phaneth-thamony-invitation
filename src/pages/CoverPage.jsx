@@ -52,7 +52,7 @@ export default function CoverPage() {
         `}
         data-aos="zoom-in"
       >
-        <Heading isStoryPlaying={isStoryPlaying} />
+        {/* <Heading isStoryPlaying={isStoryPlaying} /> */}
         <CoverSection
           isStoryPlaying={isStoryPlaying}
           onStart={startStory}
