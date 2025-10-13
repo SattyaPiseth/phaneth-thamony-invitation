@@ -24,7 +24,6 @@ export default function Heading({
       {!isStoryPlaying && (
         <img
           src={src}
-          fetchPriority="high"
           alt="Cover page heading"
           width={414}
           height={207}
