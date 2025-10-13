@@ -62,7 +62,7 @@ export default function Heading({
             (min-width:480px) 66vw,
             68vw
           "
-          fetchPriority="high"
+          // fetchPriority="high"
           decoding="async"
           draggable={false}
           title="Cover page heading"
