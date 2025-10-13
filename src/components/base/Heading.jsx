@@ -23,19 +23,22 @@ export default function Heading({
 
       {!isStoryPlaying && (
         <picture>
-          {/* Preload the image for better performance */}
+          {/* Preload the LCP image for faster fetching */}
           <link rel="preload" href={src} as="image" />
           
-          {/* WebP format for browsers that support it */}
+          {/* Serve WebP and AVIF formats for optimized performance */}
           <source srcSet="/images/cover-page/heading-cover-page-01.webp" type="image/webp" />
           <source srcSet="/images/cover-page/heading-cover-page-01.avif" type="image/avif" />
-          
-          {/* Main image */}
+
+          {/* Fallback to default image (JPEG or other format) if neither WebP nor AVIF is supported */}
           <img
             src={src}
             alt="Cover page heading for wedding invitation"
             width={414}
             height={207}
+            loading="eager" // Ensure this image is loaded as soon as possible for LCP
+            fetchPriority="high" // High priority for LCP element
+            decoding="async"
             className={cn(
               "block mx-auto h-auto select-none",
               "aspect-[414/207]",
@@ -51,9 +54,6 @@ export default function Heading({
               "transform-gpu [will-change:transform]"
             )}
             sizes="(min-width:1920px) 21.6vw, (min-width:1536px) 20vw, (min-width:1280px) 20vw, (min-width:1024px) 24vw, (min-width:768px) 44vw, (min-width:640px) 58vw, (min-width:480px) 66vw, 68vw"
-            loading="eager" // Ensure LCP image is loaded eagerly
-            fetchPriority="high" // Prioritize the LCP image
-            decoding="async"
             draggable={false}
             title="Cover page heading"
           />
