@@ -406,11 +406,11 @@ export default function App() {
       <audio ref={audioRef} src={BGMUSIC} preload="auto" loop hidden />
 
       {/* Background / Story video */}
-      <VideoLayer
+      {/* <VideoLayer
         videoRef={videoRef}
         poster={effectiveBg.poster}
         onEnded={mode === "story" ? handleEnded : undefined}
-      />
+      /> */}
 
       <Suspense fallback={null}>
         <Overlay />
