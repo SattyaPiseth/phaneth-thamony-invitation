@@ -4,7 +4,6 @@ import CustomerNameInline from "../customer/CustomerNameInline";
 import AnimatedActionButton from "../button/AnimatedActionButton";
 import { renderNameWithFonts } from "../../utils/scriptRuns.jsx";
 
-
 const cn = (...parts) => parts.filter(Boolean).join(" ");
 
 export default function CoverSection({
@@ -17,18 +16,17 @@ export default function CoverSection({
   const person = customer ?? customerFromHook;
   const showPersonalized = !!person?.guestName;
 
-// ============ Invisible-but-clickable button logic ============
-const VISIBLE_DELAY_MS = 1500; // show visually after 3s
-const [isVisible, setIsVisible] = useState(false);
-const [isPreclick, setIsPreclick] = useState(false);
+  // ============ Invisible-but-clickable button logic ============ 
+  const VISIBLE_DELAY_MS = 1500; // show visually after 3s
+  const [isVisible, setIsVisible] = useState(false);
+  const [isPreclick, setIsPreclick] = useState(false);
 
-useEffect(() => {
-  setIsPreclick(true);                      // clickable immediately
-  const t = setTimeout(() => setIsVisible(true), VISIBLE_DELAY_MS); // visible after 3s
-  return () => clearTimeout(t);
-}, []);
-// =============================================================
-
+  useEffect(() => {
+    setIsPreclick(true); // clickable immediately
+    const t = setTimeout(() => setIsVisible(true), VISIBLE_DELAY_MS); // visible after 3s
+    return () => clearTimeout(t);
+  }, []);
+  // =============================================================
 
   // ---- Idle-gate the decorative image so it can't win LCP ----
   const [showArt, setShowArt] = useState(false);
@@ -59,8 +57,6 @@ useEffect(() => {
         "text-[var(--text)] tracking-wide"
       )}
       aria-labelledby="cover-section-title"
-      /* Keep AOS off the very first fold if you want max perf; otherwise leave it: */
-      // data-aos="zoom-in"
       style={{
         "--ry": "clamp(1.25rem, 4.5vw, 3rem)",
         "--lift": "clamp(0.5rem, 2.5vw, 3rem)",
@@ -72,10 +68,9 @@ useEffect(() => {
       </h2>
 
       <div className="flex w/full max-w-[clamp(440px,92vw,56rem)] flex-col items-center xl:-translate-y-[calc(var(--ry)*0.5)] 2xl:-translate-y-[calc(var(--ry)*0.4)] transform-gpu">
-
+        
         {/* CLS-safe art block: spacer always in flow, image overlays later */}
-        <div className="relative flex flex-col items-center"
-            style={{ "--art-w": "min(54vw, 240px)" }}>
+        <div className="relative flex flex-col items-center" style={{ "--art-w": "min(54vw, 240px)" }}>
           {/* 1) Spacer reserves space immediately (prevents layout shift) */}
           <div
             aria-hidden="true"
@@ -99,21 +94,9 @@ useEffect(() => {
                 width={2016}
                 height={1453}
                 className="block mx-auto h-auto select-none aspect-[2016/1453]"
-                style={{
-                  width: "var(--art-w)",
-                }}
-                sizes="
-                  (min-width:1792px) 15vw,
-                  (min-width:1536px) 16vw,
-                  (min-width:1280px) 18vw,
-                  (min-width:1024px) 22vw,
-                  (min-width:768px) 28vw,
-                  (min-width:640px) 58vw,
-                  (min-width:480px) 58vw,
-                  54vw
-                "
+                fetchPriority="high" // High priority for LCP image
                 loading="lazy"
-                fetchPriority="low"
+                sizes="(min-width:1792px) 15vw, (min-width:1536px) 16vw, (min-width:1280px) 18vw, (min-width:1024px) 22vw, (min-width:768px) 28vw, (min-width:640px) 58vw, (min-width:480px) 58vw, 54vw"
                 srcSet="
                   /images/cover-page/name-cover-01-320.avif 320w,
                   /images/cover-page/name-cover-01-480.avif 480w,
@@ -122,8 +105,7 @@ useEffect(() => {
                   /images/cover-page/name-cover-01-1024.avif 1024w,
                   /images/cover-page/name-cover-01-1280.avif 1280w,
                   /images/cover-page/name-cover-01-1536.avif 1536w,
-                  /images/cover-page/name-cover-01-2016.avif 2016w
-                "
+                  /images/cover-page/name-cover-01-2016.avif 2016w"
                 decoding="async"
                 draggable={false}
                 aria-hidden="true"
@@ -134,7 +116,6 @@ useEffect(() => {
             </figure>
           )}
         </div>
-
 
         <div
           className={cn(
@@ -169,28 +150,18 @@ useEffect(() => {
                 "max-[340px]:text-xl"
               )}
             >
-              {/* {person.guestName} */}
               {renderNameWithFonts(person.guestName)}
             </p>
           ) : (
             <CustomerNameInline />
           )}
 
-          {/* <div className="mt-[calc(var(--ry)*1.25)] lg:mt-[calc(var(--ry)*0.3)] xl:mt-[calc(var(--ry)*0.25)] 2xl:mt-[calc(var(--ry)*0.30)]">
-            <AnimatedActionButton
-              onStart={onStart}
-              src="/images/border-styles/border-button.avif"
-              variant="bare"
-              withShine
-              withRipple
-            />
-          </div> */}
-
+          {/* Hidden button, delayed visibility */}
           <div
             className={cn(
               "mt-[calc(var(--ry)*1.25)] lg:mt-[calc(var(--ry)*0.3)] xl:mt-[calc(var(--ry)*0.25)] 2xl:mt-[calc(var(--ry)*0.30)]",
               "transition-opacity duration-700",
-              isVisible ? "opacity-100" : "opacity-0"   // hidden visually until delay
+              isVisible ? "opacity-100" : "opacity-0" // hidden visually until delay
             )}
             style={{ pointerEvents: isPreclick ? "auto" : "none" }} // clickable even when hidden
           >
@@ -202,8 +173,6 @@ useEffect(() => {
               withRipple
             />
           </div>
-
-
         </div>
       </div>
     </section>
