@@ -128,10 +128,10 @@ export default function CoverSection({
               className={cn(
                 "moul-regular text-center tracking-[0.01em]",
                 "leading-[1.25] lg:leading-[1.2]",
-                "text-xl sm:text-3xl lg:text-2xl xl:text-2xl 2xl:text-3xl",
+                "text-lg sm:text-3xl lg:text-2xl xl:text-2xl 2xl:text-3xl",
                 "text-[var(--secondary)]",
                 "animate-[fade-up_700ms_ease-out_both] [animation-delay:160ms] motion-reduce:animate-none",
-                "max-[340px]:text-xl"
+                "max-[340px]:text-lg"
               )}
             >
               សូមគោរពអញ្ជើញ
