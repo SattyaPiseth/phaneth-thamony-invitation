@@ -143,7 +143,7 @@ export default function CoverSection({
               className={cn(
                 "mt-[calc(var(--ry)*0.5)]",
                 "moul-regular text-center tracking-[0.01em] leading-[1.2]",
-                "text-[0.85rem] sm:text-3xl lg:text-2xl xl:text-2xl",
+                "text-[0.90rem] sm:text-3xl lg:text-2xl xl:text-2xl",
                 "text-[var(--accent)]",
                 "animate-[fade-up_700ms_ease-out_both] [animation-delay:360ms] motion-reduce:animate-none",
                 "max-[340px]:text-xl"
