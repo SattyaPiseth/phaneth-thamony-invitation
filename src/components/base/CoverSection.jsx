@@ -57,7 +57,7 @@ export default function CoverSection({
             <p
               className={cn(
                 
-                "moul-regular text-center tracking-wide leading-6",
+                "moul-regular text-center tracking-wide leading-8",
                 "text-sm text-wrap px-[20vw]",
                 "text-[var(--accent)]"
               )}
