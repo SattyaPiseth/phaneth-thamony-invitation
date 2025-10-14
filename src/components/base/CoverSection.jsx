@@ -50,7 +50,7 @@ export default function CoverSection({
   return (
     <section
       className={cn(
-        "-mt-[2vh]",
+        "-mt-[6vh]",
         "flex flex-col items-center justify-center",
         "px-4 sm:px-6 lg:px-8",
         "py-[var(--ry)] sm:py-[calc(var(--ry)*1.25)] lg:py-[calc(var(--ry)*1.5)]",
@@ -143,7 +143,7 @@ export default function CoverSection({
               className={cn(
                 "mt-[calc(var(--ry)*0.5)]",
                 "moul-regular text-center tracking-[0.01em] leading-[1.2]",
-                "text-base sm:text-3xl lg:text-2xl xl:text-2xl",
+                "text-sm sm:text-3xl lg:text-2xl xl:text-2xl",
                 "text-[var(--accent)]",
                 "animate-[fade-up_700ms_ease-out_both] [animation-delay:360ms] motion-reduce:animate-none",
                 "max-[340px]:text-xl"

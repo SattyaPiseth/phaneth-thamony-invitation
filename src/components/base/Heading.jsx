@@ -15,9 +15,9 @@ export default function Heading({
         "pt-[calc(var(--safe-top)+var(--pad-top-dynamic)+var(--pad-top-extra))]",
         className
       )}
-      data-aos="fade-down"
-      data-aos-easing="linear"
-      data-aos-duration="400"
+      // data-aos="fade-down"
+      // data-aos-easing="linear"
+      // data-aos-duration="400"
     >
       <h1 className="sr-only">សិរីមង្គលអាពាហ៍ពិពាហ៍</h1>
 
