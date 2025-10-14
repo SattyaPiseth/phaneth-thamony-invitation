@@ -27,7 +27,7 @@ export default function CoverPage() {
       <div
         className={`
           relative z-10 mx-auto flex flex-col
-          w-full min-h-dvh overflow-hidden  translate-y-[7vh] sm:translate-y-[4vh] 
+          w-full min-h-dvh overflow-hidden 
           max-w-[clamp(440px,92vw,56rem)]
 
           /* Fluid inner padding */
