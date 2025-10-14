@@ -94,7 +94,6 @@ export default function CoverSection({
                 width={2016}
                 height={1453}
                 className="block mx-auto h-auto select-none aspect-[2016/1453]"
-                fetchPriority="high" // High priority for LCP image
                 loading="lazy"
                 sizes="(min-width:1792px) 15vw, (min-width:1536px) 16vw, (min-width:1280px) 18vw, (min-width:1024px) 22vw, (min-width:768px) 28vw, (min-width:640px) 58vw, (min-width:480px) 58vw, 54vw"
                 srcSet="
