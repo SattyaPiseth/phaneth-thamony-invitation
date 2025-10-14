@@ -115,7 +115,7 @@ export default async function handler(req) {
       process.env.VITE_SITE_URL) ||
     `${url.protocol}//${url.host}`;
   const siteUrl = base.replace(/\/+$/, "");
-  const defaultImage = `${siteUrl}/images/seo/phaneth-thamony-logo.png`;
+  const defaultImage = `${siteUrl}/images/seo/phaneth-thamony-logo.jpg`;
 
   const path = url.pathname.replace(/\/+$/, "") || "/";
   const slug = path.slice(1);
