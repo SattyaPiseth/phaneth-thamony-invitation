@@ -27,7 +27,7 @@ export default function CoverPage() {
       <div
         className={`
           relative z-10 mx-auto flex flex-col
-          w-full min-h-dvh overflow-hidden
+          w-full min-h-dvh overflow-hidden  translate-y-[7vh] sm:translate-y-[4vh] 
           max-w-[clamp(440px,92vw,56rem)]
 
           /* Fluid inner padding */
@@ -50,7 +50,7 @@ export default function CoverPage() {
           2xl:gap-y-[clamp(0.5rem,1vw,1rem)]
           3xl:gap-y-[clamp(0.25rem,0.8vw,0.75rem)]
         `}
-        data-aos="zoom-in"
+        // data-aos="zoom-in"
       >
         <Heading isStoryPlaying={isStoryPlaying} />
         <CoverSection

@@ -93,7 +93,7 @@ export default function CoverSection({
                 alt=""
                 width={2016}
                 height={1453}
-                className="block mx-auto h-auto select-none aspect-[2016/1453]"
+                className="block mx-auto h-auto select-none aspect-[2016/1453] xl:w-[80%] my-[2vh]"
                 loading="lazy"
                 sizes="(min-width:1792px) 15vw, (min-width:1536px) 16vw, (min-width:1280px) 18vw, (min-width:1024px) 22vw, (min-width:768px) 28vw, (min-width:640px) 58vw, (min-width:480px) 58vw, 54vw"
                 srcSet="
@@ -118,7 +118,7 @@ export default function CoverSection({
 
         <div
           className={cn(
-            "flex flex-col items-center",
+            "flex flex-col items-center translate-y-8",
             "gap-y-[calc(var(--ry)*0.8)] sm:gap-y-[var(--ry)] lg:gap-y-[calc(var(--ry)*0.5)] xl:gap-y-[calc(var(--ry)*0.3)] 2xl:gap-y-[calc(var(--ry)*0.5)] 3xl:gap-y-[calc(var(--ry)*0.6)]",
             "mt-[var(--gap-above-text)] xl:-translate-y-[calc(var(--ry)*0.3)] 2xl:-translate-y-[calc(var(--ry)*0.3)] 3xl:-translate-y-[calc(var(--ry)*0)] transform-gpu [will-change:transform]"
           )}
@@ -128,7 +128,7 @@ export default function CoverSection({
               className={cn(
                 "moul-regular text-center tracking-[0.01em]",
                 "leading-[1.25] lg:leading-[1.2]",
-                "text-lg sm:text-3xl lg:text-2xl xl:text-2xl 2xl:text-3xl",
+                "text-lg sm:text-xl lg:text-xl xl:text-xl 2xl:text-2xl",
                 "text-[var(--secondary)]",
                 "animate-[fade-up_700ms_ease-out_both] [animation-delay:160ms] motion-reduce:animate-none",
                 "max-[340px]:text-lg"
@@ -143,7 +143,7 @@ export default function CoverSection({
               className={cn(
                 "mt-[calc(var(--ry)*0.5)]",
                 "moul-regular text-center tracking-[0.01em] leading-[1.2]",
-                "text-[0.90rem] sm:text-3xl lg:text-2xl xl:text-2xl",
+                "text-base",
                 "text-[var(--accent)]",
                 "animate-[fade-up_700ms_ease-out_both] [animation-delay:360ms] motion-reduce:animate-none",
                 "max-[340px]:text-xl"
