@@ -39,6 +39,7 @@ export default function Heading({
             width={414}
             height={207}
             loading="auto" // Ensure the image is loaded as soon as possible for LCP
+            fetchPriority="high"
             decoding="async" // Allows the browser to render the page while decoding the image
             className={cn(
               "block mx-auto h-auto select-none",
