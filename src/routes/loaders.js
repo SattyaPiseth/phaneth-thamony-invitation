@@ -23,7 +23,7 @@ export async function coverLoader({ params, request }) {
         description:
           "Join us in celebrating love. Ceremony details, schedule, map, and RSVP.",
         canonical: abs(origin, "/"),
-        image: "/images/seo/phaneth-thamony-logo.png",
+        image: "/images/seo/phaneth-thamony-logo.jpg",
         locale: "en_US",
         ogType: "website",
         updatedTime: new Date().toISOString(),
@@ -41,7 +41,7 @@ export async function coverLoader({ params, request }) {
         title: "Invitation not found",
         description: "This invite link is invalid or has expired.",
         canonical: abs(origin, "/"), // <- canonical to public page
-        image: "/images/seo/phaneth-thamony-logo.png",
+        image: "/images/seo/phaneth-thamony-logo.jpg",
         locale: "en_US",
         ogType: "website",
         updatedTime: new Date().toISOString(),
@@ -61,7 +61,7 @@ export async function coverLoader({ params, request }) {
         title: "Invitation not found",
         description: "This invite link is invalid or has expired.",
         canonical: abs(origin, "/"), // <- canonical to public page
-        image: "/images/seo/phaneth-thamony-logo.png",
+        image: "/images/seo/phaneth-thamony-logo.jpg",
         locale: "en_US",
         ogType: "website",
         updatedTime: new Date().toISOString(),
@@ -78,7 +78,7 @@ export async function coverLoader({ params, request }) {
       title: "Invitation",
       description: "Private invitation for the ceremony.",
       canonical: abs(origin, "/"), // <- canonical to public page
-      image: customer?.coverImageUrl ?? "/images/seo/phaneth-thamony-logo.png",
+      image: customer?.coverImageUrl ?? "/images/seo/phaneth-thamony-logo.jpg",
       locale: customer?.locale ?? "km_KH",
       ogType: "website",
       updatedTime: new Date().toISOString(),
