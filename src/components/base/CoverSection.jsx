@@ -58,7 +58,7 @@ export default function CoverSection({
               className={cn(
                 
                 "moul-regular text-center tracking-wide leading-8",
-                "text-sm text-wrap mx-[20vw]",
+                "text-sm text-wrap mx-[25vw]",
                 "text-[var(--accent)]"
               )}
             >

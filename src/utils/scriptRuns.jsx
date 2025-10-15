@@ -1,31 +1,58 @@
 import React from "react";
 
-// Khmer Unicode block: U+1780–U+17FF
-const KHMER_RE = /[\u1780-\u17FF]/;
+/** Decide if a grapheme is Khmer using Unicode Script property */
+const KHMER_RE = /\p{Script=Khmer}/u;
+/** "Neutral" chars: spaces, punctuation, symbols, digits, controls, etc. */
+const NEUTRAL_RE = /^[\p{Z}\p{P}\p{S}\p{N}\p{C}]+$/u;
+
+/** Iterate string by grapheme clusters (falls back to Array.from) */
+function* iterGraphemes(str) {
+  if (typeof Intl !== "undefined" && Intl.Segmenter) {
+    const seg = new Intl.Segmenter("km", { granularity: "grapheme" });
+    for (const { segment } of seg.segment(str)) yield segment;
+  } else {
+    // Best-effort fallback
+    yield* Array.from(str);
+  }
+}
 
 /**
- * Splits text into runs of the same script (Khmer vs non-Khmer)
- * @param {string} str
- * @returns {Array<{ text: string, kh: boolean }>}
+ * Split text into runs by script (Khmer vs non-Khmer),
+ * neutrals inherit the current run when possible.
+ * @returns Array<{ text: string, kh: boolean | null }>
+ * kh=null means the run is purely neutral (at the very start, e.g. leading spaces)
  */
 export function splitRunsByScript(str = "") {
   const runs = [];
   let buf = "";
-  let kh = null;
+  let kh = null;            // current run script: true (Khmer) | false (Latin/Other) | null (neutral start)
+  let lastNonNeutral = null; // remember last non-neutral script for neutrals to inherit
 
-  for (const ch of str) {
-    const isKh = KHMER_RE.test(ch);
+  const flush = (nextKh) => {
+    if (!buf) return;
+    runs.push({ text: buf, kh });
+    buf = "";
+    kh = nextKh;
+  };
+
+  for (const g of iterGraphemes(str)) {
+    const isNeutral = NEUTRAL_RE.test(g);
+    const isKh = !isNeutral && KHMER_RE.test(g);
+    const nextKh = isNeutral ? kh ?? lastNonNeutral : isKh;
+
+    // Start or continue same kind
     if (kh === null) {
-      kh = isKh;
-      buf = ch;
-      continue;
+      // starting run
+      kh = nextKh;
+      buf = g;
+    } else if (nextKh === kh) {
+      buf += g;
+    } else {
+      flush(nextKh);
+      buf = g;
     }
-    if (isKh === kh) buf += ch;
-    else {
-      runs.push({ text: buf, kh });
-      buf = ch;
-      kh = isKh;
-    }
+
+    if (!isNeutral) lastNonNeutral = isKh;
   }
 
   if (buf) runs.push({ text: buf, kh });
@@ -33,32 +60,57 @@ export function splitRunsByScript(str = "") {
 }
 
 /**
- * Renders text with Khmer spans in moul-regular and others in Playfair
- * Returns a JSX fragment
+ * Render mixed Khmer/Latin with dedicated classes.
+ * @param {string} name
+ * @param {{
+ *   khmerClass?: string,
+ *   latinClass?: string,
+ *   neutralClass?: string, // used when kh=null after splitting (rare: all-neutral)
+ *   latinLang?: string,
+ *   khmerLang?: string
+ * }} opts
  */
-export function renderNameWithFonts(name = "") {
+export function renderNameWithFonts(
+  name = "",
+  {
+    khmerClass = "moul-regular",            // define in CSS to map to 'Moul' or 'Moulpali'
+    latinClass = "font-playfair font-bold text-base", // or "font-merriweather"
+    neutralClass = "",                      // optional styling for pure-neutral runs
+    latinLang = "en",
+    khmerLang = "km",
+  } = {}
+) {
   const runs = splitRunsByScript(name);
+  if (runs.length === 0) return null;
 
+  // If the whole string is one script, render as a single span
   if (runs.length === 1) {
     const { text, kh } = runs[0];
+    const cls =
+      kh === true ? khmerClass : kh === false ? latinClass : neutralClass;
+    const lang = kh === true ? khmerLang : latinLang;
     return (
-      <span lang={kh ? "km" : "en"} className={kh ? "moul-regular" : "font-merriweather"}>
+      <span lang={lang} className={cls}>
         {text}
       </span>
     );
   }
 
+  // Multi-run render
+  let keyCounter = 0;
   return (
     <>
-      {runs.map((r, i) => (
-        <span
-          key={i}
-          lang={r.kh ? "km" : "en"}
-          className={r.kh ? "moul-regular" : "font-merriweather"}
-        >
-          {r.text}
-        </span>
-      ))}
+      {runs.map(({ text, kh }) => {
+        const lang = kh === true ? khmerLang : latinLang;
+        const cls =
+          kh === true ? khmerClass : kh === false ? latinClass : neutralClass;
+        const key = `${kh === true ? "km" : kh === false ? "la" : "ne"}-${keyCounter++}`;
+        return (
+          <span key={key} lang={lang} className={cls}>
+            {text}
+          </span>
+        );
+      })}
     </>
   );
 }
