@@ -161,7 +161,7 @@ export default function DescriptionSection({
      data-aos-anchor-placement="top-center">
                 <div className="relative w-full aspect-[3/4]">
                   <img
-                    src="/images/home-page/gallary/portrait-03.jpg"
+                    src="/images/home-page/gallary/portrait-03-compress.jpg"
                     alt="image"
                     className="absolute inset-0 w-full h-full object-cover"
                     loading="lazy"
