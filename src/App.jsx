@@ -17,7 +17,7 @@ const DEFAULT_BG = {
 };
 
 const BG_BY_ROUTE = {
-  "/": { src: "/videos/homepage-background.mp4", poster: "/images/cover-page/background.avif", loop: true },
+  "/": { src: "/videos/background.mp4", poster: "/images/cover-page/background.avif", loop: true },
   "/home": { src: "/videos/homepage-background.mp4", poster: "/images/cover-page/background.avif", loop: true },
 };
 
