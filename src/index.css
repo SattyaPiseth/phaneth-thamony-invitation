@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "Celinda";
+  src:
+    url("/fonts/Celinda-Regular.woff2") format("woff2"),
+    url("/fonts/Celinda-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  font-synthesis-weight: none;
+  font-synthesis-style: none;
+}
+
 @import "tailwindcss";
 
 @theme {
@@ -102,6 +114,9 @@ body,
     font-family: "Merriweather", serif;
     font-optical-sizing: auto;
     font-variation-settings: "wdth" 100;
+  }
+  .font-celinda {
+    font-family: "Celinda", serif;
   }
 }
 

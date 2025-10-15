@@ -74,7 +74,7 @@ export function renderNameWithFonts(
   name = "",
   {
     khmerClass = "moul-regular",            // define in CSS to map to 'Moul' or 'Moulpali'
-    latinClass = "font-playfair font-bold text-base", // or "font-merriweather"
+    latinClass = "font-celinda font-semibold text-base", // or "font-merriweather"
     neutralClass = "",                      // optional styling for pure-neutral runs
     latinLang = "en",
     khmerLang = "km",

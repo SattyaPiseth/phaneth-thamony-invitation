@@ -4,6 +4,9 @@
     { "src": "^/(assets/.+)$", "headers": { "Cache-Control": "public, max-age=31536000, immutable" }, "dest": "/$1" },
     { "src": "^/(images/.+)$", "headers": { "Cache-Control": "public, max-age=31536000, immutable" }, "dest": "/$1" },
     { "src": "^/(audio/.+)$",  "headers": { "Cache-Control": "public, max-age=31536000, immutable" }, "dest": "/$1" },
+
+    { "src": "^/(fonts/.+\\.woff2)$", "headers": { "Cache-Control": "public, max-age=31536000, immutable", "Content-Type": "font/woff2" }, "dest": "/$1" },
+    { "src": "^/(fonts/.+)$",         "headers": { "Cache-Control": "public, max-age=31536000, immutable" }, "dest": "/$1" },
     {
       "src": "^/(videos/.+)$",
       "headers": { "Cache-Control": "public, max-age=31536000, immutable", "Accept-Ranges": "bytes" },
