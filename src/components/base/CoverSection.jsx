@@ -16,7 +16,7 @@ export default function CoverSection({
   const showPersonalized = !!person?.guestName;
 
   // Invisible-but-clickable button logic
-  const VISIBLE_DELAY_MS = 1000; // show visually after 1.5s
+  const VISIBLE_DELAY_MS = 1500; // show visually after 1.5s
   const [isVisible, setIsVisible] = useState(false);
   const [isPreclick, setIsPreclick] = useState(false);
 

@@ -21,6 +21,27 @@ const BG_BY_ROUTE = {
   "/home": { src: "/videos/homepage-background.mp4", poster: "/images/cover-page/background.avif", loop: true },
 };
 
+// --- Detect UUID-like or invitation routes ---
+const isUuidPath = (p) => {
+  const normalized = p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
+  // Root-level UUID, e.g. /123e4567-e89b-12d3-a456-426614174000
+  const uuidRoot = /^\/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/.test(normalized);
+  // Optional extra patterns like /invite/<uuid> or /guest/<id>
+  const inviteLike = /^\/(invite|guest)\/[A-Za-z0-9-]{6,}$/.test(normalized);
+  return uuidRoot || inviteLike;
+};
+
+// --- Background picker ---
+const pickRouteBg = (pathname) => {
+  if (BG_BY_ROUTE[pathname]) return BG_BY_ROUTE[pathname];
+  if (isUuidPath(pathname)) {
+    // 👇 This is the video you want for your UUID route
+    return { src: "/videos/background.mp4", poster: "/images/cover-page/background.avif", loop: true };
+  }
+  return DEFAULT_BG;
+};
+
+
 
 export default function App() {
   const navigate = useNavigate();
@@ -52,7 +73,8 @@ export default function App() {
   });
 
   // Background management
-  const routeBg = BG_BY_ROUTE[pathname] ?? DEFAULT_BG;
+  // const routeBg = BG_BY_ROUTE[pathname] ?? DEFAULT_BG;
+  const routeBg = pickRouteBg(pathname);
   const [bgOverride, setBgOverride] = useState(null);
   const effectiveBg = bgOverride ?? routeBg;
 

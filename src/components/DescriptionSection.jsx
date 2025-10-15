@@ -7,7 +7,7 @@ import { Lightbox } from "./modal/Lightbox";
 import { GALLERY_IMAGES } from "../data/galleryImages";
 import morning_event_image from "/images/home-page/agenda/agenda-01.avif";
 import { GratitudeSection } from "./GratitudeSection";
-import { PromoteSection } from "./PromoteSection";
+import PromoteSection from "./PromoteSection";
 import Discussion from "./comment/Discussion";
 import AnimatedActionButton from "./button/AnimatedActionButton";
 
@@ -259,11 +259,13 @@ export default function DescriptionSection({
         <Discussion />
         <PromoteSection
           src="/images/memora-shine/memora-shine-end-page.png"
-          
+          eager={true}                
           alt="Clean image"
-          shadow=""      // no shadow
-          showGlow={false} // no glow
+          shadow=""                    
+          imgShadow=""                 
+          showGlow={false}            
         />
+
       </SoftCard>
     </section>
   );
