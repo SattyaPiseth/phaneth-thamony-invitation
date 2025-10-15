@@ -21,6 +21,7 @@ const BG_BY_ROUTE = {
   "/home": { src: "/videos/homepage-background.mp4", poster: "/images/cover-page/background.avif", loop: true },
 };
 
+
 export default function App() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
