@@ -117,7 +117,7 @@
   { "uuid": "7e9b41bd-8a3d-4397-8786-a0ebd9c1eeaa", "full_name": "លោកស្រី ឡេង ស៊ីវលី និងស្វាមី" },
   { "uuid": "56c81b2b-715f-4729-82de-fb114dba3b2e", "full_name": "លោក ងួន សាខេន" },
   { "uuid": "0c0f4fa7-9208-4a33-ab73-405c0865f52c", "full_name": "លោក ស្រ៊ី ម៉ុងតាល់ និងភរិយា" },
-  { "uuid": "8044ddcd-b3aa-4f34-8fbc-de7d0722197f", "full_name": "លោក ប៉ិន​ សុវណ្ណរិទ្ធ​ និងភរិយា" },
+  { "uuid": "8044ddcd-b3aa-4f34-8fbc-de7d0722197f", "full_name": "លោក ប៉ិល​ សុវណ្ណរិទ្ធ​ និងភរិយា" },
   { "uuid": "204a2f7f-2434-47c5-9156-2589c8c85cdc", "full_name": "លោក កូវ លីហួត" },
   { "uuid": "cd166788-f76f-401e-99b0-58e89e4f351b", "full_name": "លោក ហួ កម្រងវឌ្ឍនៈ" },
   { "uuid": "3afb1f7a-e57c-44f6-9378-f1a7bb4b8c4d", "full_name": "លោក ហ៊ុយ​​​ ​សុផាន់ណា" },
@@ -125,7 +125,7 @@
   { "uuid": "3dca0bae-e539-4359-87e9-f03c07331717", "full_name": "លោក ជា វ៉ាន់តូ" },
   { "uuid": "8298157a-2312-4c65-a374-fd908e4955f8", "full_name": "លោក ហាវ គីមហួរ" },
   { "uuid": "035d11c9-2245-4034-b99d-280f2bfe57ec", "full_name": "កញ្ញា សាទ សុភារីណា" },
-  { "uuid": "7bea5edf-30b9-4bc7-900c-16dcf1db80ac", "full_name": "លោកស្រី ហាវ គីមហេង និងស្វាមី" },
+  { "uuid": "7bea5edf-30b9-4bc7-900c-16dcf1db80ac", "full_name": "លោកស្រី ហាវ គឹមហេង និងស្វាមី" },
   { "uuid": "f0a3ef2c-e3ca-44f5-8f35-1bca189fdf64", "full_name": "លោក​ សេង​ វិចិត្រ" },
   { "uuid": "3962bfe1-8c67-48c6-aca1-02ba1d6dd9a4", "full_name": "លោកស្រី អ៊ូ សុខដាឡែន និងស្វាមី" },
   { "uuid": "05a8576b-5ecd-4a8c-a2d6-f611ce9f912e", "full_name": "លោកស្រី សុវត្ថិឌី​ ធារីកា​ និងស្វាមី" },
@@ -180,5 +180,12 @@
   { "uuid": "70841a82-5f8c-4195-90ce-a675beadbcc0", "full_name": "Brother Thai Thanh Sang" },
   { "uuid": "71b7094e-7f04-4ee0-8ac9-79c30c583ce0", "full_name": "Sister Thavy and Danny Nguyen" },
   { "uuid": "4ff70c4a-d7d0-4f81-87fc-9d7dada8ebe8", "full_name": "ឯកឧត្ដមបណ្ឌិត​ អ៉ិត សំហេង និងលោកជំទាវ" },
-  { "uuid": "a771f710-e315-47d0-8d05-d24c3ae61e04", "full_name": "Ms.Pov Panhalinda & Honey" }
+  { "uuid": "a771f710-e315-47d0-8d05-d24c3ae61e04", "full_name": "Ms.Pov Panhalinda & Honey" },
+
+
+  { "uuid": "1f4b30f5-155a-4597-9b9c-f7b126499790", "full_name": "Mrs Sin Sereiroth and Husband" },
+  { "uuid": "bbf864a4-6fa8-4850-8833-f5e29b26d030", "full_name": "Mr Ma Dona & Honey" },
+  { "uuid": "8ccc36c7-f44c-4e5f-ade9-bc8a76937f8b", "full_name": "Mr Thon Kim & Honey" },
+  { "uuid": "011c0fa3-cf89-4e88-b1f1-faadd2b5cd05", "full_name": "Mr Say Vithoun & Honey" },
+  { "uuid": "2d3c36ef-440b-4b17-af2e-5623cfef0cea", "full_name": "Mr Pheng Sophea & Honey" }
 ]
