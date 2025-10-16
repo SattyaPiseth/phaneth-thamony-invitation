@@ -12,13 +12,13 @@ const BGMUSIC = "/audio/special-someone-audio.mp3";
 
 const DEFAULT_BG = {
   src: "/videos/homepage-background.mp4",
-  poster: "/images/cover-page/background.avif",
+  poster: "/images/cover-page/background.jpg",
   loop: true,
 };
 
 const BG_BY_ROUTE = {
-  "/": { src: "/videos/background.mp4", poster: "/images/cover-page/background.avif", loop: true },
-  "/home": { src: "/videos/homepage-background.mp4", poster: "/images/cover-page/background.avif", loop: true },
+  "/": { src: "/videos/background.mp4", poster: "/images/cover-page/background.jpg", loop: true },
+  "/home": { src: "/videos/homepage-background.mp4", poster: "/images/cover-page/background.jpg", loop: true },
 };
 
 // --- Detect UUID-like or invitation routes ---
@@ -36,7 +36,7 @@ const pickRouteBg = (pathname) => {
   if (BG_BY_ROUTE[pathname]) return BG_BY_ROUTE[pathname];
   if (isUuidPath(pathname)) {
     // 👇 This is the video you want for your UUID route
-    return { src: "/videos/background.mp4", poster: "/images/cover-page/background.avif", loop: true };
+    return { src: "/videos/background.mp4", poster: "/images/cover-page/background.jpg", loop: true };
   }
   return DEFAULT_BG;
 };
