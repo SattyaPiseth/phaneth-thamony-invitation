@@ -203,5 +203,8 @@
   { "uuid": "b1daef79-ef1b-43a2-82f2-8843e87efba8", "full_name": "កញ្ញា ឃុន សុជាតា" },
   { "uuid": "1a5a4f5f-fce1-473a-b317-1404aca83722", "full_name": "លោក សេង រតនៈវិស្ស័យ និងភរិយា" },
   
-  { "uuid": "7cb71cd5-0e14-474d-8552-8ffc9adb6243", "full_name": "Ms. Neradey Meng" }
+  { "uuid": "7cb71cd5-0e14-474d-8552-8ffc9adb6243", "full_name": "Ms. Neradey Meng" },
+
+  { "uuid": "93935db6-64fa-4ec4-a824-a7be7833d663", "full_name": "Ms. Chum Rany" },
+  { "uuid": "a8884d86-296c-47cf-865c-4d0730d7695e", "full_name": "Mr. Guov SengTong" }
 ]
