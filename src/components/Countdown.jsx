@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 /**
  * Props:
@@ -12,27 +12,37 @@ export default function Countdown({ target, ariaLabel }) {
     [target]
   );
 
-  const calcLeft = () => {
+  const calcLeft = useCallback(() => {
     const now = Date.now();
-    const diff = Math.max(0, targetTime - now);
+    const rawDiff = targetTime - now;
+    const safeDiff = Math.max(0, rawDiff);
 
-    const days = Math.floor(diff / (24 * 60 * 60 * 1000));
-    const hours = Math.floor((diff % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
-    const minutes = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
-    const seconds = Math.floor((diff % (60 * 1000)) / 1000);
+    const days = Math.floor(safeDiff / (24 * 60 * 60 * 1000));
+    const hours = Math.floor(
+      (safeDiff % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000)
+    );
+    const minutes = Math.floor((safeDiff % (60 * 60 * 1000)) / (60 * 1000));
+    const seconds = Math.floor((safeDiff % (60 * 1000)) / 1000);
 
-    return { days, hours, minutes, seconds };
-  };
+    return { days, hours, minutes, seconds, isComplete: rawDiff <= 0 };
+  }, [targetTime]);
 
   const [left, setLeft] = useState(calcLeft);
 
   useEffect(() => {
+    if (left.isComplete) {
+      return undefined;
+    }
+
     const id = setInterval(() => setLeft(calcLeft()), 1000);
     return () => clearInterval(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [targetTime]);
+  }, [calcLeft, left.isComplete]);
 
   const pad2 = (n) => String(n).padStart(2, "0");
+
+  if (left.isComplete) {
+    return null;
+  }
 
   return (
     <div
